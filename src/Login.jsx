@@ -35,7 +35,10 @@ export const Login = () => {
                         <InputText
                             value={userName}
                             style={{width: '20rem'}}
-                            onChange={(e)=>setValue3(e.target.value)}
+                            onChange={(e)=>setUser({
+                                userName: e.target.value,
+                                password: password
+                            })}
                             placeholder="User name"
                         />
                     </span>
@@ -43,9 +46,13 @@ export const Login = () => {
                     <span className="p-input-icon-left mt-5">
                         <i className="pi pi-lock" />
                         <InputText
-                            value={userName}
+                            value={password}
                             style={{width: '20rem'}}
-                            onChange={(e)=>setValue3(e.target.value)}
+                            type="password"
+                            onChange={(e)=>setUser({
+                                userName: userName,
+                                password: e.target.value
+                            })}
                             placeholder="Password"
                         />
                     </span>
