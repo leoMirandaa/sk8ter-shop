@@ -17,18 +17,22 @@ export const Navbarr = () => {
     {
       label: 'Women',
       icon: 'pi pi-fw pi-file',
+      command: () => navigate('/women')
     },
     {
       label: 'Men',
-      icon: 'pi pi-fw pi-file'
+      icon: 'pi pi-fw pi-file',
+      command: () => navigate('/men')
     },
     {
       label: 'Kids',
-      icon: 'pi pi-fw pi-file'
+      icon: 'pi pi-fw pi-file',
+      command: () => navigate('/kids')
     },
     {
       label: 'Coupons',
-      icon: 'pi pi-fw pi-file'
+      icon: 'pi pi-fw pi-file',
+      command: () => navigate('/coupons')
     },
   ];
 
@@ -44,7 +48,6 @@ export const Navbarr = () => {
   return (
     <>
       <Menubar model={items} start={start} end={end}/>
-
     </>
   )
 }
