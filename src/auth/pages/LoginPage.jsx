@@ -1,7 +1,6 @@
 
 import { useRef, useState } from 'react';
 import { Link, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import './login.css'
 
 import { Card } from 'primereact/card';
 import { Toolbar } from 'primereact/toolbar';
@@ -9,11 +8,11 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Messages } from 'primereact/messages';
 import { Message } from 'primereact/message';
-import { Home } from './Home';
+
+import './login.css';
 
 
-
-export const Login = () => {
+export const LoginPage = () => {
     const shouldRedirect = true;
 
     const navigate = useNavigate();
@@ -60,45 +59,46 @@ export const Login = () => {
 
   return (
     <>
+        <div className="login">
+            <Link to="/home" >Home</Link>
 
-        <Link to="/home" >Home</Link>
+            <div className='card-container'>
+                <Card className="sm:col-10 md:col-4 mx-3" title="LogIn" footer={footer}>
 
-        <div className='card-container'>
-            <Card className="sm:col-10 md:col-6 mx-3" title="LogIn" footer={footer}>
+										<div className="m-0" style={{lineHeight: '1.5'}}>
+												<span className="p-input-icon-left">
+														<i className="pi pi-user" />
+														<InputText
+																value={userName}
+																onChange={(e)=>setUser({
+																		userName: e.target.value,
+																		password: password
+																})}
+																placeholder="User name"
+														/>
+												</span>
 
-                    <div className="m-0" style={{lineHeight: '1.5'}}>
-                        <span className="p-input-icon-left">
-                            <i className="pi pi-user" />
-                            <InputText
-                                value={userName}
-                                onChange={(e)=>setUser({
-                                    userName: e.target.value,
-                                    password: password
-                                })}
-                                placeholder="User name"
-                            />
-                        </span>
+												<span className="p-input-icon-left mt-5">
+														<i className="pi pi-lock" />
+														<InputText
+																value={password}
+																type="password"
+																onChange={(e)=>setUser({
+																		userName: userName,
+																		password: e.target.value
+																})}
+																placeholder="Password"
+														/>
+												</span>
 
-                        <span className="p-input-icon-left mt-5">
-                            <i className="pi pi-lock" />
-                            <InputText
-                                value={password}
-                                type="password"
-                                onChange={(e)=>setUser({
-                                    userName: userName,
-                                    password: e.target.value
-                                })}
-                                placeholder="Password"
-                            />
-                        </span>
+										</div>
 
-                    </div>
+                </Card>
 
-            </Card>
+                <Messages ref={messages}></Messages>
 
-            <Messages ref={messages}></Messages>
-
-            {/* <Button onClick={showError} label="Error" className="p-button-danger" /> */}
+                {/* <Button onClick={showError} label="Error" className="p-button-danger" /> */}
+            </div>
         </div>
     </>
   )
