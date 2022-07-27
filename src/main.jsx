@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom';
 
-import "primereact/resources/themes/fluent-light/theme.css";  //theme
+import "primereact/resources/themes/saga-blue/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";                                //icons
 import { ClothingApp } from './ClothingApp';

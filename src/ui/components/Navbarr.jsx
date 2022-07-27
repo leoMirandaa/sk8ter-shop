@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
+import { SplitButton } from 'primereact/splitbutton';
 import { useNavigate } from 'react-router-dom';
 
 export const Navbarr = () => {
@@ -36,12 +37,34 @@ export const Navbarr = () => {
     },
   ];
 
-  const end = <Button
-    icon="pi pi-user"
-    className="p-button-rounded p-button-primary"
-    aria-label="User"
-    onClick={ handleLogout }
-  />
+  const profileButton = [
+    {
+      label: 'Settings',
+      icon: 'pi pi-refresh',
+      command: () => { navigate('/settings')}
+    },
+    {
+      label: 'LogOut',
+      icon: 'pi pi-refresh',
+      command: () => { navigate('/login')}
+    },
+  ]
+
+  // const end = <Button
+  //   icon="pi pi-user"
+  //   className="p-button-rounded p-button-primary"
+  //   aria-label="User"
+  //   onClick={ handleLogout }
+  // />
+
+  const end = <SplitButton
+    icon="pi pi-user "
+    className='p-button-help'
+    // onClick={save}
+    model={profileButton}>
+
+    </SplitButton>
+
 
     const start = <div><b>Clothing store</b></div>
 
