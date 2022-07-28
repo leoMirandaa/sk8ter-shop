@@ -1,12 +1,14 @@
 
 import { useEffect, useState } from "react";
-import DataService from "../../service/dataService";
+import {DataService } from "../../service/dataService";
+
+import "./admin.css";
 
 export const Admin = () => {
     const[coupon, setCoupon] = useState({});
     const[product, setProduct] = useState({});
     const [allCoupons, setAllCoupons] = useState({});
-    const [allProducts, setAllProducts] = useState({});
+    
     const[errorVisible, setErrorVisible] = useState(false);
     const[errorMessage, setErrorMessage] = useState("");
     const [viewCoupons, setViewCoupons] = useState([]);
@@ -58,9 +60,9 @@ export const Admin = () => {
         let service = new DataService();
         let res = await service.saveProduct(savedProduct);
         
-        let copy = [...allproduct];
+        let copy = [...product];
         copy.push(res);
-        setAllProduct(copy);
+        setAllCoupons(copy);
     };
     
     
@@ -121,7 +123,7 @@ export const Admin = () => {
         let res = await service.saveCoupon(couponSaved);
         
         
-        let copy = [...allCoupons];
+        let copy = [...coupon];
         copy.push(res);
         setAllCoupons(copy);
         
@@ -173,7 +175,7 @@ export const Admin = () => {
                             <ul>
                                 {viewProduct.map((prods) => ( 
                                     <li key={prods._id}>
-                                        {prods.title}-{prods.unitPrice}
+                                        {prods.title}-{prods.price}
                                     </li>))}
                             </ul>
                         </div>

@@ -63,7 +63,7 @@ export const AdminLoginPage = () => {
     
 
             <div className='card-container'>
-                <Card className="sm:col-10 md:col-4 mx-3" title="LogIn" footer={footer}>
+                <Card className="sm:col-10 md:col-4 mx-3" title="Admin Login" footer={footer}>
 
 										<div className="m-0" style={{lineHeight: '1.5'}}>
 												<span className="p-input-icon-left">

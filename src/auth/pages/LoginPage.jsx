@@ -61,7 +61,7 @@ export const LoginPage = () => {
     <>
         <div className="login">
             <Link to="/home" >Home</Link>
-            <Link to="/admin" >Admin</Link>
+            <Link to="/adminLogin" >Admin</Link>
 
             <div className='card-container'>
                 <Card className="sm:col-10 md:col-4 mx-3" title="LogIn" footer={footer}>
