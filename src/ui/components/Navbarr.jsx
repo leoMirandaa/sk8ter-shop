@@ -35,6 +35,11 @@ export const Navbarr = () => {
       icon: 'pi pi-fw pi-file',
       command: () => navigate('/coupons')
     },
+    {
+      label: 'Admin',
+      icon: 'pi pi-refresh',
+      command: () => { navigate('/admin')}
+    },
   ];
 
   const profileButton = [
@@ -48,6 +53,7 @@ export const Navbarr = () => {
       icon: 'pi pi-refresh',
       command: () => { navigate('/login')}
     },
+    
   ]
 
   // const end = <Button

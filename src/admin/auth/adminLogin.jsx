@@ -9,10 +9,10 @@ import { InputText } from 'primereact/inputtext';
 import { Messages } from 'primereact/messages';
 import { Message } from 'primereact/message';
 
-import './login.css';
 
 
-export const LoginPage = () => {
+
+export const AdminLoginPage = () => {
     const shouldRedirect = true;
 
     const navigate = useNavigate();
@@ -60,8 +60,7 @@ export const LoginPage = () => {
   return (
     <>
         <div className="login">
-            <Link to="/home" >Home</Link>
-            <Link to="/admin" >Admin</Link>
+    
 
             <div className='card-container'>
                 <Card className="sm:col-10 md:col-4 mx-3" title="LogIn" footer={footer}>
