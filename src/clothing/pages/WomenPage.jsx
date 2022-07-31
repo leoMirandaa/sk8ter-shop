@@ -1,6 +1,11 @@
+import { Stepper } from "../components/Stepper"
 
 export const WomenPage = () => {
   return (
-    <div>WomenPage</div>
+    <>
+      <h1>Women</h1>
+
+      <Stepper />
+    </>
   )
 }

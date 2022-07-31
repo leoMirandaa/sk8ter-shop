@@ -1,0 +1,10 @@
+.stepper-container {
+  max-width: 800px;
+  /* background: rgb(159, 152, 185); */
+
+  justify-content: center;
+}
+
+.p-steps-number	 {
+  background: rgb(225, 32, 32)
+}

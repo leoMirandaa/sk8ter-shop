@@ -1,19 +1,20 @@
 
 import { useRef, useState } from 'react';
-import { Link, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Card } from 'primereact/card';
-import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { Messages } from 'primereact/messages';
-import { Message } from 'primereact/message';
+import { Toast } from 'primereact/toast';
+import { TabView, TabPanel } from 'primereact/tabview';
+
 
 import './login.css';
 
 
 export const LoginPage = () => {
-    const shouldRedirect = true;
+
+    const toast = useRef(null);
 
     const navigate = useNavigate();
 
@@ -24,36 +25,27 @@ export const LoginPage = () => {
 
     const { userName, password } = user
 
-    const messages = useRef(null);
-
     const header = <img alt="Card" src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.namesnack.com%2Fimages%2Fnamesnack-clothing-rental-business-names-3840x2560-20200915.jpeg%3Fcrop%3D40%3A21%2Csmart%26width%3D1200%26dpr%3D2%26format%3Dpjpg&f=1&nofb=1'/>;
 
     const handleSubmit = () => {
         if( userName == 'leopoldo' && password == 'Testing22' ) {
             console.log('authenticated');
-            messages.current.show({ severity: 'success', summary: 'Success ', detail: ' Authenticated', sticky: true });
             navigate('/home');
+            toast.current.show({severity:'success', summary: 'Success Message', detail:'Message Content', life: 3000});
         }
         else {
-            messages.current.show({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
             console.log('login failed')
+            toast.current.show({severity:'error', summary: 'Authentication failed', detail:'Wrong userName/password. Try again', life: 3000});
         }
     }
-
-    // const showError = () => {
-    //     messages.current.show({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
-    // }
 
     const footer = <span>
         <Button
             label="SignIn"
             className='p-button-help sm:col-6 md:col-6'
             onClick={() => handleSubmit()}
-
-            // style={{marginRight: '.25em', width: '15rem'}}
         />
-
-    {/* <Button label="Cancel" icon="pi pi-times" className="p-button-secondary"/> */}
+        <Toast ref={toast} />
     </span>
 
 
@@ -94,8 +86,6 @@ export const LoginPage = () => {
 										</div>
 
                 </Card>
-
-                <Messages ref={messages}></Messages>
 
                 {/* <Button onClick={showError} label="Error" className="p-button-danger" /> */}
             </div>
