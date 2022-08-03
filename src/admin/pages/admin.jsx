@@ -167,6 +167,11 @@ export const Admin = () => {
                             </div>
 
                             <div className="my-control">
+                                <label>Discount:</label>
+                                <input onChange={handleTextChange} name="discount" type="text"  />
+                            </div>
+
+                            <div className="my-control">
                                 <button onClick={handleItemAdd}  className="btn btn-dark">Register Product</button>
                             </div>
                             
