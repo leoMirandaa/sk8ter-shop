@@ -53,26 +53,24 @@ export const Navbarr = () => {
       icon: 'pi pi-refresh',
       command: () => { navigate('/login')}
     },
-    
+
   ]
 
-  // const end = <Button
-  //   icon="pi pi-user"
-  //   className="p-button-rounded p-button-primary"
-  //   aria-label="User"
-  //   onClick={ handleLogout }
-  // />
 
   const end = <SplitButton
-    icon="pi pi-user "
-    className='p-button-help'
-    // onClick={save}
-    model={profileButton}>
-
+      icon="pi pi-user "
+      className='p-button-help'
+      // onClick={save}
+      model={profileButton}>
     </SplitButton>
 
 
-    const start = <div><b>Clothing store</b></div>
+    const start =
+    <div>
+      <b style={{cursor: 'pointer'}} onClick={ () => navigate('/home')}>
+        Clothing store
+      </b>
+    </div>
 
   return (
     <>

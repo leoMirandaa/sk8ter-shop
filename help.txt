@@ -1,0 +1,30 @@
+// ------------- HOW TO USE axios ---------------
+import axios from "axios";
+
+export const authenticateUser = async(user) => {
+  try {
+    const response = await axios({
+      params: {
+        api_key: '123kjsdfkjsda',
+        language: 'es-MX'
+      },
+      headers: {
+        'Authorization': 'Bearer ehdsfjshafsdfasdfjasdfasdf etc...'
+      },
+
+      url: "http://127.0.0.1:5000/api/login",
+      data: user,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    return response
+
+  } catch (error) {
+    console.log("Error ", error);
+  }
+
+}
+// -----------------------------------------
