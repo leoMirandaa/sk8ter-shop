@@ -6,33 +6,44 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
-import { TabView, TabPanel } from 'primereact/tabview';
-
 
 import './login.css';
-
+import { authenticateUser } from '../helpers/authenticateUser';
 
 export const LoginPage = () => {
 
+
     const toast = useRef(null);
     const navigate = useNavigate();
+
     const [user, setUser] = useState({
-        userName: '',
+        name: '',
         password: ''
     })
-    const { userName, password } = user
+    const { name, password } = user
+
+    const handleSubmit = async () => {
+
+        const authenticated = await authenticateUser(user);
+        const { data, status } = authenticated
+        console.log('** ', authenticated)
+        console.log('** ', data, status)
+        toast.current.show({severity:'error', summary: 'Success Message', detail:'Message Content', life: 3000, position:"center"});
+        // navigate('/home')
+
+        // await console.log('****authenticated:  ', authenticated.data);
+        // await console.log('****authenticated:  ', authenticated.status);
 
 
-    const handleSubmit = () => {
-        if( userName == 'leopoldo' && password == 'Testing22' ) {
-            console.log('authenticated');
-            navigate('/home');
-            toast.current.show({severity:'success', summary: 'Success Message', detail:'Message Content', life: 3000});
-        }
-        else {
-            console.log('login failed')
-            toast.current.show({severity:'error', summary: 'Authentication failed', detail:'Wrong userName/password. Try again', life: 3000});
-        }
+        // if( name == 'leopoldo' && password == 'Testing22' ) {
+        //     console.log('authenticated');
+        //     navigate('/home');
+        //     toast.current.show({severity:'success', summary: 'Success Message', detail:'Message Content', life: 3000});
+        // }
+        // else {
+        //     console.log('login failed')
+        //     toast.current.show({severity:'error', summary: 'Authentication failed', detail:'Wrong name/password. Try again', life: 3000});
+        // }
     }
 
     const footer = <span>
@@ -66,9 +77,9 @@ export const LoginPage = () => {
                         <span className="p-input-icon-left">
                             <i className="pi pi-user" />
                             <InputText
-                                value={userName}
+                                value={name}
                                 onChange={(e)=>setUser({
-                                        userName: e.target.value,
+                                        name: e.target.value,
                                         password: password
                                 })}
                                 placeholder="User name"
@@ -81,7 +92,7 @@ export const LoginPage = () => {
                                 value={password}
                                 type="password"
                                 onChange={(e)=>setUser({
-                                        userName: userName,
+                                        name: name,
                                         password: e.target.value
                                 })}
                                 placeholder="Password"
