@@ -1,6 +1,7 @@
 import { Stepper } from "../components/Stepper"
 import { useEffect, useState } from "react";
 import { DataService } from "../../service/dataService";
+import Product from "../components/product";
 
 export const WomenPage = () => {
 
@@ -23,6 +24,7 @@ export const WomenPage = () => {
       <h1>Women</h1>
 
       <Stepper />
+      
 
       <div className="coupons">
           <ul>
@@ -35,6 +37,7 @@ export const WomenPage = () => {
               }
           </ul>
       </div>
+    
 
     </>
   )
