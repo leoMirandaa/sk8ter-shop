@@ -35,7 +35,7 @@ export const SignupPage = () => {
     const footer = <span>
         <Button
             label="Create account"
-            className='p-button-help sm:col-6 md:col-6'
+            className='p-button-help p-button-rounded sm:col-6 md:col-6'
             onClick={() => handleSignup()}
         />
         <Toast ref={toast} />
@@ -49,7 +49,8 @@ export const SignupPage = () => {
             <div className='navbar-button mt-2'>
                 <Button
                     label="Sign in"
-                    className="btn-signin p-button-secondary"
+                    icon="pi pi-arrow-left"
+                    className="btn-signin p-button-rounded p-button-secondary"
                     onClick={() => navigate('/login')}
                 />
             </div>
@@ -58,7 +59,7 @@ export const SignupPage = () => {
             <Link to="/adminLogin" >Admin</Link>
 
             <div className='card-container'>
-                <Card className="sm:col-10 md:col-4 mx-3" title="Sign Up" footer={footer}>
+                <Card className="sm:col-10 md:col-4 mx-3 animate__animated animate__fadeInLeft" title="Sign Up" footer={footer}>
 
                     <div className="m-0" style={{lineHeight: '1.5'}}>
                         <span className="p-input-icon-left">

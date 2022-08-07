@@ -1,5 +1,5 @@
 
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Card } from 'primereact/card';
@@ -9,9 +9,11 @@ import { Toast } from 'primereact/toast';
 
 import './login.css';
 import { authenticateUser } from '../helpers/authenticateUser';
+import { UserContext } from '../context/UserContext';
 
 export const LoginPage = () => {
 
+    const { globalUser, setGlobalUser } = useContext(UserContext)
 
     const toast = useRef(null);
     const navigate = useNavigate();
@@ -25,40 +27,30 @@ export const LoginPage = () => {
     const handleSubmit = async () => {
 
         const authenticated = await authenticateUser(user);
-        const { data, status } = authenticated
-        console.log('** ', authenticated)
-        console.log('** ', data, status)
-        toast.current.show({severity:'error', summary: 'Success Message', detail:'Message Content', life: 3000, position:"center"});
-        // navigate('/home')
+        console.log('----- ', authenticated)
 
-        // await console.log('****authenticated:  ', authenticated.data);
-        // await console.log('****authenticated:  ', authenticated.status);
+        if (authenticated.data === 'User not found') {
+            toast.current.show({severity:'error', summary: 'Login failed', detail:'User or password incorrect', life: 3000, position:"top-right"});
+        }else {
+            setGlobalUser(authenticated.data)
+            navigate('/home')
+        }
 
 
-        // if( name == 'leopoldo' && password == 'Testing22' ) {
-        //     console.log('authenticated');
-        //     navigate('/home');
-        //     toast.current.show({severity:'success', summary: 'Success Message', detail:'Message Content', life: 3000});
-        // }
-        // else {
-        //     console.log('login failed')
-        //     toast.current.show({severity:'error', summary: 'Authentication failed', detail:'Wrong name/password. Try again', life: 3000});
-        // }
     }
 
     const footer = <span>
         <Button
             label="Sign in"
-            className='p-button-help sm:col-6 md:col-6'
+            className='p-button-help p-button-rounded sm:col-6 md:col-6'
             onClick={() => handleSubmit()}
         />
-        <Toast ref={toast} />
 
         <br />
         <Button
             label="Sign up"
             style={{color: "var(--gray-600)"}}
-            className=' p-button-text sm:col-6 md:col-6 mt-4'
+            className=' p-button-text p-button-rounded sm:col-6 md:col-6 mt-4'
             onClick={ () => navigate('/sigup') }
         />
     </span>
@@ -66,12 +58,14 @@ export const LoginPage = () => {
 
   return (
     <>
+        <Toast ref={toast} />
+
         <div className="login">
             <Link to="/home" >Home</Link>
             <Link to="/adminLogin" >Admin</Link>
 
             <div className='card-container'>
-                <Card className="sm:col-10 md:col-4 mx-3" title="LogIn" footer={footer}>
+                <Card className="sm:col-10 md:col-4 mx-3 animate__animated animate__fadeInLeft" title="LogIn" footer={footer}>
 
                     <div className="m-0" style={{lineHeight: '1.5'}}>
                         <span className="p-input-icon-left">

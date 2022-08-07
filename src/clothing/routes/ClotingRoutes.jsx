@@ -7,11 +7,10 @@ import { KidsPage } from "../pages/KidsPage"
 import { MenPage } from "../pages/MenPage"
 import { WomenPage } from "../pages/WomenPage"
 
-
 export const ClothingRoutes = () => {
 
   return (
-    <>
+    <div className="animate__animated animate__fadeIn">
       <Navbarr/>
 
       <Routes>
@@ -23,7 +22,7 @@ export const ClothingRoutes = () => {
         <Route path="admin" element={<Admin/>} />
         <Route path="/*" element={< Navigate to="/admin"/>} />
       </Routes>
-    </>
+    </div>
   )
 
 }
