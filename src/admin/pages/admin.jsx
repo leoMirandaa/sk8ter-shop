@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import {DataService } from "../../service/dataService";
+import { Card } from 'primereact/card';
 
 import "./admin.css";
 
@@ -8,27 +9,27 @@ export const Admin = () => {
     const[coupon, setCoupon] = useState({});
     const[product, setProduct] = useState({});
     const [allCoupons, setAllCoupons] = useState({});
-    
+
     const[errorVisible, setErrorVisible] = useState(false);
     const[errorMessage, setErrorMessage] = useState("");
     const [viewCoupons, setViewCoupons] = useState([]);
     const [viewProduct, setViewProduct] = useState([]);
-    
-    
+
+
     const handleTextChange = (e) => {
         let  copy = {...product};
 
         copy[e.target.name] = e.target.value;
         setProduct(copy);
 
-       
-        
+
+
     };
 
     const showError = (text) => {
         setErrorMessage(text);
         setErrorVisible(true);
-        
+
     }
     const handleItemAdd = async () => {
         if(0){
@@ -59,14 +60,14 @@ export const Admin = () => {
         //send product to server
         let service = new DataService();
         let res = await service.saveProduct(savedProduct);
-        
+
         let copy = [...product];
         copy.push(res);
         setAllCoupons(copy);
     };
-    
-    
-    
+
+
+
     useEffect(() => {
         loadProduct();//Catalog loading
         loadCoupons();//Coupons loading
@@ -76,32 +77,32 @@ export const Admin = () => {
         const service = new DataService();
         let coupon = await service.getCoupons();
         setViewCoupons(coupon);
-        
-        
+
+
     };
 
     const loadProduct = async () =>{
         const service = new DataService();
         let prods = await service.getCatalog();
         setViewProduct(prods);
-        
-        
+
+
     };
 
-    
+
     const handleCodeChange = (e) => {
         let  copy = {...coupon};
 
         copy[e.target.name] = e.target.value;
         setCoupon(copy);
 
-        
-        
+
+
     };
 
-    
+
     const handleCodeAdd = async () => {
-        
+
 
         let couponSaved = {...coupon};
         couponSaved.discount = parseFloat(couponSaved.discount);
@@ -118,24 +119,38 @@ export const Admin = () => {
 
         setErrorVisible(false);
         //send to server
-        
+
         let service = new DataService();
         let res = await service.saveCoupon(couponSaved);
-        
-        
+
+
         let copy = [...coupon];
         copy.push(res);
         setAllCoupons(copy);
-        
-        
+
+
     };
 
-           
     return(
-
         <div className="admin-page">
 
             {errorVisible ? <div className="alert alert-danger">{errorMessage}</div> : null }
+
+            <div className="flex justify-content-evenly mt-6">
+                <div className="">
+                    <Card className="admin-card" title="Manage products" style={{ width: '25rem', marginBottom: '2em', backgroundColor:'var(--indigo-100)' }}>
+                        <i className="pi pi-shopping-cart" style={{'fontSize': '2em'}}></i>
+                    </Card>
+                </div>
+
+
+                <div className="">
+                    <Card className="admin-card" title="Manage Coupons" style={{ width: '25rem', marginBottom: '2em', backgroundColor:'var(--indigo-100)' }}>
+                        <i className="pi pi-ticket" style={{'fontSize': '2em'}}></i>
+                    </Card>
+                </div>
+            </div>
+
 
             <div className="sections-container">
                 <section className="section-products">
@@ -174,11 +189,11 @@ export const Admin = () => {
                             <div className="my-control">
                                 <button onClick={handleItemAdd}  className="btn btn-dark">Register Product</button>
                             </div>
-                            
+
                         </div>
                         <div className="coupons">
                             <ul>
-                                {viewProduct.map((prods) => ( 
+                                {viewProduct.map((prods) => (
                                     <li key={prods._id}>
                                         {prods.title}-{prods.price}
                                     </li>))}
@@ -205,20 +220,19 @@ export const Admin = () => {
                         </div>
                         <div className="coupons">
                             <ul>
-                                {viewCoupons.map((coupon) => ( 
+                                {viewCoupons.map((coupon) => (
                                     <li key={coupon._id}>
                                         {coupon.code}-{coupon.discount}
                                     </li>))}
                             </ul>
                         </div>
             </section>
-            
-        
+
+
         </div>
-            
+
 
     )
 
 
 };
- 

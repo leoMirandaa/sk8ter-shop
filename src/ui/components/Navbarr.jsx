@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import { SplitButton } from 'primereact/splitbutton';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../auth/context/UserContext';
 
 export const Navbarr = () => {
+
+  const {globalUser, setGlobalUser} = useContext(UserContext)
 
   const navigate = useNavigate()
 
@@ -51,15 +54,19 @@ export const Navbarr = () => {
     {
       label: 'LogOut',
       icon: 'pi pi-refresh',
-      command: () => { navigate('/login')}
+      command: () => {
+        setGlobalUser('')
+        navigate('/login')
+      }
     },
 
   ]
 
 
   const end = <SplitButton
+      label={globalUser.name}
       icon="pi pi-user "
-      className='p-button-help'
+      className='p-button-help p-button-rounded'
       // onClick={save}
       model={profileButton}>
     </SplitButton>
@@ -67,7 +74,7 @@ export const Navbarr = () => {
 
     const start =
     <div>
-      <b style={{cursor: 'pointer'}} onClick={ () => navigate('/home')}>
+      <b className='mr-6' style={{cursor: 'pointer'}} onClick={ () => navigate('/home')}>
         Clothing store
       </b>
     </div>

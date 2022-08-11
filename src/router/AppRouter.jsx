@@ -6,8 +6,14 @@ import { ClothingRoutes } from "../clothing/routes/ClotingRoutes"
 import { Admin } from "../admin/pages/admin"
 import { AdminLoginPage } from "../admin/auth/adminLogin"
 import { SignupPage } from "../auth/pages/SignupPage"
+import { useContext } from "react"
+import { UserContext } from "../auth/context/UserContext"
 
 export const AppRouter = () => {
+
+  // const { myUser } = useContext(UserContext)
+  // console.log('***--- ',myUser)
+
   return (
     <>
       <Routes>
