@@ -1,12 +1,11 @@
-import { TableAuth } from "../components/TableAuth"
+import { TableAuth } from "../../components/TableAuth"
 import { BreadCrumb } from 'primereact/breadcrumb';
-import { Navigate, useNavigate } from "react-router-dom";
 
 import './users.css'
+import { useNavigate } from "react-router-dom";
 
 export const UsersPage = () => {
-
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const items = [
     { label: 'Users'}
@@ -24,8 +23,9 @@ const home = { icon: 'pi pi-home', label: 'Admin', command: () => navigate('/adm
       />
 
       {/* <h1>Users</h1> */}
-
-      <TableAuth className="align-content-center"/>
+      <div style={{ display: 'flex', justifyContent: 'center'}}>
+        <TableAuth  className="align-content-center"/>
+      </div>
     </div>
   )
 }

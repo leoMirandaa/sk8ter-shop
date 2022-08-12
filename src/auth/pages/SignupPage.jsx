@@ -38,22 +38,24 @@ export const SignupPage = () => {
             className='p-button-help p-button-rounded sm:col-6 md:col-6'
             onClick={() => handleSignup()}
         />
-        <Toast ref={toast} />
+
+        <br />
+
+        <div className='mt-2' style={{ display: 'flex', justifyContent: 'flex-end'}}>
+            <Button
+                label="Sign in"
+                className="p-button-text p-button-rounded p-button-secondary underline"
+                onClick={() => navigate('/login')}
+            />
+        </div>
 
     </span>
 
 
     return (
         <>
+        <Toast ref={toast} />
         <div className="login">
-            <div className='navbar-button mt-2'>
-                <Button
-                    label="Sign in"
-                    icon="pi pi-arrow-left"
-                    className="btn-signin p-button-rounded p-button-secondary"
-                    onClick={() => navigate('/login')}
-                />
-            </div>
 
             <Link to="/home" >Home</Link>
             <Link to="/adminLogin" >Admin</Link>

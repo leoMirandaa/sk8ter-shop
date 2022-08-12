@@ -1,14 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { CouponsPage, ProductsPage, UsersPage, AdminPage } from "../pages/"
+import { AdminPage, CouponsPage, ProductsPage, UsersPage } from "../pages/"
 
 export const AdminRoutes = () => {
 
     return (
       <>
-        {/* <Navbarr/> */}
-
         <Routes>
-
           {/* <Route path="admin" element={<Admin/>} /> */}
           <Route path="/" element={<AdminPage/>} />
 

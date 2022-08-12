@@ -5,3 +5,11 @@
 .p-row-odd {
   background: rgb(244, 244, 244) !important;
 }
+
+.p-datatable {
+  border: solid 1px lightgray;
+}
+
+.p-column-title		{
+  color: black;
+}

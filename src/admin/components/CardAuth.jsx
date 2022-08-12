@@ -7,7 +7,6 @@ export const CardAuth = ({ title, icon }) => {
   const navigate = useNavigate()
 
   const handleClick = ( titleToSearch ) => {
-    console.log('**** ',titleToSearch );
     navigate(`${titleToSearch}`)
   }
 

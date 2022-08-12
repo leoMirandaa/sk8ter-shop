@@ -47,12 +47,15 @@ export const LoginPage = () => {
         />
 
         <br />
-        <Button
-            label="Sign up"
-            style={{color: "var(--gray-600)"}}
-            className=' p-button-text p-button-rounded sm:col-6 md:col-6 mt-4'
-            onClick={ () => navigate('/sigup') }
-        />
+
+        <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+            <Button
+                label="Sign up"
+                style={{color: "var(--gray-600)"}}
+                className='p-button-text outlined p-button-rounded sm:col-6 md:col-6 mt-4 underline'
+                onClick={ () => navigate('/sigup') }
+            />
+        </div>
     </span>
 
 
