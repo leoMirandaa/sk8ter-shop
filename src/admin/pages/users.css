@@ -1,0 +1,21 @@
+.usersContainer {
+  background: #EFF3F8;
+}
+
+
+/* .p-breadcrumb {
+  background-color: green !important;
+}
+.p-menuitem-text {
+  background-color: red !important;
+  color: blue !important;
+} */
+
+.p-breadcrumb {
+  border: none;
+  background: none;
+}
+
+.p-breadcrumb-chevron	 {
+  color: rgb(137, 88, 227) !important;
+}

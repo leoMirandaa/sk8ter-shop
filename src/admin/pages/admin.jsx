@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from "react";
 import {DataService } from "../../service/dataService";
-import { Card } from 'primereact/card';
 
 import "./admin.css";
+import { CardAuth } from "../components/CardAuth";
 
 export const Admin = () => {
     const[coupon, setCoupon] = useState({});
@@ -21,9 +21,6 @@ export const Admin = () => {
 
         copy[e.target.name] = e.target.value;
         setProduct(copy);
-
-
-
     };
 
     const showError = (text) => {
@@ -66,8 +63,6 @@ export const Admin = () => {
         setAllCoupons(copy);
     };
 
-
-
     useEffect(() => {
         loadProduct();//Catalog loading
         loadCoupons();//Coupons loading
@@ -77,8 +72,6 @@ export const Admin = () => {
         const service = new DataService();
         let coupon = await service.getCoupons();
         setViewCoupons(coupon);
-
-
     };
 
     const loadProduct = async () =>{
@@ -95,14 +88,10 @@ export const Admin = () => {
 
         copy[e.target.name] = e.target.value;
         setCoupon(copy);
-
-
-
     };
 
 
     const handleCodeAdd = async () => {
-
 
         let couponSaved = {...coupon};
         couponSaved.discount = parseFloat(couponSaved.discount);
@@ -127,8 +116,6 @@ export const Admin = () => {
         let copy = [...coupon];
         copy.push(res);
         setAllCoupons(copy);
-
-
     };
 
     return(
@@ -138,16 +125,15 @@ export const Admin = () => {
 
             <div className="flex justify-content-evenly mt-6">
                 <div className="">
-                    <Card className="admin-card" title="Manage products" style={{ width: '25rem', marginBottom: '2em', backgroundColor:'var(--indigo-100)' }}>
-                        <i className="pi pi-shopping-cart" style={{'fontSize': '2em'}}></i>
-                    </Card>
+                    <CardAuth title={"Users"} icon={'pi-user'}/>
                 </div>
 
+                <div className="">
+                    <CardAuth title={"Products"} icon={'pi-shopping-cart'}/>
+                </div>
 
                 <div className="">
-                    <Card className="admin-card" title="Manage Coupons" style={{ width: '25rem', marginBottom: '2em', backgroundColor:'var(--indigo-100)' }}>
-                        <i className="pi pi-ticket" style={{'fontSize': '2em'}}></i>
-                    </Card>
+                    <CardAuth title={"Coupons"} icon={'pi-ticket'}/>
                 </div>
             </div>
 

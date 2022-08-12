@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 
 import { Menubar } from 'primereact/menubar';
-import { Button } from 'primereact/button';
 import { SplitButton } from 'primereact/splitbutton';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../auth/context/UserContext';
+
+import './navBar.css'
 
 export const Navbarr = () => {
 
@@ -20,27 +21,27 @@ export const Navbarr = () => {
   const items = [
     {
       label: 'Women',
-      icon: 'pi pi-fw pi-file',
+      // icon: 'pi pi-fw pi-file',
       command: () => navigate('/women')
     },
     {
       label: 'Men',
-      icon: 'pi pi-fw pi-file',
+      // icon: 'pi pi-fw pi-file',
       command: () => navigate('/men')
     },
     {
       label: 'Kids',
-      icon: 'pi pi-fw pi-file',
+      // icon: 'pi pi-fw pi-file',
       command: () => navigate('/kids')
     },
     {
       label: 'Coupons',
-      icon: 'pi pi-fw pi-file',
+      // icon: 'pi pi-fw pi-file',
       command: () => navigate('/coupons')
     },
     {
       label: 'Admin',
-      icon: 'pi pi-refresh',
+      // icon: 'pi pi-refresh',
       command: () => { navigate('/admin')}
     },
   ];
@@ -66,7 +67,7 @@ export const Navbarr = () => {
   const end = <SplitButton
       label={globalUser.name}
       icon="pi pi-user "
-      className='p-button-help p-button-rounded'
+      className='p-button-secondary p-button-text'
       // onClick={save}
       model={profileButton}>
     </SplitButton>
@@ -81,7 +82,7 @@ export const Navbarr = () => {
 
   return (
     <>
-      <Menubar model={items} start={start} end={end}/>
+      <Menubar className='navbar-menubar' model={items} start={start} end={end}/>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Admin } from "../../admin/pages/admin"
+import { AdminRoutes } from "../../admin/routes/AdminRoutes"
 import { Navbarr } from "../../ui/components/Navbarr"
 import { CouponsPage } from "../pages/CouponsPage"
 import { HomePage } from "../pages/HomePage"
@@ -19,8 +20,10 @@ export const ClothingRoutes = () => {
         <Route path="men" element={<MenPage/> } />
         <Route path="kids" element={<KidsPage/>} />
         <Route path="coupons" element={<CouponsPage/>} />
-        <Route path="admin" element={<Admin/>} />
-        <Route path="/*" element={< Navigate to="/admin"/>} />
+
+        <Route path="/*" element={< Navigate to="home"/>} />
+
+        <Route path="/admin/*" element={<AdminRoutes/>} />
       </Routes>
     </div>
   )

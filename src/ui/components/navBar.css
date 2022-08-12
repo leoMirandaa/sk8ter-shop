@@ -7,6 +7,12 @@
 } */
 
 
-/* .p-menubar {
-  background: var(--indigo-200);
+.p-menubar{
+  font-weight: bolder;
+  color: #000;
+  background: var(--indigo-100) !important;
+}
+
+/* .navbar-menubar {
+  background: blue !important;
 } */
