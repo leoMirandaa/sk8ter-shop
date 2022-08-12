@@ -1,0 +1,131 @@
+{
+    "data": [
+    {
+        "id": "1",
+        "name": "style1",
+        "description": "This is Style One",
+        "image": "img/styleassessment1.jpg"
+    },
+    {
+        "id": "2",
+        "name": "style2",
+        "description": "This is Style Two",
+        "image": "img/styleassessment2.jpg"
+    },
+    {
+        "id": "3",
+        "name": "style3",
+        "description": "This is Style Three",
+        "image": "img/styleassessment3.jpg"
+    },
+    {
+        "id": "4",
+        "name": "style4",
+        "description": "This is Style Four",
+        "image": "img/styleassessment4.jpg"
+    },
+    {
+        "id": "5",
+        "name": "style5",
+        "description": "This is Style Five",
+        "image": "img/styleassessment5.jpg"
+    },
+    {
+        "id": "6",
+        "name": "style6",
+        "description": "This is Style Six",
+        "image": "img/styleassessment6.jpg"
+    },
+    {
+        "id": "7",
+        "name": "style7",
+        "description": "This is Style Seven",
+        "image": "img/styleassessment7.jpg"
+    },
+    {
+        "id": "8",
+        "name": "style8",
+        "description": "This is Style Eight",
+        "image": "img/styleassessment8.jpg"
+    },
+    {
+        "id": "9",
+        "name": "style9",
+        "description": "This is Style Nine",
+        "image": "img/styleassessment9.jpg"
+    },
+    {
+        "id": "10",
+        "name": "style10",
+        "description": "This is Style Ten",
+        "image": "img/styleassessment10.jpg"
+    },
+    {
+        "id": "11",
+        "name": "style11",
+        "description": "This is Style Eleven",
+        "image": "img/styleassessment11.jpg"
+    },
+    {
+        "id": "12",
+        "name": "style12",
+        "description": "This is Style Twelve",
+        "image": "img/styleassessment12.jpg"
+    },
+    {
+        "id": "13",
+        "name": "style13",
+        "description": "This is Style Thirteen",
+        "image": "img/styleassessment13.jpg"
+    },
+    {
+        "id": "14",
+        "name": "style14",
+        "description": "This is Style Fourteen",
+        "image": "img/styleassessment14.jpg"
+    },
+    {
+        "id": "15",
+        "name": "style15",
+        "description": "This is Style Fifteen",
+        "image": "img/styleassessment15.jpg"
+    },
+    {
+        "id": "16",
+        "name": "style16",
+        "description": "This is Style Sixteen",
+        "image": "img/styleassessment16.jpg"
+    },
+    {
+        "id": "17",
+        "name": "style7",
+        "description": "This is Style Seven",
+        "image": "img/styleassessment7.jpg"
+    },
+    {
+        "id": "18",
+        "name": "style7",
+        "description": "This is Style Seven",
+        "image": "img/styleassessment7.jpg"
+    },{
+        "id": "19",
+        "name": "style7",
+        "description": "This is Style Seven",
+        "image": "img/styleassessment7.jpg"
+    },
+    {
+        "id": "20",
+        "name": "style7",
+        "description": "This is Style Seven",
+        "image": "img/styleassessment7.jpg"
+    },
+    {
+        "id": "21",
+        "name": "style7",
+        "description": "This is Style Seven",
+        "image": "img/styleassessment7.jpg"
+    },
+
+
+    ]
+}
