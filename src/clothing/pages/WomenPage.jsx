@@ -20,11 +20,11 @@ export const WomenPage = () => {
 
 
   return (
-    <>
+    <div className="animate__animated animate__fadeIn">
       <h1>Women</h1>
 
       <Stepper />
-      
+
 
       <div className="coupons">
           <ul>
@@ -37,8 +37,8 @@ export const WomenPage = () => {
               }
           </ul>
       </div>
-    
 
-    </>
+
+    </div>
   )
 }

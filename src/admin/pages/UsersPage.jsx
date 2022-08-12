@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 import './users.css'
 
-export const Users = () => {
+export const UsersPage = () => {
 
 const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ const navigate = useNavigate()
 const home = { icon: 'pi pi-home', label: 'Admin', command: () => navigate('/admin') }
 
   return (
-    <div className="usersContainer m-auto">
+    <div className="usersContainer animate__animated animate__fadeIn">
       <BreadCrumb
         model={items}
         home={home}
@@ -25,7 +25,7 @@ const home = { icon: 'pi pi-home', label: 'Admin', command: () => navigate('/adm
 
       {/* <h1>Users</h1> */}
 
-      <TableAuth />
+      <TableAuth className="align-content-center"/>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Admin } from "../pages/admin"
-import { Coupons, Products, Users } from "../pages/"
+import { CouponsPage, ProductsPage, UsersPage, AdminPage } from "../pages/"
 
 export const AdminRoutes = () => {
 
@@ -11,11 +10,11 @@ export const AdminRoutes = () => {
         <Routes>
 
           {/* <Route path="admin" element={<Admin/>} /> */}
-          <Route path="/" element={<Admin/>} />
+          <Route path="/" element={<AdminPage/>} />
 
-          <Route path="users" element={ <Users /> } />
-          <Route path="products" element={<Products />} />
-          <Route path="coupons" element={<Coupons />} />
+          <Route path="users" element={ <UsersPage /> } />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="coupons" element={<CouponsPage />} />
 
           <Route path="/*" element={< Navigate to="/admin/"/>} />
         </Routes>

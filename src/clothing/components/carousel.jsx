@@ -1,15 +1,15 @@
-import 'primeicons/primeicons.css';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.css';
-import 'primeflex/primeflex.css';
-import '../../index.css';
-import ReactDOM from 'react-dom';
+// import 'primeicons/primeicons.css';
+// import 'primereact/resources/themes/lara-light-indigo/theme.css';
+// import 'primereact/resources/primereact.css';
+// import 'primeflex/primeflex.css';
+// import '../../index.css';
+// import ReactDOM from 'react-dom';
 
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
 import { Button } from 'primereact/button';
-import { ProductService } from '../service/ProductService';
-import './CarouselDemo.css';
+import { ProductService } from '../../service/ProductService';
+// import './CarouselDemo.css';
 
 const CarouselStyleAssessment = () => {
     const [products, setProducts] = useState([]);
@@ -78,5 +78,5 @@ const CarouselStyleAssessment = () => {
         </div>
     );
 }
-                
+
 export default CarouselStyleAssessment;

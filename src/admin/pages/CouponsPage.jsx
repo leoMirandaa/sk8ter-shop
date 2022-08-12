@@ -1,8 +1,9 @@
 
-export const MenPage = () => {
+
+export const CouponsPage = () => {
   return (
     <div className="animate__animated animate__fadeIn">
-      MenPage
+      Admin - Coupons
     </div>
   )
 }

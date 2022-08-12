@@ -1,8 +1,8 @@
 
-export const MenPage = () => {
+export const ProductsPage = () => {
   return (
     <div className="animate__animated animate__fadeIn">
-      MenPage
+      Admin - Products
     </div>
   )
 }

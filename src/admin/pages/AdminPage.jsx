@@ -5,7 +5,7 @@ import {DataService } from "../../service/dataService";
 import "./admin.css";
 import { CardAuth } from "../components/CardAuth";
 
-export const Admin = () => {
+export const AdminPage = () => {
     const[coupon, setCoupon] = useState({});
     const[product, setProduct] = useState({});
     const [allCoupons, setAllCoupons] = useState({});
@@ -119,7 +119,9 @@ export const Admin = () => {
     };
 
     return(
-        <div className="admin-page">
+        <div className="admin-page animate__animated animate__fadeIn">
+
+            <h2 style={{textAlign: 'center'}}>Dasboard</h2>
 
             {errorVisible ? <div className="alert alert-danger">{errorMessage}</div> : null }
 

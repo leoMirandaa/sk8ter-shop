@@ -1,6 +1,8 @@
 
 export const KidsPage = () => {
   return (
-    <div>KidsPage</div>
+    <div className="animate__animated animate__fadeIn">
+      KidsPage
+    </div>
   )
 }

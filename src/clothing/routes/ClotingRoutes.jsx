@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Admin } from "../../admin/pages/admin"
 import { AdminRoutes } from "../../admin/routes/AdminRoutes"
 import { Navbarr } from "../../ui/components/Navbarr"
 import { CouponsPage } from "../pages/CouponsPage"
@@ -9,8 +8,12 @@ import { MenPage } from "../pages/MenPage"
 import { WomenPage } from "../pages/WomenPage"
 
 export const ClothingRoutes = () => {
+  // .usersContainer {
+  //   background: #EFF3F8;
+  // }
 
   return (
+    // <div className="animate__animated animate__fadeIn usersContainer" style={{minHeight: '100vh'}}>
     <div className="animate__animated animate__fadeIn">
       <Navbarr/>
 

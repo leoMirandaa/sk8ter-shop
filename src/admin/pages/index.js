@@ -1,3 +1,4 @@
-export * from './Coupons'
-export * from './Products'
-export * from './Users'
+export * from './CouponsPage'
+export * from './ProductsPage'
+export * from './UsersPage'
+export * from './AdminPage'

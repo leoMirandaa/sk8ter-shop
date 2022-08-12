@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Card } from 'primereact/card';
 import { Column } from 'primereact/column';
@@ -7,10 +7,12 @@ import { Button } from 'primereact/button';
 
 import './tableAuth.css'
 import { deleteUser } from '../helpers';
+import { Toast } from 'primereact/toast';
 
 export const TableAuth = () => {
 
   const [users, setUsers] = useState([])
+  const toast = useRef(null);
 
   const getUsers = async() => {
     setUsers(await getAllUsers())
@@ -28,6 +30,7 @@ export const TableAuth = () => {
     console.log('handleDeleteUser ',rowData._id);
     const response = await deleteUser(rowData._id)
     console.log('response handleDeleteUser ', response)
+    toast.current.show({severity:'success', summary: 'Success', detail:'User deleted', life: 3000});
     getUsers()
   }
 
@@ -42,6 +45,8 @@ export const TableAuth = () => {
 
   return (
     <>
+      <Toast ref={toast} />
+
       <Card title="Users" style={{ width: '95%'}}>
         <DataTable
           value={users.data}

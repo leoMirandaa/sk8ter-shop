@@ -1,6 +1,8 @@
 
 export const CouponsPage = () => {
   return (
-    <div>Coupons</div>
+    <div className="animate__animated animate__fadeIn">
+      Coupons
+    </div>
   )
 }
