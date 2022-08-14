@@ -1,2 +1,4 @@
 export * from './UsersPage'
-export * from './UpdateUser'
+export * from './UpdateUserPage'
+export * from './CreateUserPage'
+export * from './DetailsUserPage'

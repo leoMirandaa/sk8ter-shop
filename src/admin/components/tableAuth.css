@@ -2,9 +2,9 @@
   background: rgb(162, 69, 69) !important;
 } */
 
-.p-row-odd {
+/* .p-row-odd {
   background: rgb(244, 244, 244) !important;
-}
+} */
 
 .p-datatable {
   border: solid 1px lightgray;
@@ -12,4 +12,9 @@
 
 .p-column-title		{
   color: black;
+}
+
+.table-auth-span{
+  display: flex;
+  align-items: center;
 }

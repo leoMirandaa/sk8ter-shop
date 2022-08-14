@@ -12,7 +12,7 @@ export const CardAuth = ({ title, icon }) => {
 
   return (
     <Card
-      className="admin-card shadow-4 bg-card"
+      className="admin-card bg-card"
       title={title}
       style={{ width: '15rem', cursor:'pointer'}}
       onClick={ () => handleClick(title) }
