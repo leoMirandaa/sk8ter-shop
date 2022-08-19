@@ -20,6 +20,10 @@ html,body {
   padding: .2rem;
 }
 
+.p-datatable {
+  border: solid 1px lightgray;
+}
+
 /* .p-menuitem-text		{
   color: var(--text-color) !important;
 } */

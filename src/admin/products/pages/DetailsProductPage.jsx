@@ -36,7 +36,7 @@ export const DetailsProductPage = () => {
     setProducts( fetchUsers.data )
     setProductsFiltered( fetchUsers.data )
     setIsLoading(false)
-    console.log('products.. ', products);
+    // console.log('products.. ', products);
   }
 
   const handleCreateProduct = () => {
@@ -44,7 +44,7 @@ export const DetailsProductPage = () => {
   }
 
   const handleInputSearch = async(event) => {
-    console.log('handleInputSearch');
+    // console.log('handleInputSearch');
     let name = event.target.value
     setInputSearchFilter(name)
     setProductsFiltered( getProductsFiltered(products, name) )

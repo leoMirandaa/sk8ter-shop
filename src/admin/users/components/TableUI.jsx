@@ -1,14 +1,13 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { deleteUser, } from '../helpers';
+
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import { Toast } from 'primereact/toast';
-
-import { deleteUser, } from '../helpers';
-import './tableUI.css'
 
 export const TableUI = ({ users, title, getUsers }) => {
 
@@ -30,7 +29,7 @@ export const TableUI = ({ users, title, getUsers }) => {
   const actionBodyTemplate = (rowData) => {
     return (
       <>
-        <Button icon="pi pi-pencil" className=" p-button-text p-button-primary p-button-rounded mr-2" onClick={() => handleUpdate(rowData)} />
+        <Button icon="pi pi-pencil" className="p-button-text p-button-primary p-button-rounded mr-2" onClick={() => handleUpdate(rowData)} />
         <Button icon="pi pi-trash" className="p-button-text p-button-danger p-button-rounded" onClick={() => handleDeleteUser(rowData)} />
       </>
     );

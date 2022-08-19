@@ -67,7 +67,8 @@ export const Navbarr = () => {
   return (
     <>
       <Menubar
-        className='navbar-menubar bg-white'
+        // className='navbar-menubar bg-white text-primary'
+        className='navbar-menubar font-bold'
         model={items}
         start={start}
         end={end}
