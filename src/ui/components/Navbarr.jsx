@@ -19,31 +19,11 @@ export const Navbarr = () => {
   }
 
   const items = [
-    {
-      label: 'Women',
-      // icon: 'pi pi-fw pi-file',
-      command: () => navigate('/women')
-    },
-    {
-      label: 'Men',
-      // icon: 'pi pi-fw pi-file',
-      command: () => navigate('/men')
-    },
-    {
-      label: 'Kids',
-      // icon: 'pi pi-fw pi-file',
-      command: () => navigate('/kids')
-    },
-    {
-      label: 'Coupons',
-      // icon: 'pi pi-fw pi-file',
-      command: () => navigate('/coupons')
-    },
-    {
-      label: 'Admin',
-      // icon: 'pi pi-refresh',
-      command: () => { navigate('/admin')}
-    },
+    {label: 'Women', command: () => navigate('/women')},
+    {label: 'Men', command: () => navigate('/men')},
+    {label: 'Kids', command: () => navigate('/kids')},
+    {label: 'Coupons', command: () => navigate('/coupons')},
+    {label: 'Admin', command: () => { navigate('/admin')}},
   ];
 
   const profileButton = [
@@ -64,25 +44,34 @@ export const Navbarr = () => {
   ]
 
 
-  const end = <SplitButton
+  const end =
+    <SplitButton
       label={globalUser.name}
       icon="pi pi-user "
-      className='p-button-secondary p-button-text'
-      // onClick={save}
+      className='p-button-primary p-button-oulined p-button-sm'
       model={profileButton}>
     </SplitButton>
 
 
     const start =
     <div>
-      <b className='mr-6' style={{cursor: 'pointer'}} onClick={ () => navigate('/home')}>
+      <b
+        className='mr-6'
+        style={{cursor: 'pointer'}}
+        onClick={ () => navigate('/home')}
+      >
         Clothing store
       </b>
     </div>
 
   return (
     <>
-      <Menubar className='navbar-menubar' model={items} start={start} end={end}/>
+      <Menubar
+        className='navbar-menubar bg-white'
+        model={items}
+        start={start}
+        end={end}
+      />
     </>
   )
 }

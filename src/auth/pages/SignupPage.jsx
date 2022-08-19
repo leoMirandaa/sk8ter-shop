@@ -35,7 +35,7 @@ export const SignupPage = () => {
     const footer = <span>
         <Button
             label="Create account"
-            className='p-button-help p-button-rounded sm:col-6 md:col-6'
+            className='p-button-primary p-button-rounded sm:col-6 md:col-6'
             onClick={() => handleSignup()}
         />
 

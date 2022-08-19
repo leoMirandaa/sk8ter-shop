@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {DataService } from "../../service/dataService";
 
 import "./admin.css";
-import { CardAuth } from "../components/CardAuth";
+import { CardUI } from "../components";
 
 export const AdminPage = () => {
     const[coupon, setCoupon] = useState({});
@@ -15,6 +15,11 @@ export const AdminPage = () => {
     const [viewCoupons, setViewCoupons] = useState([]);
     const [viewProduct, setViewProduct] = useState([]);
 
+    const cardData = [
+			{ title: "Users", icon: "pi-user" },
+			{ title: "Products", icon: "pi-shopping-cart" },
+			{ title: "Coupons", icon: "pi-ticket" }
+		]
 
     const handleTextChange = (e) => {
         let  copy = {...product};
@@ -118,109 +123,25 @@ export const AdminPage = () => {
         setAllCoupons(copy);
     };
 
-    return(
-        <div className="admin-page animate__animated animate__fadeIn">
 
-            <h2 style={{textAlign: 'center'}}>Dasboard</h2>
+	return(
+	<div className="usersContainer animate__animated animate__fadeIn">
 
-            {errorVisible ? <div className="alert alert-danger">{errorMessage}</div> : null }
+		<div className="pt-4 text-xl font-bold" style={{textAlign: 'center'}}>Dasboard</div>
 
-            <div className="flex justify-content-evenly mt-6">
-                <div className="">
-                    <CardAuth title={"Users"} icon={'pi-user'}/>
-                </div>
+		<div className="flex flex-column align-items-center justify-content-evenly  h-30rem mt-4 md:flex-row justify-content-evenly md:h-10rem  ">
+			{
+				cardData.map(card => (
+					<CardUI
+						key={ card.title }
+						title={ card.title }
+						icon={ card.icon }
+					/>
+				))
+			}
+		</div>
 
-                <div className="">
-                    <CardAuth title={"Products"} icon={'pi-shopping-cart'}/>
-                </div>
-
-                <div className="">
-                    <CardAuth title={"Coupons"} icon={'pi-ticket'}/>
-                </div>
-            </div>
-
-
-            <div className="sections-container">
-                <section className="section-products">
-                    <h4>Mange Product</h4>
-                        <div className="form">
-                            <div className="my-control">
-                                <label>Title:</label>
-                                <input onChange={handleTextChange} name="title" type="text"   />
-                            </div>
-
-                            <div className="my-control">
-                                <label>Style Type:</label>
-                                <input onChange={handleTextChange} name="styleType" type="text"  />
-                            </div>
-
-                            <div className="my-control">
-                                <label>Image:</label>
-                                <input onChange={handleTextChange} name="image" type="text"   />
-                            </div>
-
-                            <div className="my-control">
-                                <label>Price:</label>
-                                <input onChange={handleTextChange} name="price" type="number" />
-                            </div>
-
-                            <div className="my-control">
-                                <label>Gender:</label>
-                                <input onChange={handleTextChange} name="gender" type="text"   />
-                            </div>
-
-                            <div className="my-control">
-                                <label>Discount:</label>
-                                <input onChange={handleTextChange} name="discount" type="text"  />
-                            </div>
-
-                            <div className="my-control">
-                                <button onClick={handleItemAdd}  className="btn btn-dark">Register Product</button>
-                            </div>
-
-                        </div>
-                        <div className="coupons">
-                            <ul>
-                                {viewProduct.map((prods) => (
-                                    <li key={prods._id}>
-                                        {prods.title}-{prods.price}
-                                    </li>))}
-                            </ul>
-                        </div>
-                </section>
-            </div>
-            <section className="section-coupons">
-                    <h4>Manage Coupons</h4>
-                        <div className="coupon-form">
-                        <div className="my-control">
-                                <label>Code:</label>
-                                <input onChange={handleCodeChange} name="code" type="text" />
-                            </div>
-
-                            <div className="my-control">
-                                <label>Discount:</label>
-                                <input onChange={handleCodeChange} name="discount" type="number"   />
-                            </div>
-
-                            <div className="my-control">
-                                <button onClick={handleCodeAdd}  className="btn btn-dark">Apply Coupon</button>
-                            </div>
-                        </div>
-                        <div className="coupons">
-                            <ul>
-                                {viewCoupons.map((coupon) => (
-                                    <li key={coupon._id}>
-                                        {coupon.code}-{coupon.discount}
-                                    </li>))}
-                            </ul>
-                        </div>
-            </section>
-
-
-        </div>
-
-
-    )
-
+	</div>
+	)
 
 };

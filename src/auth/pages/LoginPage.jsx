@@ -42,7 +42,7 @@ export const LoginPage = () => {
     const footer = <span>
         <Button
             label="Sign in"
-            className='p-button-help p-button-rounded sm:col-6 md:col-6'
+            className='p-button-primary p-button-rounded sm:col-6 md:col-6'
             onClick={() => handleSubmit()}
         />
 
@@ -51,8 +51,7 @@ export const LoginPage = () => {
         <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
             <Button
                 label="Sign up"
-                style={{color: "var(--gray-600)"}}
-                className='p-button-text outlined p-button-rounded sm:col-6 md:col-6 mt-4 underline'
+                className='p-button-secondary p-button-text outlined p-button-rounded sm:col-6 md:col-6 mt-4 underline'
                 onClick={ () => navigate('/sigup') }
             />
         </div>

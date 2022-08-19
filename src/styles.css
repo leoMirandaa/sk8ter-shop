@@ -2,3 +2,24 @@ html,body {
   padding: 0;
   margin: 0;
 }
+
+.validation {
+  display: inline-block !important;
+}
+
+.p-breadcrumb-chevron	{
+  color: var(--primary-color) !important;
+}
+
+/* .p-menuitem-text, .p-menuitem-icon		{
+  color: var(--secondary-color) !important
+} */
+
+.p-menubar {
+  /* padding: .5rem; */
+  padding: .2rem;
+}
+
+/* .p-menuitem-text		{
+  color: var(--text-color) !important;
+} */
