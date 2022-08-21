@@ -5,7 +5,7 @@ import { ProductService } from '../../service/ProductService';
 // import './CarouselDemo.css';
 // import './carousel.css'
 
-const CarouselStyleAssessment = () => {
+const CarouselTeenGirls = () => {
     const [products, setProducts] = useState([]);
     const responsiveOptions = [
         {
@@ -28,10 +28,10 @@ const CarouselStyleAssessment = () => {
 
     const retrieveProducts = async() => {
         const product = new ProductService();
-        let products = await product.getProduct();
+        let products = await product.getTeenGirlsProducts();
         setProducts(products)
 
-        console.log('products... ', products);
+        console.log('TeenGirls products... ', products);
     }
 
     useEffect(() => {
@@ -83,4 +83,4 @@ const CarouselStyleAssessment = () => {
     );
 }
 
-export default CarouselStyleAssessment;
+export default CarouselTeenGirls;

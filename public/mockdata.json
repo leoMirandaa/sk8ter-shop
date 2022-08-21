@@ -99,20 +99,6 @@
         "price": 170
     },
     {
-        "id": "15",
-        "name": "style15",
-        "description": "This is Style Fifteen",
-        "image": "img/styleassessment15.jpg",
-        "price": 170
-    },
-    {
-        "id": "16",
-        "name": "style16",
-        "description": "This is Style Sixteen",
-        "image": "img/styleassessment16.jpg",
-        "price": 170
-    },
-    {
         "id": "17",
         "name": "style7",
         "description": "This is Style Seven",
