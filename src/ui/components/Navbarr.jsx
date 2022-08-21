@@ -48,7 +48,7 @@ export const Navbarr = () => {
     <SplitButton
       label={globalUser.name}
       icon="pi pi-user "
-      className='p-button-primary p-button-oulined p-button-sm'
+      className='p-button-secondary p-button-text p-button-oulined p-button-sm'
       model={profileButton}>
     </SplitButton>
 
@@ -68,7 +68,7 @@ export const Navbarr = () => {
     <>
       <Menubar
         // className='navbar-menubar bg-white text-primary'
-        className='navbar-menubar font-bold'
+        className='navbar-menubar  font-bold'
         model={items}
         start={start}
         end={end}

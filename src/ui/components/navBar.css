@@ -16,3 +16,11 @@
 /* .navbar-menubar {
   background: blue !important;
 } */
+
+.navbar-menubar {
+  /* background-image: url(../../../public/images/home-image12.jpg); */
+  background-color: transparent;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}

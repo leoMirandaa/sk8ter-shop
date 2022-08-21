@@ -5,7 +5,13 @@ import CarouselStyleAssessment from "../components/carousel"
 export const HomePage = () => {
   return (
     <div className="animate__animated animate__fadeIn">
-      <h1>HOME</h1>
+      <div className="max-w-screen">
+        <img
+          className="bg-cover w-full"
+          // width="100%" height="600"
+          src="../../../public/images/home-image12.jpg"
+        />
+      </div>
 
         <CarouselStyleAssessment/>
 
