@@ -9,7 +9,7 @@ export const HomePage = () => {
         <img
           className="bg-cover w-full"
           // width="100%" height="600"
-          src="../../../public/images/home-image12.jpg"
+          src="../../../public/images/home-image13.jpg"
         />
       </div>
 
