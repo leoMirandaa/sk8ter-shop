@@ -1,29 +1,29 @@
-.product{
-    
+/* .product{
+
     margin-left: 1rem;
     margin-bottom: 1rem;
     border-radius: 6px;
     width: 255px;
     height: 485px;
     margin-right: 10px;
-    
+
     background-color: rgba(119, 119, 119, 0.452);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 }
 .product h3{
     font-family:fantasy;
-    
+
 }
 
 .product img{
     width: 250px;
     height: 250px;
     border-radius: 6px;
-    
+
 }
 .product .prices{
-    display: inline-flex; 
+    display: inline-flex;
     flex-direction: column ;
     justify-content: space-between;
     font-size: larger;
@@ -34,7 +34,7 @@
     flex: 1;
 }
 .product .total{
-    
+
     font-weight: 700;
     color: rgb(12, 11, 12);
     text-shadow: 1px 1px rgb(255, 255, 255);
@@ -58,4 +58,4 @@
 }
 .product button:hover{
     background-color: black;
-}
+} */

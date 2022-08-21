@@ -8,7 +8,7 @@ html,body {
 }
 
 .p-breadcrumb-chevron	{
-  color: var(--primary-color) !important;
+  /* color: var(--primary-color) !important; */
 }
 
 /* .p-menuitem-text, .p-menuitem-icon		{
@@ -17,11 +17,36 @@ html,body {
 
 .p-menubar {
   /* padding: .5rem; */
-  padding: .2rem;
+  /* padding: .2rem; */
+  font-size: 1.1rem;
+  background-color: transparent !important;
+  border: none;
+  /* border-radius: 0px; */
+  /* color: white !important; */
+  /* border-bottom: 1px solid lightgray; */
 }
 
 .p-datatable {
   border: solid 1px lightgray;
+}
+
+.home-page-bg,
+.login-page-bg,
+.signup-page-bg {
+  /* background-image: linear-gradient(#883CAE, #883cae89) !important; */
+  min-height: 100vh !important;
+  height: 100 !important;
+  /* background-color: var(--primary-color	); */
+  /* background-image: linear-gradient(var(--primary-color-text	) , var(--primary-color)) !important; */
+  background-color: var(--primary-color);
+}
+
+.home-page-container {
+  padding: 20px 0px;
+  /* background: rgb(235, 235, 235) !important; */
+  max-width: 70rem;
+  margin: 0 auto;
+  /* padding-top: 5rem; */
 }
 
 

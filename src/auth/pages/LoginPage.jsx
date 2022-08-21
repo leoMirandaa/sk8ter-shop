@@ -48,10 +48,10 @@ export const LoginPage = () => {
 
         <br />
 
-        <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+        <div className='mt-2' style={{ display: 'flex', justifyContent: 'flex-end'}}>
             <Button
                 label="Sign up"
-                className='p-button-secondary p-button-text outlined p-button-rounded sm:col-6 md:col-6 mt-4 underline'
+                className='p-button-secondary p-button-text p-button-rounded underline'
                 onClick={ () => navigate('/sigup') }
             />
         </div>
@@ -62,7 +62,7 @@ export const LoginPage = () => {
     <>
         <Toast ref={toast} />
 
-        <div className="login">
+        <div className="login login-page-bg">
             <Link to="/home" >Home</Link>
             <Link to="/adminLogin" >Admin</Link>
 

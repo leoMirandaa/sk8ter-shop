@@ -1,7 +1,5 @@
 import { Steps } from 'primereact/steps';
 
-import './stepper.css'
-
 export const Stepper = () => {
 
   const items = [
@@ -14,7 +12,7 @@ export const Stepper = () => {
   return (
     <>
       <div className='stepper-container'>
-        <h1>Stepper</h1>
+        {/* <h1>Stepper</h1> */}
         <Steps model={items} />
 
       </div>

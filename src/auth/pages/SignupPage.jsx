@@ -55,7 +55,7 @@ export const SignupPage = () => {
     return (
         <>
         <Toast ref={toast} />
-        <div className="login">
+        <div className="login signup-page-bg">
 
             <Link to="/home" >Home</Link>
             <Link to="/adminLogin" >Admin</Link>

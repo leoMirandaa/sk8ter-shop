@@ -29,7 +29,8 @@ export const TableUI = ({ users, title, getUsers }) => {
   const actionBodyTemplate = (rowData) => {
     return (
       <>
-        <Button icon="pi pi-pencil" className="p-button-text p-button-primary p-button-rounded mr-2" onClick={() => handleUpdate(rowData)} />
+      {/* display ${users[0]._id == "62fc1d22f87e7a7af93b12e8" ? "hidden": ""} */}
+        <Button icon="pi pi-pencil" className={`p-button-text p-button-primary p-button-rounded mr-2 `} onClick={() => handleUpdate(rowData)} />
         <Button icon="pi pi-trash" className="p-button-text p-button-danger p-button-rounded" onClick={() => handleDeleteUser(rowData)} />
       </>
     );
