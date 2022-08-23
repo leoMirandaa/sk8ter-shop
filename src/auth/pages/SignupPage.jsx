@@ -6,144 +6,179 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 
-import { createUser } from '../helpers/createUser';
+import { useFormik } from "formik";
 
-import './login.css';
-import './signupPage.css'
+import { createUser } from '../helpers/createUser';
+import { basicSchema } from '../schemas';
+
+const onSubmit = async(values, actions) => {
+	if (formik.errors.name ) {
+		console.log('Error.........');
+	}
+	console.log('values ', values);
+	console.log('actions ', actions);
+	await new Promise((resolve) => setTimeout(resolve, 1000))
+	actions.resetForm()
+}
 
 export const SignupPage = () => {
     const toast = useRef(null);
     const navigate = useNavigate();
 
-    const [user, setUser] = useState({
-        name: '',
+		const formik = useFormik({
+			initialValues: {
+				name: '',
         email: '',
         password: '',
+				confirmPassword: '',
         country: '',
         city: '',
         zip:''
-    })
+			},
 
-    const { name, email, password, country, city, zip } = user
+			validationSchema: basicSchema,
+
+			onSubmit: onSubmit
+		})
+
+		// console.log('formik', formik );
+		// console.log('errors ', formik.errors);
+
 
     const handleSignup = async() => {
-        const users = await createUser(user);
+        const users = await createUser(formik.values);
         toast.current.show({severity:'success', summary: 'Success', detail:'Account created', life: 3000});
     }
 
-
-    const footer = <span>
-        <Button
-            label="Create account"
-            className='p-button-primary p-button-rounded sm:col-6 md:col-6'
-            onClick={() => handleSignup()}
-        />
-
-        <br />
-
-        <div className='mt-2' style={{ display: 'flex', justifyContent: 'flex-end'}}>
-            <Button
-                label="Sign in"
-                className="p-button-text p-button-rounded p-button-secondary underline"
-                onClick={() => navigate('/login')}
-            />
-        </div>
-
-    </span>
-
-
     return (
         <>
-        <Toast ref={toast} />
-        <div className="login signup-page-bg">
+        <Toast ref = { toast } />
+        <div className="signup-page-bg">
+					<span className='text-white' style={{ display:'inline' }}>Clothing store</span>
+					<div className='flex flex-column justify-content-center align-items-center min-h-screen p-4'>
+						<Card
+							className="animate__animated animate__fadeInLeft w-full md:w-auto text-center"
+							title="Sign up"
+						>
 
-            <Link to="/home" >Home</Link>
-            <Link to="/adminLogin" >Admin</Link>
+							<form onSubmit={ formik.handleSubmit } >
+								<div className='mt-2'>
+									<span className="p-float-label w-full md:w-6 mr-3">
+											<InputText
+												id="name"
+												value={ formik.values.name }
+												onChange={ formik.handleChange }
+												onBlur={ formik.handleBlur }
+												type="text"
+												// className={`w-full ${ formik.errors.name && formik.touched.name ? 'p-invalid' : ''}`}
+												className={`w-full ${ formik.errors.name && formik.touched.name ? 'input-invalid' : ''}`}
+											/>
 
-            <div className='card-container'>
-                <Card className="sm:col-10 md:col-4 mx-3 animate__animated animate__fadeInLeft" title="Sign Up" footer={footer}>
+											<label htmlFor="name">User name</label>
+											{/* { formik.errors.name && formik.touched.name && <small>{formik.errors.name}</small>} */}
+                    	{/* <small id="name" className={`w-full ${ formik.errors.name ? 'p-error block' : ''}`}>User name invalid</small> */}
+										</span>
+								</div>
 
-                    <div className="m-0" style={{lineHeight: '1.5'}}>
-                        <span className="p-input-icon-left">
-                            <i className="pi pi-user" />
-                            <InputText
-                                value={name}
-                                onChange={(e)=>setUser({
-                                        ...user,
-                                        name: e.target.value
-                                })}
-                                placeholder="User name"
-                            />
-                        </span>
+								<div className=''>
+									<span className="p-float-label inline-block w-full mt-5 md:w-auto mr-3">
+											<InputText
+												id="password"
+												value={ formik.values.password }
+												onChange={ formik.handleChange }
+												onBlur={ formik.handleBlur }
+												type="text"
+												className={`w-full ${ formik.errors.password && formik.touched.password ? 'input-invalid' : ''}`}
 
-                        <span className="p-input-icon-left mt-2">
-                            <i className="pi pi-lock" />
-                            <InputText
-                                value={email}
-                                type="email"
-                                onChange={(e)=>setUser({
-                                        ...user,
-                                        email: e.target.value
-                                })}
-                                placeholder="Email"
-                            />
-                        </span>
+											/>
+											<label htmlFor="password">Password</label>
+									</span>
 
-                        <span className="p-input-icon-left mt-2">
-                            <i className="pi pi-lock" />
-                            <InputText
-                                value={password}
-                                type="password"
-                                onChange={(e)=>setUser({
-                                        ...user,
-                                        password: e.target.value
-                                })}
-                                placeholder="Password"
-                            />
-                        </span>
+									<span className="p-float-label inline-block w-full mt-5 md:w-auto">
+											<InputText
+												id="confirmPassword"
+												value={ formik.values.confirmPassword }
+												onChange={ formik.handleChange }
+												onBlur={ formik.handleBlur }
+												type="text"
+												className={`w-full ${ formik.errors.confirmPassword && formik.touched.confirmPassword ? 'input-invalid' : ''}`}
 
-                        <span className="p-input-icon-left mt-2">
-                            <i className="pi pi-lock" />
-                            <InputText
-                                value={ country }
-                                type="country"
-                                onChange={(e)=>setUser({
-                                        ...user,
-                                        country: e.target.value
-                                })}
-                                placeholder="Country"
-                            />
-                        </span>
+											/>
+											<label htmlFor="confirmPassword">Confirm Password</label>
+									</span>
+								</div>
 
-                        <span className="p-input-icon-left mt-2">
-                            <i className="pi pi-lock" />
-                            <InputText
-                                value={ city }
-                                type="city"
-                                onChange={(e)=>setUser({
-                                        ...user,
-                                        city: e.target.value
-                                })}
-                                placeholder="City"
-                            />
-                        </span>
+								<div className='mt-5 md:mt-0'>
+									<span className="p-float-label inline-block w-full md:w-auto mr-3">
+											<InputText
+												id="email"
+												value={ formik.values.email }
+												onChange={ formik.handleChange }
+												type="email"
+												className={`w-full ${ formik.errors.email && formik.touched.email ? 'input-invalid' : ''}`}
+											/>
+											<label htmlFor="email">Email</label>
+									</span>
 
-                        <span className="p-input-icon-left mt-2">
-                            <i className="pi pi-lock" />
-                            <InputText
-                                value={ zip }
-                                type="zip"
-                                onChange={(e)=>setUser({
-                                        ...user,
-                                        zip: e.target.value
-                                })}
-                                placeholder="Zip"
-                            />
-                        </span>
-                    </div>
-                </Card>
-                {/* <Button onClick={showError} label="Error" className="p-button-danger" /> */}
-            </div>
+									<span className="p-float-label inline-block w-full mt-5 md:w-auto">
+											<InputText
+												id="country"
+												value={formik.values.country}
+												onChange={ formik.handleChange }
+												onBlur={ formik.handleBlur }
+												type="text"
+												className={`w-full ${ formik.errors.country && formik.touched.country ? 'input-invalid' : ''}`}
+
+											/>
+											<label htmlFor="country">Country</label>
+									</span>
+								</div>
+
+								<div className='mt-5 md:mt-0'>
+									<span className="p-float-label inline-block w-full md:w-auto mr-3">
+											<InputText
+												id="city"
+												value={ formik.values.city }
+												onChange={ formik.handleChange }
+												type="text"
+												className={`w-full ${ formik.errors.city && formik.touched.city ? 'input-invalid' : ''}`}
+											/>
+											<label htmlFor="city">City</label>
+									</span>
+
+									<span className="p-float-label inline-block w-full mt-5 md:w-auto">
+											<InputText
+												id="zip"
+												value={ formik.values.zip }
+												onChange={ formik.handleChange }
+												onBlur={ formik.handleBlur }
+												type="number"
+												className={`w-full ${ formik.errors.zip && formik.touched.zip ? 'input-invalid' : ''}`}
+
+											/>
+											<label htmlFor="zip">Zip</label>
+									</span>
+								</div>
+
+								<Button
+									label="Create account"
+									className='p-button-primary p-button-rounded mt-5 w-6 md:w-auto lg:md-auto flex m-auto'
+									type="submit"
+									disabled={ formik.isSubmitting }
+								/>
+
+								<div className='flex justify-content-end'>
+									<Button
+										label="Log in"
+										className="p-button-text p-button-rounded p-button-secondary underline"
+										onClick={() => navigate('/login')}
+									/>
+								</div>
+							</form>
+
+						</Card>
+						{/* <Button onClick={showError} label="Error" className="p-button-danger" /> */}
+					</div>
         </div>
         </>
     )

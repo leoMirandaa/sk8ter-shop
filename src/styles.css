@@ -49,6 +49,35 @@ html,body {
   /* padding-top: 5rem; */
 }
 
+.input-invalid {
+  border: solid 1px red;
+  background-color: rgba(255, 0, 0, 0.038);
+  animation: input-error .3s linear ;
+}
+
+@keyframes input-error {
+  0% {
+    /* background-color: tomato; */
+    transform: translateX(0px);
+  }
+
+  20% {
+    transform: translateX(-2px);
+  }
+
+  40% {
+    transform: translateX(0px)
+  }
+
+  60% {
+    transform: translateX(2px);
+  }
+
+  80% {
+    transform: translateX(0px);
+  }
+
+}
 
 /* .p-menuitem-text		{
   color: var(--text-color) !important;

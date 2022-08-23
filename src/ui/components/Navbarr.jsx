@@ -17,6 +17,7 @@ export const Navbarr = () => {
   }
 
   const items = [
+    {icon: 'pi pi-home', command: () => navigate('/home')},
     {label: 'Women', command: () => navigate('/women')},
     {label: 'Men', command: () => navigate('/men')},
     {label: 'Kids', command: () => navigate('/kids')},
@@ -58,7 +59,6 @@ export const Navbarr = () => {
         style={{cursor: 'pointer'}}
         onClick={ () => navigate('/home')}
       >
-        <i className="pi pi-home mr-2"></i>
         Clothing store
       </b>
     </div>

@@ -21,7 +21,7 @@ export const MenPage = () => {
 
   return (
     <div className="animate__animated animate__fadeIn">
-      {/* <h1>Women</h1> */}
+      <h1 className="text-center">Men</h1>
 
 
       <div className="py-4 px-8 surface-50">

@@ -4,152 +4,177 @@
         "id": "1",
         "name": "style1",
         "description": "This is Style One Teen girl",
-        "image": "./imgteengirl/teenagegirl1.jpg"
+        "image": "./imgteengirl/teenagegirl1.jpg",
+        "price": 85
     },
     {
         "id": "2",
         "name": "style2",
         "description": "This is Style Two",
-        "image": "imgteengirl/teenagegirl2.jpg"
+        "image": "imgteengirl/teenagegirl2.jpg",
+        "price": 85
     },
     {
         "id": "3",
         "name": "style3",
         "description": "This is Style Three",
-        "image": "imgteengirl/teenagegirl3.jpg"
+        "image": "imgteengirl/teenagegirl3.jpg",
+        "price": 85
     },
     {
         "id": "4",
         "name": "style4",
         "description": "This is Style Four",
-        "image": "imgteengirl/teenagegirl4.jpg"
+        "image": "imgteengirl/teenagegirl4.jpg",
+        "price": 85
     },
     {
         "id": "5",
         "name": "style5",
         "description": "This is Style Five",
-        "image": "imgteengirl/teenagegirl5.jpg"
+        "image": "imgteengirl/teenagegirl5.jpg",
+        "price": 85
     },
     {
         "id": "6",
         "name": "style6",
         "description": "This is Style Six",
-        "image": "imgteengirl/teenagegirl6.jpg"
+        "image": "imgteengirl/teenagegirl6.jpg",
+        "price": 85
     },
     {
         "id": "7",
         "name": "style7",
         "description": "This is Style Seven",
-        "image": "imgteengirl/teenagegirl7.jpg"
+        "image": "imgteengirl/teenagegirl7.jpg",
+        "price": 85
     },
     {
         "id": "8",
         "name": "style8",
         "description": "This is Style Eight",
-        "image": "imgteengirl/teenagegirl8.jpg"
+        "image": "imgteengirl/teenagegirl8.jpg",
+        "price": 85
     },
     {
         "id": "9",
         "name": "style9",
         "description": "This is Style Nine",
-        "image": "imgteengirl/teenagegirl9.jpg"
+        "image": "imgteengirl/teenagegirl9.jpg",
+        "price": 85
     },
     {
         "id": "11",
         "name": "style11",
         "description": "This is Style Eleven",
-        "image": "imgteengirl/teenagegirl1.jpg"
+        "image": "imgteengirl/teenagegirl1.jpg",
+        "price": 85
     },
     {
         "id": "12",
         "name": "style12",
         "description": "This is Style Twelve",
-        "image": "imgteengirl/teenagegirl2.jpg"
+        "image": "imgteengirl/teenagegirl2.jpg",
+        "price": 85
     },
     {
         "id": "13",
         "name": "style13",
         "description": "This is Style Thirteen",
-        "image": "imgteengirl/teenagegirl3.jpg"
+        "image": "imgteengirl/teenagegirl3.jpg",
+        "price": 85
     },
     {
         "id": "14",
         "name": "style14",
         "description": "This is Style Fourteen",
-        "image": "imgteengirl/teenagegirl4.jpg"
+        "image": "imgteengirl/teenagegirl4.jpg",
+        "price": 85
     },
     {
         "id": "15",
         "name": "style15",
         "description": "This is Style Fifteen",
-        "image": "imgteengirl/teenagegirl5.jpg"
+        "image": "imgteengirl/teenagegirl5.jpg",
+        "price": 85
     },
     {
         "id": "16",
         "name": "style16",
         "description": "This is Style Sixteen",
-        "image": "imgteengirl/teenagegirl6.jpg"
+        "image": "imgteengirl/teenagegirl6.jpg",
+        "price": 85
     },
     {
         "id": "17",
         "name": "style17",
         "description": "This is Style Seventeen",
-        "image": "imgteengirl/teenagegirl7.jpg"
+        "image": "imgteengirl/teenagegirl7.jpg",
+        "price": 85
     },
     {
         "id": "18",
         "name": "style18",
         "description": "This is Style Eighteen",
-        "image": "imgteengirl/teenagegirl8.jpg"
+        "image": "imgteengirl/teenagegirl8.jpg",
+        "price": 85
     },
     {
         "id": "19",
         "name": "style19",
         "description": "This is Style Nineteen",
-        "image": "imgteengirl/teenagegirl9.jpg"
+        "image": "imgteengirl/teenagegirl9.jpg",
+        "price": 85
     },
     {
         "id": "21",
 
         "name": "style21",
         "description": "This is Style TwentyOne",
-        "image": "imgteengirl/teenagegirl1.jpg"
+        "image": "imgteengirl/teenagegirl1.jpg",
+        "price": 85
     },
     {
         "id": "22",
         "name": "style22",
         "description": "This is Style TwentyTwo",
-        "image": "imgteengirl/teenagegirl2.jpg"
+        "image": "imgteengirl/teenagegirl2.jpg",
+        "price": 85
     },
     {
         "id": "23",
         "name": "style23",
         "description": "This is Style TwentyThree",
-        "image": "imgteengirl/teenagegirl3.jpg"
+        "image": "imgteengirl/teenagegirl3.jpg",
+        "price": 85
     },
     {
         "id": "24",
         "name": "style24",
         "description": "This is Style TwentyFour",
-        "image": "imgteengirl/teenagegirl4.jpg"
+        "image": "imgteengirl/teenagegirl4.jpg",
+        "price": 85
     },
     {
         "id": "25",
         "name": "style25",
         "description": "This is Style TwentyFive",
-        "image": "imgteengirl/teenagegirl5.jpg"
+        "image": "imgteengirl/teenagegirl5.jpg",
+        "price": 85
     },
     {
         "id": "26",
         "name": "style26",
         "description": "This is Style TwentySix",
-        "image": "imgteengirl/teenagegirl6.jpg"
+        "image": "imgteengirl/teenagegirl6.jpg",
+        "price": 85
     },
     {
         "id": "27",
         "name": "style27",
-        "description": "This is Style TwentySeven",
-        "image": "imgteengirl/teenagegirl7.jpg"
+        "description": "This is Style ,TwentySeven",
+        "image": "imgteengirl/teenagegirl7.jpg",
+        "price": 85
 }
 
 ]

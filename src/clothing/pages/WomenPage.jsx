@@ -1,7 +1,7 @@
 import { Stepper } from "../components/Stepper"
 import { useEffect, useState } from "react";
 import { DataService } from "../../service/dataService";
-import Product from "../components/product";
+// import Product from "../components/product";
 import CarouselStyleAssessment from "../components/carousel";
 
 export const WomenPage = () => {
@@ -18,11 +18,9 @@ export const WomenPage = () => {
 
   }, []);
 
-
-
   return (
     <div className="animate__animated animate__fadeIn">
-      {/* <h1>Women</h1> */}
+      <h1 className="text-center">Women</h1>
 
 
       <div className="py-4 px-8 surface-50">
