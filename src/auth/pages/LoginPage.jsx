@@ -10,12 +10,14 @@ import { Toast } from 'primereact/toast';
 // import './login.css';
 import { authenticateUser } from '../helpers/authenticateUser';
 import { UserContext } from '../context/UserContext';
+import { useEffect } from 'react';
 
 export const LoginPage = () => {
 
 	const { globalUser, setGlobalUser } = useContext(UserContext)
 
 	const toast = useRef(null);
+	const userNameInput = useRef(null)
 	const navigate = useNavigate();
 
 	const [user, setUser] = useState({
@@ -24,8 +26,12 @@ export const LoginPage = () => {
 	})
 	const { name, password } = user
 
-	const handleSubmit = async () => {
+	useEffect(() => {
+		userNameInput.current.focus()
+	}, [])
 
+
+	const handleSubmit = async () => {
 		const authenticated = await authenticateUser(user);
 		console.log('----- ', authenticated)
 
@@ -86,6 +92,7 @@ export const LoginPage = () => {
 										})}
 										type="text"
 										className='w-full'
+										ref={userNameInput}
 										// className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
 									/>
 									<label htmlFor="name">User name</label>

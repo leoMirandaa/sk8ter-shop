@@ -47,13 +47,14 @@ export const DetailsUserPage = () => {
   const title = () => {
     return (
       <>
-        <div className="flex flex-column md:flex-row md:justify-content-between">
-          <span className='table-auth-span'>
+        <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+          <span className='table-auth-span flex flex-row align-items-center'>
             <Button
               icon="pi pi-arrow-left"
               className='p-button-text p-button-rounded mr-2'
               onClick={ () => navigate(-1)}
             />
+
             Users
           </span>
 

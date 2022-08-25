@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Button } from 'primereact/button'
 import { Card } from 'primereact/card'
 import { InputText } from 'primereact/inputtext'
+import { FileUpload } from 'primereact/fileupload';
 
 export const FormUI = ({formTitle, product, setProduct, handleProduct, resetForm, isEmptyField}) => {
 
@@ -44,6 +45,11 @@ export const FormUI = ({formTitle, product, setProduct, handleProduct, resetForm
       />
     </div>
 
+
+  const onBasicUpload = () => {
+    toast.current.show({severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode'});
+  }
+
   return (
     <>
       <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -57,113 +63,116 @@ export const FormUI = ({formTitle, product, setProduct, handleProduct, resetForm
           <h3 style={{ margin: '10px 0px 5px 0px', textAlign: 'left'}}>Account data</h3>
           <div className='mt-4'>
             <span className="p-float-label inline-block w-full lg:mr-4 lg:w-auto">
-                <InputText
-                  id="title"
-                  value={title}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    title: e.target.value
-                  })}
-                  className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
-                />
-                <label htmlFor="title">Product title</label>
+              <InputText
+                id="title"
+                value={title}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  title: e.target.value
+                })}
+                className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
+              />
+              <label htmlFor="title">Product title</label>
             </span>
 
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-                <InputText
-                  id="price"
-                  value={price}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    price: e.target.value
-                  })}
-                  className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
-                  type="number"
-                />
-                <label htmlFor="price">Price</label>
+              <InputText
+                id="price"
+                value={price}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  price: e.target.value
+                })}
+                className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
+                type="number"
+              />
+              <label htmlFor="price">Price</label>
             </span>
 
             <span className="p-float-label inline-block w-full mt-5  lg:mt-0 lg:w-auto">
-                <InputText
-                  id="image"
-                  value={image}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    image: e.target.value
-                  })}
-                  className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
-                />
-                <label htmlFor="image">Image</label>
+              <InputText
+                id="image"
+                value={image}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  image: e.target.value
+                })}
+                className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
+              />
+              <label htmlFor="image">Image</label>
             </span>
           </div>
 
           <h3 style={{ margin: '25px 0px 5px 0px', textAlign: 'left'}}>Personal data</h3>
           <div className='mt-4'>
             <span className="p-float-label inline-block w-full lg:mr-4 lg:w-auto">
-                <InputText
-                  id="styleType"
-                  value={styleType}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    styleType: e.target.value
-                  })}
-                  className='w-full lg:w-auto'
-                />
-                <label htmlFor="styleType">Style Type</label>
+              <InputText
+                id="styleType"
+                value={styleType}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  styleType: e.target.value
+                })}
+                className='w-full lg:w-auto'
+              />
+              <label htmlFor="styleType">Style Type</label>
             </span>
 
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-                <InputText
-                  id="gender"
-                  value={gender}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    gender: e.target.value
-                  })}
-                  className='w-full lg:w-auto'
-                />
-                <label htmlFor="gender">Gender</label>
+              <InputText
+                id="gender"
+                value={gender}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  gender: e.target.value
+                })}
+                className='w-full lg:w-auto'
+              />
+              <label htmlFor="gender">Gender</label>
             </span>
 
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-                <InputText
-                  id="stock"
-                  value={stock}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    stock: e.target.value
-                  })}
-                  className='w-full lg:w-auto'
-                  type="number"
-                />
-                <label htmlFor="stock">Stock</label>
+              <InputText
+                id="stock"
+                value={stock}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  stock: e.target.value
+                })}
+                className='w-full lg:w-auto'
+                type="number"
+              />
+              <label htmlFor="stock">Stock</label>
             </span>
 
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-                <InputText
-                  id="discount"
-                  value={discount}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    discount: e.target.value
-                  })}
-                  className='w-full lg:w-auto'
-                />
-                <label htmlFor="discount">Discount</label>
+              <InputText
+                id="discount"
+                value={discount}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  discount: e.target.value
+                })}
+                className='w-full lg:w-auto'
+              />
+              <label htmlFor="discount">Discount</label>
             </span>
 
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-                <InputText
-                  id="category"
-                  value={category}
-                  onChange={(e)=>setProduct({
-                    ...product,
-                    category: e.target.value
-                  })}
-                  className='w-full lg:w-auto'
-                />
-                <label htmlFor="category">Category</label>
+              <InputText
+                id="category"
+                value={category}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  category: e.target.value
+                })}
+                className='w-full lg:w-auto'
+              />
+              <label htmlFor="category">Category</label>
             </span>
+
+            <FileUpload  mode="basic" name="demo[]" url="https://primefaces.org/primereact/showcase/upload.php" accept="image/*" maxFileSize={1000000} onUpload={onBasicUpload} />
+
           </div>
         </Card>
       </div>

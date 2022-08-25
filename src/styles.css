@@ -41,7 +41,8 @@ html,body {
   background-color: var(--primary-color);
 }
 
-.home-page-container {
+.home-page-container,
+.admin-page-container {
   padding: 20px 0px;
   /* background: rgb(235, 235, 235) !important; */
   max-width: 70rem;
@@ -51,7 +52,7 @@ html,body {
 
 .input-invalid {
   border: solid 1px red;
-  background-color: rgba(255, 0, 0, 0.038);
+  /* background-color: rgba(255, 0, 0, 0.038); */
   animation: input-error .3s linear ;
 }
 
@@ -77,6 +78,23 @@ html,body {
     transform: translateX(0px);
   }
 
+}
+
+.message-error {
+  border: solid 1px red;
+  background-color: rgba(255, 0, 0, 0.038);
+  animation: input-error .3s linear ;
+  padding: .6rem .6rem;
+  border-radius: 5px;
+  color: red;
+  margin-top: 2rem;
+  font-size: .8rem;
+}
+
+.p-card-title,
+.p-card-content,
+.p-card-footer {
+  text-align: center
 }
 
 /* .p-menuitem-text		{

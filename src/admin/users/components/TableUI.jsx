@@ -30,8 +30,8 @@ export const TableUI = ({ users, title, getUsers }) => {
     return (
       <>
       {/* display ${users[0]._id == "62fc1d22f87e7a7af93b12e8" ? "hidden": ""} */}
-        <Button icon="pi pi-pencil" className={`p-button-text p-button-primary p-button-rounded mr-2 `} onClick={() => handleUpdate(rowData)} />
-        <Button icon="pi pi-trash" className="p-button-text p-button-danger p-button-rounded" onClick={() => handleDeleteUser(rowData)} />
+        <Button icon="pi pi-pencil" disabled={`${rowData.name == 'admin' ? 'hidden' : ''}`} className="p-button-text p-button-primary p-button-rounded mr-2" onClick={() => handleUpdate(rowData)} />
+        <Button icon="pi pi-trash" disabled={`${rowData.name == 'admin' ? 'hidden' : ''}`} className={`p-button-text p-button-danger p-button-rounded `} onClick={() => handleDeleteUser(rowData)} />
       </>
     );
   }
@@ -63,13 +63,13 @@ export const TableUI = ({ users, title, getUsers }) => {
           >
               {/* <Column field="_id" header="ID"></Column> */}
               <Column sortable field="name" header="Name"></Column>
+              <Column field="password" header="Password"></Column>
               <Column field="email" header="Email"></Column>
               <Column field="country" header="Country"></Column>
               <Column field="city" header="City"></Column>
               <Column field="zip" header="Zip"></Column>
               <Column field="status" header="Status"></Column>
-              <Column field="password" header="Password"></Column>
-              <Column body={actionBodyTemplate} header="Actions"></Column>
+              <Column body={actionBodyTemplate} header="Actions" className={`${name == 'admin' ? 'hidden' : ''}`}></Column>
           </DataTable>
         </Card>
     </>

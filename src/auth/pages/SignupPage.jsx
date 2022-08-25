@@ -11,19 +11,18 @@ import { useFormik } from "formik";
 import { createUser } from '../helpers/createUser';
 import { basicSchema } from '../schemas';
 
-const onSubmit = async(values, actions) => {
-	if (formik.errors.name ) {
-		console.log('Error.........');
-	}
-	console.log('values ', values);
-	console.log('actions ', actions);
-	await new Promise((resolve) => setTimeout(resolve, 1000))
-	actions.resetForm()
-}
-
 export const SignupPage = () => {
     const toast = useRef(null);
     const navigate = useNavigate();
+
+		const onSubmit = async(values, actions) => {
+			// console.log('values ', values);
+			// console.log('actions ', actions);
+			// await new Promise((resolve) => setTimeout(resolve, 1000))
+			const users = await createUser(values);
+			toast.current.show({severity:'success', summary: 'Success', detail:'Account created', life: 3000});
+			actions.resetForm()
+		}
 
 		const formik = useFormik({
 			initialValues: {
@@ -41,8 +40,8 @@ export const SignupPage = () => {
 			onSubmit: onSubmit
 		})
 
-		// console.log('formik', formik );
-		// console.log('errors ', formik.errors);
+		console.log('formik', formik );
+		console.log('errors ', formik.errors);
 
 
     const handleSignup = async() => {
@@ -87,7 +86,7 @@ export const SignupPage = () => {
 												value={ formik.values.password }
 												onChange={ formik.handleChange }
 												onBlur={ formik.handleBlur }
-												type="text"
+												type="password"
 												className={`w-full ${ formik.errors.password && formik.touched.password ? 'input-invalid' : ''}`}
 
 											/>
@@ -100,7 +99,7 @@ export const SignupPage = () => {
 												value={ formik.values.confirmPassword }
 												onChange={ formik.handleChange }
 												onBlur={ formik.handleBlur }
-												type="text"
+												type="password"
 												className={`w-full ${ formik.errors.confirmPassword && formik.touched.confirmPassword ? 'input-invalid' : ''}`}
 
 											/>
@@ -165,6 +164,7 @@ export const SignupPage = () => {
 									className='p-button-primary p-button-rounded mt-5 w-6 md:w-auto lg:md-auto flex m-auto'
 									type="submit"
 									disabled={ formik.isSubmitting }
+									// disabled={ Object.entries(formik.errors).length > 0 }
 								/>
 
 								<div className='flex justify-content-end'>

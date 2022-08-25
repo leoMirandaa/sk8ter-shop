@@ -1,10 +1,21 @@
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
 import { CouponsPage, CreateCouponPage, DetailsCouponPage, UpdateCouponPage } from "../coupons"
 import { CreateUserPage, DetailsUserPage, UpdateUserPage, UsersPage } from "../users"
 import { CreateProductPage, DetailsProductPage, ProductsPage, UpdateProductPage } from "../products"
 import { AdminPage } from "../pages"
+import { useEffect, useState } from "react"
 
 export const AdminRoutes = () => {
+
+    const [{ name }, setUserInLocalStorage] = useState(JSON.parse(localStorage.getItem('User')))
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      if(name !== 'admin') {
+        navigate('/home')
+      }
+    }, [])
+
 
     return (
       <>

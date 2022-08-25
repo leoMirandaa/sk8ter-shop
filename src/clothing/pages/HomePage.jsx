@@ -3,6 +3,8 @@ import CarouselStyleAssessment from "../components/carousel"
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 
+const URL = import.meta.env.VITE_REACT_APP_URL
+
 export const HomePage = () => {
 
   return (
@@ -13,16 +15,16 @@ export const HomePage = () => {
           <Card
             title="Girls"
             // subTitle="Women"
-            header={ <img style={{borderRadius: '5px'}} alt="Card" src="/images/kid-girl-img.jpg" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
+            header={ <img style={{borderRadius: '5px'}} alt="Card" src={`${URL}/static/kid-girl-img.jpg`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
             footer={ <Button className="p-button-primary" label="Shop now" /> }
           />
         </div>
 
         <div className="col-11 sm:col-6 lg:col-4">
           <Card
-            title="Teenagers Girls"
+            title="Teen Girls"
             // subTitle="Women"
-            header={ <img style={{borderRadius: '5px'}} alt="Card" src="/images/teen-girl-img2.jpg" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
+            header={ <img style={{borderRadius: '5px'}} alt="Card" src={`${URL}/static/teen-girl-img.jpg`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
             footer={ <Button className="p-button-primary" label="Shop now" /> }
           />
         </div>
@@ -31,7 +33,7 @@ export const HomePage = () => {
           <Card
             title="Women"
             // subTitle="Women"
-            header={ <img style={{borderRadius: '5px'}} alt="Card" src="/images/woman-img.jpg" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
+            header={ <img style={{borderRadius: '5px'}} alt="Card" src={`${URL}/static/woman-img.jpg`}onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
             footer={ <Button className="p-button-primary" label="Shop now" /> }
           />
         </div>
@@ -40,16 +42,16 @@ export const HomePage = () => {
           <Card
             title="Boys"
             // subTitle="Women"
-            header={ <img style={{borderRadius: '5px'}} alt="Card" src="/images/kid-boy-img.jpg" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
+            header={ <img style={{borderRadius: '5px'}} alt="Card" src={`${URL}/static/kid-boy-img.jpg`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
             footer={ <Button className="p-button-primary" label="Shop now" /> }
           />
         </div>
 
         <div className="col-11 sm:col-6 lg:col-4">
           <Card
-            title="Teenagers Boys"
+            title="Teen Boys"
             // subTitle="Women"
-            header={ <img style={{borderRadius: '5px'}} alt="Card" src="/images/teen-boy-img3.jpg" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
+            header={ <img style={{borderRadius: '5px'}} alt="Card" src={`${URL}/static/teen-boy-img.jpg`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
             footer={ <Button className="p-button-primary" label="Shop now" /> }
           />
         </div>
@@ -58,7 +60,7 @@ export const HomePage = () => {
           <Card
             title="Men"
             // subTitle="Women"
-            header={ <img style={{borderRadius: '5px'}} alt="Card" src="/images/man-img.jpg" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
+            header={ <img style={{borderRadius: '5px'}} alt="Card" src={`${URL}/static/man-img.jpg`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
             footer={ <Button className="p-button-primary" label="Shop now" /> }
           />
         </div>

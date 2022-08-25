@@ -59,7 +59,7 @@ export const DetailsProductPage = () => {
     return (
       <>
         <div className="flex flex-column md:flex-row md:justify-content-between">
-          <span className='table-auth-span'>
+          <span className='flex flex-row align-items-center'>
             <Button
               icon="pi pi-arrow-left"
               className='p-button-text p-button-rounded mr-2'

@@ -127,9 +127,9 @@ export const AdminPage = () => {
 	return(
 	<div className="usersContainer animate__animated animate__fadeIn">
 
-		<div className="pt-4 text-xl font-bold" style={{textAlign: 'center'}}>Dasboard</div>
+		{/* <div className="pt-4 text-xl font-bold" style={{textAlign: 'center'}}>Dasboard</div> */}
 
-		<div className="flex flex-column align-items-center justify-content-evenly  h-30rem mt-4 md:flex-row justify-content-evenly md:h-10rem  ">
+		<div className="admin-page-container flex flex-column align-items-center justify-content-evenly  h-screen md:pt-8 md:flex-row justify-content-evenly md:h-10rem  ">
 			{
 				cardData.map(card => (
 					<CardUI

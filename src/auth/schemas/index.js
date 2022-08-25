@@ -9,7 +9,7 @@ export const basicSchema = yup.object({
   password: yup
   .string()
   .min(5)
-  .matches(passwordRules, {message: "create a stronger password"})
+  // .matches(passwordRules, {message: "create a stronger password"})
   .required("Required"),
   confirmPassword: yup
   .string()
