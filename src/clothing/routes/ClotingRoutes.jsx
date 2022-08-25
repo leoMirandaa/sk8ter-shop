@@ -3,6 +3,7 @@ import { AdminRoutes } from "../../admin/routes/AdminRoutes"
 import { Navbarr } from "../../ui/components/Navbarr"
 import { CouponsPage } from "../pages/CouponsPage"
 import { HomePage } from "../pages/HomePage"
+import { ImagesPage } from "../pages/ImagesPage"
 import { KidsPage } from "../pages/KidsPage"
 import { MenPage } from "../pages/MenPage"
 import { WomenPage } from "../pages/WomenPage"
@@ -23,6 +24,7 @@ export const ClothingRoutes = () => {
         <Route path="men" element={<MenPage/> } />
         <Route path="kids" element={<KidsPage/>} />
         <Route path="coupons" element={<CouponsPage/>} />
+        <Route path="images" element={<ImagesPage />} />
 
         <Route path="/*" element={< Navigate to="home"/>} />
 

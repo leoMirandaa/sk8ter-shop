@@ -171,7 +171,7 @@ export const FormUI = ({formTitle, product, setProduct, handleProduct, resetForm
               <label htmlFor="category">Category</label>
             </span>
 
-            <FileUpload  mode="basic" name="demo[]" url="https://primefaces.org/primereact/showcase/upload.php" accept="image/*" maxFileSize={1000000} onUpload={onBasicUpload} />
+            <FileUpload mode="basic" name="file" url="http://127.0.0.1:5000/api/file/upload" accept="image/*"/>
 
           </div>
         </Card>
