@@ -5,7 +5,7 @@ const url = import.meta.env.VITE_REACT_APP_URL
 export const deleteProduct = async(id) => {
   try {
     const response = await axios({
-      url: `${url}/api/product/${id}`,
+      url: `${url}/api/catalog/${id}`,
       data: id,
       method: 'DELETE',
       headers: {
