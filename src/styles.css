@@ -97,6 +97,13 @@ html,body {
   text-align: center
 }
 
+.file-invalid {
+  border: solid 1px red !important;
+  color: green;
+  padding: .5rem 0px;
+  border-radius: 5px;
+  /* background-color: red; */
+}
 /* .p-menuitem-text		{
   color: var(--text-color) !important;
 } */

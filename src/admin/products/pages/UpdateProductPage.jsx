@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 
 import { FormUI } from '../components'
-import { getProduct, updateProduct } from '../helpers'
+import { getProduct, updateProduct, uploadImage } from '../helpers'
 
 import { BreadCrumb } from 'primereact/breadcrumb'
 import { Toast } from 'primereact/toast'
@@ -25,6 +25,7 @@ export const UpdateProductPage = () => {
   const [product, setProduct] = useState( initialProduct )
 
   const [isEmptyField, setIsEmptyField] = useState(false)
+  const [imageObject, setImageObject] = useState({})
 
   // const { name, email, password, country, city, zip } = user
   const params = useParams()
@@ -57,8 +58,15 @@ export const UpdateProductPage = () => {
     } else {
       const response = await updateProduct(params.id, product)
       console.log('handleUpdateProduct ',response);
+
+
+      let formdata = new FormData()
+      formdata.append('file', imageObject)
+      console.log('file 2... ', imageObject);
+
+      await uploadImage(formdata)
       toast.current.show({severity:'success', summary: 'Success', detail:'Product updated', life: 3000});
-      // navigate(-1)
+      navigate(-1)
     }
 
   }
@@ -94,6 +102,7 @@ export const UpdateProductPage = () => {
         formTitle={"Update Product"}
         product={product}
         setProduct={setProduct}
+        setImageObject={setImageObject}
         handleProduct={handleUpdateProduct}
         resetForm={handleCancelCreateProduct}
         isEmptyField={isEmptyField}

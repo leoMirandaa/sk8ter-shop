@@ -4,7 +4,7 @@ import { Toast } from 'primereact/toast';
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { Image } from 'primereact/image';
-import { handleUploadImage } from '../../admin/products';
+import { uploadImage } from '../../admin/products';
 
 
 
@@ -52,7 +52,8 @@ export const ImagesPage = () => {
 
     let formdata = new FormData()
     formdata.append('file', file)
-    await handleUploadImage(formdata)
+    console.log('file1 ... ', file);
+    await uploadImage(formdata)
 
     await getFile(file.name)
 

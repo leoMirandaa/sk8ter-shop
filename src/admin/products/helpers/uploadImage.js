@@ -1,7 +1,8 @@
 import axios from 'axios'
 const URL = import.meta.env.VITE_REACT_APP_URL
 
-export const handleUploadImage = async(formdata) => {
+export const uploadImage = async(formdata) => {
+  console.log('uploading image...', formdata);
   try {
     const response = await axios({
       url: `${URL}/api/file/upload`,
@@ -12,8 +13,7 @@ export const handleUploadImage = async(formdata) => {
       }
     })
 
-    console.log('response... ', response);
-    // getFile(file.name)
+    console.log('uploadImage response... ', response);
     return response;
 
   } catch (error) {

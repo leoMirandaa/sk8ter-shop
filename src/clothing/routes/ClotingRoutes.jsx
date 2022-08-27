@@ -6,6 +6,7 @@ import { HomePage } from "../pages/HomePage"
 import { ImagesPage } from "../pages/ImagesPage"
 import { KidsPage } from "../pages/KidsPage"
 import { MenPage } from "../pages/MenPage"
+import { TestingComponents } from "../pages/TestingComponents"
 import { WomenPage } from "../pages/WomenPage"
 
 export const ClothingRoutes = () => {
@@ -25,6 +26,7 @@ export const ClothingRoutes = () => {
         <Route path="kids" element={<KidsPage/>} />
         <Route path="coupons" element={<CouponsPage/>} />
         <Route path="images" element={<ImagesPage />} />
+        <Route path="testing" element={<TestingComponents />} />
 
         <Route path="/*" element={< Navigate to="home"/>} />
 

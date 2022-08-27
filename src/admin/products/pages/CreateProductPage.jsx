@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import{ useRef, useState } from 'react'
 
 import { FormUI } from '../components'
-import { createProduct } from '../helpers'
+import { createProduct, uploadImage } from '../helpers'
 
 import { BreadCrumb } from 'primereact/breadcrumb'
 import { Toast } from 'primereact/toast'
@@ -24,6 +24,7 @@ export const CreateProductPage = () => {
   const [product, setProduct] = useState( initialProduct )
 
   const [isEmptyField, setIsEmptyField] = useState(false)
+  const [imageObject, setImageObject] = useState({})
   // const { name, email, password, country, city, zip } = user
 
   const navigate = useNavigate()
@@ -31,7 +32,7 @@ export const CreateProductPage = () => {
 
   const handleCreateProduct = async(product) => {
     setIsEmptyField(false)
-    if( product.title === '' ||  product.price === '' || product.gender === '' ) {
+    if( product.title === '' ||  product.price === '' || product.gender === '' || product.image === '' ) {
       setIsEmptyField( true )
 
       toast.current.show({
@@ -49,7 +50,15 @@ export const CreateProductPage = () => {
       setProduct( initialProduct )
 
       toast.current.show({severity:'success', summary: 'Success', detail:'Product created', life: 3000});
-      // navigate(-1)
+
+      let formdata = new FormData()
+      formdata.append('file', imageObject)
+      console.log('file 2... ', imageObject);
+
+      console.log('formdata** ',formdata)
+      await uploadImage(formdata)
+
+      navigate(-1)
     }
   }
 
@@ -76,6 +85,7 @@ export const CreateProductPage = () => {
         formTitle="Create Product"
         product={product}
         setProduct={setProduct}
+        setImageObject={setImageObject}
         handleProduct={handleCreateProduct}
         resetForm={handleCancelCreateProduct}
         isEmptyField={isEmptyField}
