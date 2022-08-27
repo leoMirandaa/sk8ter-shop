@@ -107,3 +107,10 @@ html,body {
 /* .p-menuitem-text		{
   color: var(--text-color) !important;
 } */
+
+
+/* Dropdown */
+.p-dropdown {
+  width: 15rem !important;
+  text-align: left;
+}

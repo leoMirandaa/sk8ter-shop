@@ -12,12 +12,12 @@ export const CreateProductPage = () => {
 
   const initialProduct = {
     title: '',
-    price: '',
+    price: null,
     image: '',
     styleType: '',
     gender: '',
-    stock: '',
-    discount: '',
+    stock: null,
+    discount: 0,
     category: ''
   }
 
