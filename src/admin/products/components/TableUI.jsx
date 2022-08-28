@@ -51,7 +51,7 @@ export const TableUI = ({ products, title, getProducts }) => {
       case "Ts":
         return "Teen girls"
 
-      case "Wm":
+      case "Wn":
         return "Women"
 
       case "Bs":
@@ -62,6 +62,28 @@ export const TableUI = ({ products, title, getProducts }) => {
 
       case "Mn":
         return "Men"
+    }
+  }
+
+  const actionStyleTypeTemplate = (rowData) => {
+    switch (rowData.styleType) {
+      case "Basic":
+        return "Basic"
+
+      case "Bohemian":
+        return "Bohemian"
+
+      case "Casual":
+        return "Casual"
+
+      case "Elegant":
+        return "Elegant"
+
+      case "Sexy":
+        return "Sexy"
+
+      case "Vintage":
+        return "Vintage"
     }
   }
 
@@ -104,7 +126,7 @@ export const TableUI = ({ products, title, getProducts }) => {
               <Column field="price" header="Price"></Column>
               {/* <Column field="image" header="Image"></Column> */}
               <Column header="Image" body={imageBodyTemplate}></Column>
-              <Column field="styleType" header="Style Type"></Column>
+              <Column body={actionStyleTypeTemplate} field="styleType" header="Style Type"></Column>
               {/* <Column field="gender" header="Gender"></Column> */}
               <Column body={actionGenderTemplate} field="gender" header="Gender"></Column>
 

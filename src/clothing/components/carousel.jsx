@@ -4,6 +4,7 @@ import { Button } from 'primereact/button';
 import { ProductService } from '../../service/ProductService';
 // import './CarouselDemo.css';
 // import './carousel.css'
+const URL = import.meta.env.VITE_REACT_APP_URL
 
 const CarouselStyleAssessment = () => {
     const [products, setProducts] = useState([]);
@@ -28,10 +29,8 @@ const CarouselStyleAssessment = () => {
 
     const retrieveProducts = async() => {
         const product = new ProductService();
-        let products = await product.getProduct();
+        let products = await product.getWomenProducts();
         setProducts(products)
-
-        console.log('products... ', products);
     }
 
     useEffect(() => {
@@ -45,17 +44,18 @@ const CarouselStyleAssessment = () => {
             <div className="product-item">
                 <div className="product-item-content">
                     <div className="mb-3">
-                        <img width="70%" height="70%" src={product.image} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.name} className="product-image" />
+                        <img width="70%" height="70%" src={`${URL}/static/${product.image}`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.name} className="product-image" />
                     </div>
                     <div>
                         <h4 className="mb-1">{product.name}</h4>
-                        <small>{product.description}</small>
+                        <h3>{ product.title }</h3>
+                        <small><b>Style: </b>{product.styleType}</small>
                         <h5> $ {product.price}</h5>
                         <span className={`product-badge status-${product.inventoryStatus}`}>{product.inventoryStatus}</span>
-                        <div className="car-buttons mt-5">
-                            <Button icon="pi pi-search" className=" p-button p-button-rounded mr-2" />
-                            <Button icon="pi pi-star-fill" className=" p-button-secondary p-button-rounded mr-2" />
-                            <Button icon="pi pi-cog" className=" p-button-info p-button-rounded" />
+                        <div className="px-4 car-buttons mt-5">
+                            <Button label="Add to cart"  className="p-button-primary p-button-sm p-button-rounded w-full mr-2"  />
+                            {/* <Button icon="pi pi-star-fill" className=" p-button-secondary p-button-rounded mr-2" />
+                            <Button icon="pi pi-cog" className=" p-button-info p-button-rounded" /> */}
                         </div>
                     </div>
                 </div>

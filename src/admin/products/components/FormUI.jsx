@@ -31,6 +31,15 @@ export const FormUI = ({formTitle, product, setProduct, setImageObject, handlePr
     { name: 'Men', value: 'Mn' },
   ]
 
+  const styleTypes = [
+    { name: 'Basic', value: 'Basic' },
+    { name: 'Bohemian', value: 'Bohemian' },
+    { name: 'Casual', value: 'Casual' },
+    { name: 'Elegant', value: 'Elegant' },
+    { name: 'Sexy', value: 'Sexy' },
+    { name: 'Vintage', value: 'Vintage' }
+  ]
+
   const handleUpload = async(e) => {
 
     let formdata = new FormData()
@@ -112,23 +121,18 @@ export const FormUI = ({formTitle, product, setProduct, setImageObject, handlePr
             </span>
 
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-              <InputNumber
-                id="price"
-                value={price}
-                onChange={(e)=>setProduct({
+              <Dropdown
+                options={ genders }
+                value={ gender }
+                onChange={ (e) => setProduct({
                   ...product,
-                  price: e.value
-                })}
-                className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
-                mode="currency"
-                currency="USD"
-                min={1}
-                max={999}
-                showButtons
-                decrementButtonClassName="p-button-secondary"
-                incrementButtonClassName="p-button-secondary"
+                  gender: e.value
+                }) }
+                optionLabel='name'
+                className='w-full lg:w-auto'
+                // placeholder="Select a gender"
               />
-              <label htmlFor="price">Price</label>
+              <label htmlFor="gender">Gender</label>
             </span>
 
             {/* <span className="p-float-label inline-block w-full mt-5  lg:mt-0 lg:w-auto">
@@ -146,43 +150,35 @@ export const FormUI = ({formTitle, product, setProduct, setImageObject, handlePr
           </div>
 
           <div className='mt-4'>
-            <span className="p-float-label inline-block w-full lg:mr-4 lg:w-auto">
-              <InputText
-                id="styleType"
-                value={styleType}
-                onChange={(e)=>setProduct({
-                  ...product,
-                  styleType: e.target.value
-                })}
-                className='w-full lg:w-auto'
-              />
-              <label htmlFor="styleType">Style Type</label>
-            </span>
 
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
               <Dropdown
-                options={ genders }
-                value={ gender }
-                onChange={ (e) => setProduct({
-                  ...product,
-                  gender: e.value
-                }) }
-                optionLabel='name'
-                className='w-full lg:w-auto'
-                // placeholder="Select a gender"
-              />
-              <label htmlFor="gender">Gender</label>
-
-              {/* <InputText
-                id="gender"
-                value={gender}
+                id="category"
+                options={categories}
+                value={category}
+                optionLabel="name"
                 onChange={(e)=>setProduct({
                   ...product,
-                  gender: e.target.value
+                  category: e.value
                 })}
                 className='w-full lg:w-auto'
               />
-              <label htmlFor="gender">Gender</label> */}
+              <label htmlFor="category">Category</label>
+            </span>
+
+            <span className="p-float-label inline-block w-full lg:mr-4 lg:w-auto">
+              <Dropdown
+                // id="styleType"
+                options={ styleTypes }
+                value = { styleType }
+                onChange={(e)=>setProduct({
+                  ...product,
+                  styleType: e.value
+                })}
+                optionLabel='name'
+                className='w-full lg:w-auto'
+              />
+              <label htmlFor="styleType">Style Type</label>
             </span>
           </div>
 
@@ -206,7 +202,27 @@ export const FormUI = ({formTitle, product, setProduct, setImageObject, handlePr
               <label htmlFor="stock">Stock</label>
             </span>
 
-            <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
+            <span className="p-float-label inline-block w-full mt-5 lg:mt-0 lg:w-auto">
+              <InputNumber
+                id="price"
+                value={price}
+                onChange={(e)=>setProduct({
+                  ...product,
+                  price: e.value
+                })}
+                className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
+                mode="currency"
+                currency="USD"
+                min={1}
+                max={999}
+                showButtons
+                decrementButtonClassName="p-button-secondary"
+                incrementButtonClassName="p-button-secondary"
+              />
+              <label htmlFor="price">Price</label>
+            </span>
+
+            {/* <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
               <InputText
                 id="discount"
                 value={discount}
@@ -217,27 +233,11 @@ export const FormUI = ({formTitle, product, setProduct, setImageObject, handlePr
                 className='w-full lg:w-auto'
               />
               <label htmlFor="discount">Discount</label>
-            </span>
+            </span> */}
           </div>
 
           <div className='mt-4'>
             <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-              <Dropdown
-                id="category"
-                options={categories}
-                value={category}
-                optionLabel="name"
-                onChange={(e)=>setProduct({
-                  ...product,
-                  category: e.value
-                })}
-                className='w-full lg:w-auto'
-              />
-              <label htmlFor="category">Category</label>
-            </span>
-
-            <span className="p-float-label inline-block w-full mt-5 lg:mr-4 lg:mt-0 lg:w-auto">
-
               <input
                 type="file"
                 className={`w-full lg:w-auto ${isEmptyField && 'file-invalid'} text-primary`}

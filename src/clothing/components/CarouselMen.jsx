@@ -5,6 +5,8 @@ import { ProductService } from '../../service/ProductService';
 // import './CarouselDemo.css';
 // import './carousel.css'
 
+const URL = import.meta.env.VITE_REACT_APP_URL
+
 const CarouselMen = () => {
     const [products, setProducts] = useState([]);
     const responsiveOptions = [
@@ -45,13 +47,14 @@ const CarouselMen = () => {
             <div className="product-item">
                 <div className="product-item-content">
                     <div className="mb-3">
-                        <img width="70%" height="70%" src={product.image} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.name} className="product-image" />
+                        <img width="70%" height="70%" src={`${URL}/static/${product.image}`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={product.name} className="product-image" />
                     </div>
                     <div>
                         <h4 className="mb-1">{product.name}</h4>
-                        <small>{product.description}</small>
+                        <h3>{ product.title }</h3>
+                        <small><b>Style: </b>{product.styleType}</small>
                         <h5> $ {product.price}</h5>
-                        <span className={`product-badge status-${product.inventoryStatus}`}>{product.inventoryStatus}</span>
+                        {/* <span className={`product-badge status-${product.inventoryStatus}`}>{product.inventoryStatus}</span> */}
                         <div className="car-buttons mt-5">
                             <Button icon="pi pi-search" className=" p-button p-button-rounded mr-2" />
                             <Button icon="pi pi-star-fill" className=" p-button-secondary p-button-rounded mr-2" />
