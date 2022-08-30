@@ -9,17 +9,6 @@ import { useState } from "react"
 
 export const AppRouter = () => {
 
-  const userName = useState(JSON.parse(localStorage.getItem('User')))
-
-  if (userName == "") {
-    localStorage.setItem('User', JSON.stringify("") );
-  }
-  else {
-    // const [{ name }, setUserInLocalStorage] = useState(JSON.parse(localStorage.getItem('User')))
-  }
-  // const { myUser } = useContext(UserContext)
-  // console.log('***--- ',myUser)
-
   return (
     <>
       <Routes>
@@ -27,7 +16,10 @@ export const AppRouter = () => {
         <Route path="sigup" element={<SignupPage />} />
         {/* <Route path="adminLogin" element={<AdminLoginPage/>}/> */}
 
-        <Route path="/*" element={<ClothingRoutes/>}/>
+        <Route path="/*" element={<ClothingRoutes/>} />
+
+
+
 
       </Routes>
     </>

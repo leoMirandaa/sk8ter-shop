@@ -7,14 +7,14 @@ import { useEffect, useState } from "react"
 
 export const AdminRoutes = () => {
 
-    const [{ name }, setUserInLocalStorage] = useState(JSON.parse(localStorage.getItem('User')))
+    // const [{ name }, setUserInLocalStorage] = useState(JSON.parse(localStorage.getItem('User')))
     const navigate = useNavigate()
 
-    useEffect(() => {
-      if(name !== 'admin') {
-        navigate('/home')
-      }
-    }, [])
+    // useEffect(() => {
+    //   if(name !== 'admin') {
+    //     navigate('/home')
+    //   }
+    // }, [])
 
 
     return (

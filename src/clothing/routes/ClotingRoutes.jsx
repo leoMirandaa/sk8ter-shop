@@ -10,9 +10,6 @@ import { TestingComponents } from "../pages/TestingComponents"
 import { WomenPage } from "../pages/WomenPage"
 
 export const ClothingRoutes = () => {
-  // .usersContainer {
-  //   background: #EFF3F8;
-  // }
 
   return (
     // <div className="animate__animated animate__fadeIn usersContainer" style={{minHeight: '100vh'}}>

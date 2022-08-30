@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 
 export const LoginPage = () => {
 
-	const { globalUser, setGlobalUser } = useContext(UserContext)
+	const { handleSetGlobalUser} = useContext( UserContext )
 
 	const toast = useRef(null);
 	const userNameInput = useRef(null)
@@ -38,9 +38,9 @@ export const LoginPage = () => {
 		if (authenticated.data === 'User not found') {
 			toast.current.show({severity:'error', summary: 'Login failed', detail:'User or password incorrect', life: 3000, position:"top-right"});
 		}else {
-			setGlobalUser(authenticated.data)
-			console.log('globaluser ', JSON.stringify(authenticated.data));
-			localStorage.setItem('User', JSON.stringify(authenticated.data) );
+			await handleSetGlobalUser(authenticated.data)
+			// console.log('globaluser ', JSON.stringify(authenticated.data));
+			// localStorage.setItem('User', JSON.stringify(authenticated.data) );
 			navigate('/home')
 		}
 	}

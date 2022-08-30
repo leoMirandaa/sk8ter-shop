@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 
 import { FormUI } from '../components'
-import { getProduct, updateProduct, uploadImage } from '../helpers'
+import { deleteImage, getProduct, updateProduct, uploadImage } from '../helpers'
 
 import { BreadCrumb } from 'primereact/breadcrumb'
 import { Toast } from 'primereact/toast'
@@ -25,7 +25,9 @@ export const UpdateProductPage = () => {
   const [product, setProduct] = useState( initialProduct )
 
   const [isEmptyField, setIsEmptyField] = useState(false)
+  const [imageToDelete, setImageToDelete] = useState(null)
   const [imageObject, setImageObject] = useState({})
+
 
   // const { name, email, password, country, city, zip } = user
   const params = useParams()
@@ -40,6 +42,8 @@ export const UpdateProductPage = () => {
   const handleGetProduct = async() => {
     const product_request = await getProduct(params.id)
     setProduct(product_request.data)
+    setImageToDelete(product_request.data.image)
+    console.log('Image to delete.. ',product_request.data.image)
   }
 
 
@@ -56,15 +60,26 @@ export const UpdateProductPage = () => {
       );
 
     } else {
+
+      if(product.image !== imageToDelete) {
+        let formdata = new FormData()
+        formdata.append('filename', imageToDelete)
+        console.log('rowData.image ', imageToDelete);
+        console.log('formdata ', formdata);
+        await deleteImage(formdata)
+
+        let formdataUpload = new FormData()
+        formdataUpload.append('file', imageObject)
+        console.log('file 2... ', imageObject);
+        await uploadImage(formdataUpload)
+      }
+
+
+
       const response = await updateProduct(params.id, product)
       console.log('handleUpdateProduct ',response);
 
 
-      let formdata = new FormData()
-      formdata.append('file', imageObject)
-      console.log('file 2... ', imageObject);
-
-      await uploadImage(formdata)
       toast.current.show({severity:'success', summary: 'Success', detail:'Product updated', life: 3000});
       navigate(-1)
     }

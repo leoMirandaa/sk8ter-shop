@@ -1,17 +1,18 @@
 import React, { useContext, useState } from 'react'
 
+import { UserContext } from '../../auth/context/UserContext';
+
 import { Menubar } from 'primereact/menubar';
 import { SplitButton } from 'primereact/splitbutton';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../auth/context/UserContext';
 import { Button } from 'primereact/button';
 
 export const Navbarr = () => {
 
-  const {globalUser, setGlobalUser} = useContext(UserContext)
-  const [{ name }, setUserInLocalStorage] = useState(JSON.parse(localStorage.getItem('User')))
+  const { globalUser } = useContext( UserContext )
 
-  console.log('name... ',name)
+  console.log('Navbar ', globalUser);
+
   const navigate = useNavigate()
 
   const adminOptions =  [
@@ -31,8 +32,8 @@ export const Navbarr = () => {
     {label: 'Discounts', command: () => navigate('/coupons')},
   ];
 
-  const items = (name === "admin") ? adminOptions : userOptions
-
+  // const items = (userInLocalStorage.name === "admin") ? adminOptions : userOptions
+  const items = adminOptions
   const profileButton = [
     {
       label: 'Settings',
@@ -43,10 +44,7 @@ export const Navbarr = () => {
       label: 'LogOut',
       icon: 'pi pi-power-off',
       command: () => {
-        // setGlobalUser('')
-        localStorage.setItem('User', JSON.stringify('') )
         navigate('/home')
-        window.location.reload(false);
       }
     },
 
@@ -54,29 +52,31 @@ export const Navbarr = () => {
 
 
   const end =
-    ( name )
-    ?
+    // ( userInLocalStorage.name )
+    // ( userInLocalStorage.name )
+    // ?
       <SplitButton
-        label={JSON.parse(localStorage.getItem('User')).name}
+        label= { globalUser?.name }
+        // label= "test"
         icon="pi pi-user "
         className='p-button-primary p-button-text p-button-oulined'
         model={profileButton}>
       </SplitButton>
-    :
-      <span>
-        <Button
-          label="Log in"
-          className='p-button-primary p-button-outlined  mr-2'
-          onClick={ () => navigate('/login')}
-        />
+    // :
+    //   <span>
+    //     <Button
+    //       label="Log in"
+    //       className='p-button-primary p-button-outlined  mr-2'
+    //       onClick={ () => navigate('/login')}
+    //     />
 
-        <Button
-          label="Sign up"
-          className='p-button-secondary  '
-          onClick={ () => navigate('/sigup')}
-        />
+    //     <Button
+    //       label="Sign up"
+    //       className='p-button-secondary  '
+    //       onClick={ () => navigate('/sigup')}
+    //     />
 
-      </span>
+    //   </span>
 
 
     const start =
@@ -91,14 +91,14 @@ export const Navbarr = () => {
     </div>
 
   return (
-    <>
+    <div>
       <Menubar
-        className='navbar-menubar bg-primary'
+        className='navbar-menubar bg-primary '
         // className='navbar-menubar  font-bold'
         model={items}
         start={start}
         end={end}
       />
-    </>
+    </div>
   )
 }
