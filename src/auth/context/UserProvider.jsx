@@ -3,15 +3,21 @@ import { UserContext } from "./UserContext"
 
 export const UserProvider = ({children}) => {
 
-  const [globalUser, setGlobalUser] = useState( null )
-  console.log('UserProvider ', globalUser)
-
-  const handleSetGlobalUser = ( user ) => {
-    console.log('User getted ', user);
-    setGlobalUser( user )
-    console.log('handleSetGlobalUser ', globalUser);
+  const initialState = {
+    name: ''
   }
 
+  const [globalUser, setGlobalUser] = useState( initialState )
+
+  // if(localStorage.getItem('user') !== null) {
+  //   console.log('.... ', JSON.parse(localStorage.getItem('user')))
+  //   setGlobalUser(JSON.parse(localStorage.getItem('user')))
+  // }
+
+  const handleSetGlobalUser = ( user ) => {
+    // console.log('User getted ', user);
+    setGlobalUser( user )
+  }
 
   return (
     <UserContext.Provider value = {{ globalUser, handleSetGlobalUser }}>

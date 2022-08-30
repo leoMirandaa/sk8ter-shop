@@ -3,7 +3,7 @@ import { Carousel } from 'primereact/carousel';
 import { Button } from 'primereact/button';
 import { RadioButton } from 'primereact/radiobutton';
 
-export const TestingComponents = () => {
+export const QuizzPage = () => {
   // const initialState = [
   //   {size: 'xs'},
   //   {size: 'sm'},

@@ -38,6 +38,7 @@ export const LoginPage = () => {
 		if (authenticated.data === 'User not found') {
 			toast.current.show({severity:'error', summary: 'Login failed', detail:'User or password incorrect', life: 3000, position:"top-right"});
 		}else {
+			localStorage.setItem('user', JSON.stringify(authenticated.data))
 			await handleSetGlobalUser(authenticated.data)
 			// console.log('globaluser ', JSON.stringify(authenticated.data));
 			// localStorage.setItem('User', JSON.stringify(authenticated.data) );

@@ -53,7 +53,15 @@ const CarouselStyleAssessment = () => {
                         <h5> $ {product.price}</h5>
                         <span className={`product-badge status-${product.inventoryStatus}`}>{product.inventoryStatus}</span>
                         <div className="px-4 car-buttons mt-5">
-                            <Button label="Add to cart"  className="p-button-primary p-button-sm p-button-rounded w-full mr-2"  />
+                            <Button
+                                label="Buy now"
+                                className="p-button-primary p-button-sm p-button-rounded mr-2 w-full md:w-auto"
+                            />
+                            <Button
+                                label="Add to cart"
+                                className="p-button-secondary p-button-outlined p-button-sm p-button-rounded mt-2 w-full md:w-auto md:mt-0 mr-2"
+                            />
+
                             {/* <Button icon="pi pi-star-fill" className=" p-button-secondary p-button-rounded mr-2" />
                             <Button icon="pi pi-cog" className=" p-button-info p-button-rounded" /> */}
                         </div>

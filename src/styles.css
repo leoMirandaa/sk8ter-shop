@@ -135,3 +135,34 @@ html,body {
   background-color: var(--primary-color	) !important;
   /* filter: blur(4px); */
 }
+
+.p-menuitem-icon {
+  color: var(--primary-color) !important;
+}
+
+/* .pi-bolt {
+  color: var(--primary-color) !important;
+} */
+
+
+/* .carousel-demo .product-item .product-item-content {
+  border: 1px solid var(--surface-d);
+  border-radius: 3px;
+  margin: .3rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.carousel-demo .product-item .product-image {
+  width: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+} */
+
+
+/* .p-carousel,
+.p-carousel-indicators,
+.p-carousel-indicator,
+.p-highlight {
+  background: var(--primary-color) !important;
+  color: white !important;
+} */

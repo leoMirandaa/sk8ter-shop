@@ -1,13 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { AdminRoutes } from "../../admin/routes/AdminRoutes"
 import { Navbarr } from "../../ui/components/Navbarr"
-import { CouponsPage } from "../pages/CouponsPage"
-import { HomePage } from "../pages/HomePage"
 import { ImagesPage } from "../pages/ImagesPage"
-import { KidsPage } from "../pages/KidsPage"
-import { MenPage } from "../pages/MenPage"
-import { TestingComponents } from "../pages/TestingComponents"
-import { WomenPage } from "../pages/WomenPage"
+import { TestingComponents, CouponsPage, HomePage, KidsPage, MenPage, WomenPage, QuizzPage } from "../pages"
 
 export const ClothingRoutes = () => {
 
@@ -18,6 +13,7 @@ export const ClothingRoutes = () => {
 
       <Routes>
         <Route path="home" element={<HomePage />} />
+        <Route path="quizz" element={<QuizzPage />} />
         <Route path="women" element={<WomenPage/>} />
         <Route path="men" element={<MenPage/> } />
         <Route path="kids" element={<KidsPage/>} />
