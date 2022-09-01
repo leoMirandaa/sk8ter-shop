@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { AdminRoutes } from "../../admin/routes/AdminRoutes"
 import { Navbarr } from "../../ui/components/Navbarr"
 import { ImagesPage } from "../pages/ImagesPage"
-import { TestingComponents, CouponsPage, HomePage, KidsPage, MenPage, WomenPage, QuizzPage } from "../pages"
+import { TestingComponents, CouponsPage, HomePage, KidsPage, MenPage, WomenPage, QuizzPage, Cart } from "../pages"
 
 export const ClothingRoutes = () => {
 
@@ -19,6 +19,7 @@ export const ClothingRoutes = () => {
         <Route path="kids" element={<KidsPage/>} />
         <Route path="coupons" element={<CouponsPage/>} />
         <Route path="images" element={<ImagesPage />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="testing" element={<TestingComponents />} />
 
         <Route path="/*" element={< Navigate to="home"/>} />

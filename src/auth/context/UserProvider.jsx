@@ -7,7 +7,7 @@ export const UserProvider = ({children}) => {
     name: ''
   }
 
-  const [globalUser, setGlobalUser] = useState( initialState )
+  const [globalUser, setGlobalUser] = useState( [] )
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));

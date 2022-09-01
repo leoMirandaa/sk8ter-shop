@@ -18,6 +18,15 @@ export const QuizzPage = () => {
   //   {size: '3xl'},
   // ]
 
+  const genresList = [
+    { genre: 'Girl' },
+    { genre: 'Teen Girl' },
+    { genre: 'Woman' },
+    { genre: 'Boy' },
+    { genre: 'Teen Boy' },
+    { genre: 'Man' },
+  ]
+
   const sizeChart = [
     {size: 'xs'},
     {size: 'sm'},
@@ -47,6 +56,7 @@ export const QuizzPage = () => {
 
 
   const [products, setProducts] = useState(sizeChart);
+  const [genres, setGenres] = useState(genresList);
 
   const initialStateUserQuizzOptions = {
     genre: '' ,
@@ -106,34 +116,47 @@ export const QuizzPage = () => {
     );
   }
 
+  const genreOptions = (genresList) => {
+    return (
+      <>
+        <div className=" m-3 field-radiobutton">
+          <RadioButton
+            inputId="genre1"
+            name="genre"
+            value={genresList}
+            onChange={(e) => setUserQuizzOptions(userOptions =>({...userOptions, genre: e.target.value.size })) }
+            checked={size === userQuizzOptions.genre}
+          />
+          <label>{genresList.genre}</label>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className='p-4 md:px-8'>
       <h2 className='text-center mb-6'>Quizz</h2>
 
       <h2>Clothes for </h2>
-      <div className='surface-200 animate__animated animate__fadeIn mb-4 flex flex-column justify-content-evenly align-items-center md:flex-row'>
-        <div className="col-11 sm:col-6 lg:col-4 inline-block" onClick={(e) => handleSelectedGenre(e)}>
-          <Card
-            onClick={(e) => handleSelectedGenre(e)}
-            title="Woman"
-            className={`hover:bg-primary cursor-pointer ${userQuizzOptions.genre === 'Woman' ? 'bg-primary': ''}`}
-            style={{transition: '0.2s linear'}}
-            header={ <img style={{borderRadius: '5px'}} title="Woman" alt="Woman" src={`${URL}/static/woman-img.jpg`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
-          />
-          </div>
 
-        <div className="col-11 sm:col-6 lg:col-4 inline-block" onClick={(e) => handleSelectedGenre(e)}>
-          <Card
-            onClick={(e) => handleSelectedGenre(e)}
-            title="Man"
-            className={`hover:bg-primary cursor-pointer ${userQuizzOptions.genre === 'Man' ? 'bg-primary': ''}`}
-            style={{transition: '0.2s linear'}}
-            header={ <img style={{borderRadius: '5px'}} title="Man" alt="Man" src={`${URL}/static/man-img.jpg`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'}/> }
+      <div
+        className="grid surface-0 mb-4 shadow-2"
+      >
+        <div className="col-3 bg-primary flex justify-content-center align-items-center font-bold text-lg">
+          Clothes for
+        </div>
+
+        <div className="col-9">
+          <Carousel
+            value={genres}
+            numVisible={5}
+            numScroll={5}
+            responsiveOptions={responsiveOptions}
+            itemTemplate={genreOptions}
           />
         </div>
       </div>
-
-
+      {/* ------------------------------------- */}
       <div
         className="grid surface-0 mb-4 shadow-2"
       >
@@ -152,7 +175,7 @@ export const QuizzPage = () => {
         </div>
       </div>
 
-      <div
+      {/* <div
         className="grid surface-0 mb-4 shadow-2"
       >
         <div className="col-3 bg-primary flex justify-content-center align-items-center font-bold text-lg">
@@ -204,7 +227,7 @@ export const QuizzPage = () => {
             itemTemplate={productTemplate}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

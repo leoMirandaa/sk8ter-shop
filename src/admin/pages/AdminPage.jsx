@@ -83,10 +83,7 @@ export const AdminPage = () => {
         const service = new DataService();
         let prods = await service.getCatalog();
         setViewProduct(prods);
-
-
     };
-
 
     const handleCodeChange = (e) => {
         let  copy = {...coupon};
@@ -97,7 +94,6 @@ export const AdminPage = () => {
 
 
     const handleCodeAdd = async () => {
-
         let couponSaved = {...coupon};
         couponSaved.discount = parseFloat(couponSaved.discount);
             //Validation
