@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { UserContext } from "./UserContext"
 
 export const UserProvider = ({children}) => {
@@ -9,13 +9,15 @@ export const UserProvider = ({children}) => {
 
   const [globalUser, setGlobalUser] = useState( initialState )
 
-  // if(localStorage.getItem('user') !== null) {
-  //   console.log('.... ', JSON.parse(localStorage.getItem('user')))
-  //   setGlobalUser(JSON.parse(localStorage.getItem('user')))
-  // }
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    // console.log('user...', user)
+    if( user ) {
+      setGlobalUser( user )
+    }
+  }, [])
 
   const handleSetGlobalUser = ( user ) => {
-    // console.log('User getted ', user);
     setGlobalUser( user )
   }
 

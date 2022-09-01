@@ -46,18 +46,16 @@ export const CreateProductPage = () => {
     else {
       const response = await createProduct(product)
       console.log('handleCreateProduct reponse ', response);
-
-      setProduct( initialProduct )
-
-      toast.current.show({severity:'success', summary: 'Success', detail:'Product created', life: 3000});
-
+      
       let formdata = new FormData()
       formdata.append('file', imageObject)
       console.log('file 2... ', imageObject);
-
+      
       console.log('formdata** ',formdata)
       await uploadImage(formdata)
-
+      
+      toast.current.show({severity:'success', summary: 'Success', detail:'Product created', life: 3000});
+      setProduct( initialProduct )
       navigate(-1)
     }
   }

@@ -3,7 +3,7 @@ import { AppRouter } from "./router/AppRouter"
 
 export const ClothingApp = () => {
   return (
-    <UserProvider>
+    <UserProvider >
       <AppRouter/>
     </UserProvider>
   )
