@@ -7,16 +7,13 @@ import { SplitButton } from 'primereact/splitbutton';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
 import { Badge } from 'primereact/badge';
-import { CartContext } from '../../clothing/context/CartContext';
 
 export const Navbarr = () => {
 
+
   const navigate = useNavigate()
   const { globalUser } = useContext( UserContext )
-  const { userCart } = useContext( CartContext )
   // console.log('Navbar ', globalUser);
-
-  console.log("*** ",userCart.numberOfProducts)
 
   const userOptions =  [
     {icon: 'pi pi-home', command: () => navigate('/home')},
@@ -53,14 +50,16 @@ export const Navbarr = () => {
 
 
   const end =
-
-
     // ( userInLocalStorage.name )
     ( globalUser.name )
     ?
       <div>
+        <h5 className='bg-primary'>
+
+        {/* {JSON.stringify(globalUser.cart.length)} */}
+        </h5>
         <Button
-          badge={ userCart.numberOfProducts }
+          badge={ globalUser.cart.length }
           className='p-button-primary p-button-rounded'
           onClick={() => navigate('/cart')}
         >

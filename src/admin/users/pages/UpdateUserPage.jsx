@@ -31,12 +31,10 @@ export const UpdateUserPage = () => {
     handleGetUser()
   },[])
 
-
   const handleGetUser = async() => {
     const user_request = await getUser(params.id)
     setUser(user_request.data)
   }
-
 
   const handleUpdateUser = async(user) => {
     setIsEmptyField(false)

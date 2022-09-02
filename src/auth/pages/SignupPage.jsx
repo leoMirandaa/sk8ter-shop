@@ -32,7 +32,9 @@ export const SignupPage = () => {
 				confirmPassword: '',
         country: '',
         city: '',
-        zip:''
+        zip:'',
+				cart: []
+				// cart: [ {productId: "", quantity: 0}]
 			},
 
 			validationSchema: basicSchema,
@@ -40,8 +42,8 @@ export const SignupPage = () => {
 			onSubmit: onSubmit
 		})
 
-		console.log('formik', formik );
-		console.log('errors ', formik.errors);
+		// console.log('formik', formik );
+		// console.log('errors ', formik.errors);
 
 
     const handleSignup = async() => {
@@ -151,7 +153,7 @@ export const SignupPage = () => {
 												value={ formik.values.zip }
 												onChange={ formik.handleChange }
 												onBlur={ formik.handleBlur }
-												type="number"
+												type="text"
 												className={`w-full ${ formik.errors.zip && formik.touched.zip ? 'input-invalid' : ''}`}
 
 											/>

@@ -20,11 +20,11 @@ export const WomenPage = () => {
 
   return (
     <div className="animate__animated animate__fadeIn">
-      <h1 className="text-center">Women</h1>
+      {/* <h1 className="text-center">Women</h1> */}
 
 
-      <div className="py-4 px-8 surface-50">
-        <Stepper />
+      <div className="py-4 px-8 surface-50 bg-primary">
+        {/* <Stepper /> */}
         <CarouselStyleAssessment />
       </div>
 

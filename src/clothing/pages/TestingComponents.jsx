@@ -1,50 +1,31 @@
-import { useContext, useEffect, useState } from 'react';
-import { InputText } from 'primereact/inputtext';
-import { UserContext } from '../../auth/context/UserContext';
+import { Button } from "primereact/button"
+import { useEffect, useState } from "react"
 
 export const TestingComponents = () => {
 
-  const { globalUser } = useContext( UserContext )
-  const [items, setItems] = useState([]);
+  const [name, setName] = useState('initalValue')
 
   useEffect(() => {
-    localStorage.setItem('items', JSON.stringify('michael'));
-  }, [items]);
+    console.log('name2', name)
+  }, [name])
 
 
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('items'));
-    console.log('items..', items);
-    if (items) {
-    setItems(items);
-    }
-  }, []);
-
+  const handleName = () => {
+    let i  = 0;
+    setName('changed')
+    console.log('name1', name)
+  }
 
   return (
-    <div className='p-6 surface-200'>
+    <div className="pink-200">
+      <h1>name: {name}</h1>
 
-      {/* <input
-        type="text"
-        onChange={ handleInputChange }
-        className="block"
-      />
-
-      <button
-        onClick={ saveData }
+      <Button
+        className="p-button-primary"
+        onClick={ handleName }
       >
-        Save
-      </button> */}
-
-      <br />
-      <hr />
-
-      <h1>{items}</h1>
-      <h2>{localStorage.getItem('user')}</h2>
-      <h2>{JSON.stringify(globalUser)}</h2>
-      <h3>{globalUser.name}</h3>
-
-
+        Button
+      </Button>
     </div>
   )
 }

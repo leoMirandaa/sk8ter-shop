@@ -1,20 +1,27 @@
-import { useContext } from "react"
-import { CartContext } from "../context/CartContext"
+import { useContext, useEffect } from "react"
+import { UserContext } from "../../auth/context/UserContext"
 
 export const Cart = () => {
 
-  const { userCart } = useContext( CartContext )
+  const { globalUser } = useContext( UserContext )
 
   return (
     <div className="min-h-screen" style={{background: '#EFF3F8'}}>
       <div className="p-4">
         {
-          userCart.numberOfProducts < 1
-          ? <h1>There no Items in Cart</h1>
-          :
+          // globalUser.cart.length < 1
+          // ? <h1>There no Items in Cart</h1>
+          // :
           <div>
             <div className="text-2xl">Cart</div>
-            <h3 className="bg-pink-500">{JSON.stringify(userCart)}</h3>
+            {/* <h3>You already have <b className="bg-primary p-1">{JSON.stringify(globalUser.cart.length)}</b> Products </h3> */}
+
+            {
+              globalUser?.cart?.map((cart, index) => (
+                <h2 key={ index } className="bg-pink-50 shadow-5 py-2">ProductId: {cart.productId} ------ Quantity: {cart.quantity}</h2>
+              ))
+            }
+
           </div>
         }
       </div>

@@ -4,7 +4,7 @@ import { CartContext } from './CartContext'
 export const CartProvider = ( {children} ) => {
 
   const initialState = {
-    numberOfProducts: 0,
+    numberOfProducts: 2,
     products: []
   }
 
