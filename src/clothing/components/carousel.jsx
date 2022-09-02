@@ -47,36 +47,26 @@ const CarouselStyleAssessment = () => {
         // productService.getProduct().then(data => setProducts(data.slice(0,9)));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    useEffect(() => {
-        console.log('globaluser changed');
-    }, [globalUser])
-
     const handleAddProduct = async( product ) => {
-        let productToAdd = {
-            productId: product._id,
-            quantity: 1
-        }
+      let productToAdd = {
+          productId: product._id,
+          quantity: 1
+      }
 
-        let data =
-        {...globalUser, cart: [...globalUser.cart, productToAdd]}
+      let data =
+      {...globalUser, cart: [...globalUser.cart, productToAdd]}
 
-        await	handleSetGlobalUser(data)
-
-        await	handleUpdateUser(globalUser._id, globalUser)
-
-				// await handleGetUser(globalUser._id)
+      await handleSetGlobalUser(data)
     }
+
+    useEffect(() => {
+        handleUpdateUser(globalUser._id, globalUser)
+    }, [globalUser])
 
 		const handleUpdateUser = async(id, user) => {
 			const response = await updateUser(id, user)
 			console.log('response ', response);
 		}
-
-		// const handleGetUser = async(id) => {
-
-		// 	const user_request = await getUser(id)
-		// 	handleSetGlobalUser(user_request.data)
-		// }
 
     const productTemplate = (product) => {
         return (

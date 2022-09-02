@@ -21,6 +21,7 @@ export const UserProvider = ({children}) => {
       setGlobalUser(serverUser.data)
     }
   }
+
   useEffect( () => {
     loadUserFromServer();
   }, [])
