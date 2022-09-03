@@ -17,7 +17,7 @@ export const UserProvider = ({children}) => {
     if( user ) {
       // setGlobalUser( user )
       let serverUser = await getUser(user._id)
-      console.log(serverUser);
+      // console.log(serverUser);
       setGlobalUser(serverUser.data)
     }
   }

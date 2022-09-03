@@ -54,13 +54,9 @@ export const Navbarr = () => {
     ( globalUser.name )
     ?
       <div>
-        <h5 className='bg-primary'>
-
-        {/* {JSON.stringify(globalUser.cart.length)} */}
-        </h5>
         <Button
           badge={ globalUser.cart.length }
-          className='p-button-primary p-button-rounded'
+          className='p-button-primary p-button-rounded mr-4'
           onClick={() => navigate('/cart')}
         >
           <i className="pi pi-shopping-cart"></i>

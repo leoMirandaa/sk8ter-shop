@@ -7,7 +7,7 @@ export const updateProduct = async(id, product) => {
   try {
     const response = await axios({
       url: `${URL}/api/product/${id}`,
-      data: product,
+      data: JSON.stringify(product),
       method: 'PUT',
       header: {
         'Content-Type': 'application/json'

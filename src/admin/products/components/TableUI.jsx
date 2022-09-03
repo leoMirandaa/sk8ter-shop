@@ -62,9 +62,6 @@ export const TableUI = ({ products, title, getProducts }) => {
       case "Bs":
         return "Boys"
 
-      case "Ts":
-        return "Teen boys"
-
       case "Mn":
         return "Men"
     }
