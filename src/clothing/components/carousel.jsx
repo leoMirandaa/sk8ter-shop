@@ -110,7 +110,7 @@ const CarouselStyleAssessment = () => {
 
             <div className="card">
                 <Carousel value={products} numVisible={3} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                    autoplayInterval={3000} itemTemplate={productTemplate} header={<div>Circular, AutoPlay, 3 Items per Page and Scroll by 1</div>} />
+                    autoplayInterval={3000} itemTemplate={productTemplate} header={<div></div>} />
             </div>
 
             {/* <div className="card">

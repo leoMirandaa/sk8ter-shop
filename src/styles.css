@@ -140,6 +140,10 @@ html,body {
   color: var(--primary-color) !important;
 }
 
+.p-scrolltop	{
+  background-color: var(--primary-color) !important;
+}
+
 /* .pi-bolt {
   color: var(--primary-color) !important;
 } */

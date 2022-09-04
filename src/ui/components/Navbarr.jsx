@@ -56,7 +56,7 @@ export const Navbarr = () => {
       <div>
         <Button
           badge={ globalUser.cart.length }
-          className='p-button-primary p-button-rounded mr-4'
+          className={`p-button-primary p-button-rounded mr-4  ${globalUser.name ==='admin' ?  'hidden': ''}`}
           onClick={() => navigate('/cart')}
         >
           <i className="pi pi-shopping-cart"></i>
