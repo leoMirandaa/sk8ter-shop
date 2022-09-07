@@ -18,18 +18,12 @@ export const Cart = () => {
   const [subTotal, setSubTotal] = useState(0)
 
   useEffect( () => {
-    // console.log("*** ... ", globalUser?.cart)
-    // console.log('useEffect ');
     handleProductsInCart();
   }, [])
 
   const handleProductsInCart = async() => {
     if(globalUser){
-      // console.log('....', globalUser?.cart)
       let result = await getProducts(globalUser)
-      console.log('-*-*',(result.data))
-      // console.log('-*-*result',JSON.parse(result.data[0]))
-      // setProductsInCart(JSON.parse(result.data[0]))
 
       let parsedJSON = []
       let subTotal = 0
@@ -38,7 +32,6 @@ export const Cart = () => {
         console.log('price: ', JSON.parse(result.data[i]).price);
         subTotal = (subTotal += JSON.parse(result.data[i]).price)
       }
-      // console.log(".......... ",parsedJSON)
       setProductsInCart(parsedJSON)
       setSubTotal(subTotal)
     }
@@ -62,7 +55,6 @@ export const Cart = () => {
           ? <div className="flex justify-content-center align-items-center mt-8 text-2xl opacity-70">There is not Items in Cart</div>
           :
           <div>
-            {/* <h3>You already have <b className="bg-primary p-1">{JSON.stringify(globalUser.cart.length)}</b> Products </h3> */}
             <div className="px-8">
               <div className="grid">
                 <div className="col-8">
@@ -97,9 +89,6 @@ export const Cart = () => {
 
                         <Divider />
                       </div>
-
-
-                        // <h2 key={ index } className="bg-pink-50 shadow-5 py-2">productsInCart: {productsInCart.title} ------ Quantity: {1}</h2>
                       ))
                     }
                   </Card>
@@ -126,8 +115,6 @@ export const Cart = () => {
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, nesciunt impedit repellat officia recusandae illo.</p>
                     </div>
 
-                    {/* <p className="m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p> */}
                   </Card>
                 </div>
                 </div>

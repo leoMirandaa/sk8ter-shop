@@ -6,8 +6,6 @@ import { ProductService } from '../../service/ProductService';
 
 import { Carousel } from 'primereact/carousel';
 import { Button } from 'primereact/button';
-// import './CarouselDemo.css';
-// import './carousel.css'
 const URL = import.meta.env.VITE_REACT_APP_URL
 
 const CarouselStyleAssessment = () => {
@@ -33,8 +31,6 @@ const CarouselStyleAssessment = () => {
         }
     ];
 
-
-
     const retrieveProducts = async() => {
         const product = new ProductService();
         let products = await product.getWomenProducts();
@@ -43,9 +39,7 @@ const CarouselStyleAssessment = () => {
 
     useEffect(() => {
         retrieveProducts()
-        // console.log( productService.getProduct().then(data => setProducts(data.slice(0,9))))
-        // productService.getProduct().then(data => setProducts(data.slice(0,9)));
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleAddProduct = async( product ) => {
       let productToAdd = {
@@ -92,8 +86,6 @@ const CarouselStyleAssessment = () => {
                                 onClick={ () => handleAddProduct(product) }
                             />
 
-                            {/* <Button icon="pi pi-star-fill" className=" p-button-secondary p-button-rounded mr-2" />
-                            <Button icon="pi pi-cog" className=" p-button-info p-button-rounded" /> */}
                         </div>
                     </div>
                 </div>
@@ -103,20 +95,11 @@ const CarouselStyleAssessment = () => {
 
     return (
         <div className="carousel-demo">
-            {/* <div className="card">
-                <Carousel value={products} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions}
-                    itemTemplate={productTemplate} header={<div>Basic</div>} />
-            </div> */}
 
             <div className="card">
                 <Carousel value={products} numVisible={3} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
                     autoplayInterval={3000} itemTemplate={productTemplate} header={<div></div>} />
             </div>
-
-            {/* <div className="card">
-                <Carousel value={products} numVisible={1} numScroll={1} orientation="vertical" verticalViewPortHeight="360px"
-                    itemTemplate={productTemplate} header={<div>Vertical</div>} style={{maxWidth: '400px', marginTop: '2em'}} />
-            </div> */}
         </div>
     );
 }

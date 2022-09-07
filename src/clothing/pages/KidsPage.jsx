@@ -3,22 +3,10 @@ import { useEffect, useState } from "react";
 import { DataService } from "../../service/dataService";
 import CarouselMen from "../components/CarouselMen";
 import CarouselTeenGirls from "../components/CarouselTeenGirls";
-// import Product from "../components/product";
-// import CarouselMen from "../components/carousel";
 
 export const KidsPage = () => {
 
   const [viewProduct, setViewProduct] = useState([]);
-
-  // const loadProduct = async () =>{
-  //   const service = new DataService();
-  //   let prods = await service.getMenCatalog();
-  //   setViewProduct(prods);
-  // };
-  // useEffect(() => {
-  //     loadProduct();
-
-  // }, []);
 
   return (
     <div className="animate__animated animate__fadeIn">

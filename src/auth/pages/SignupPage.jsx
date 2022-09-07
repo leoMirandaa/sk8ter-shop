@@ -16,9 +16,7 @@ export const SignupPage = () => {
     const navigate = useNavigate();
 
 		const onSubmit = async(values, actions) => {
-			// console.log('values ', values);
-			// console.log('actions ', actions);
-			// await new Promise((resolve) => setTimeout(resolve, 1000))
+
 			const users = await createUser(values);
 			toast.current.show({severity:'success', summary: 'Success', detail:'Account created', life: 3000});
 			actions.resetForm()
@@ -45,7 +43,6 @@ export const SignupPage = () => {
 		// console.log('formik', formik );
 		// console.log('errors ', formik.errors);
 
-
     const handleSignup = async() => {
         const users = await createUser(formik.values);
         toast.current.show({severity:'success', summary: 'Success', detail:'Account created', life: 3000});
@@ -71,7 +68,6 @@ export const SignupPage = () => {
 												onChange={ formik.handleChange }
 												onBlur={ formik.handleBlur }
 												type="text"
-												// className={`w-full ${ formik.errors.name && formik.touched.name ? 'p-invalid' : ''}`}
 												className={`w-full ${ formik.errors.name && formik.touched.name ? 'input-invalid' : ''}`}
 											/>
 
@@ -166,7 +162,6 @@ export const SignupPage = () => {
 									className='p-button-primary p-button-rounded mt-5 w-6 md:w-auto lg:md-auto flex m-auto'
 									type="submit"
 									disabled={ formik.isSubmitting }
-									// disabled={ Object.entries(formik.errors).length > 0 }
 								/>
 
 								<div className='flex justify-content-end'>
@@ -179,7 +174,6 @@ export const SignupPage = () => {
 							</form>
 
 						</Card>
-						{/* <Button onClick={showError} label="Error" className="p-button-danger" /> */}
 					</div>
         </div>
         </>

@@ -8,15 +8,7 @@ const URL = import.meta.env.VITE_REACT_APP_URL
 
 
 export const QuizzPage = () => {
-  // const initialState = [
-  //   {size: 'xs'},
-  //   {size: 'sm'},
-  //   {size: 'md'},
-  //   {size: 'lg'},
-  //   {size: 'xl'},
-  //   {size: '2xl'},
-  //   {size: '3xl'},
-  // ]
+
 
   const genresList = [
     { genre: 'Girl' },
@@ -174,60 +166,6 @@ export const QuizzPage = () => {
           />
         </div>
       </div>
-
-      {/* <div
-        className="grid surface-0 mb-4 shadow-2"
-      >
-        <div className="col-3 bg-primary flex justify-content-center align-items-center font-bold text-lg">
-          Dress
-        </div>
-
-        <div className="col-9">
-          <Carousel
-            value={products}
-            numVisible={5}
-            numScroll={5}
-            responsiveOptions={responsiveOptions}
-            itemTemplate={productTemplate}
-          />
-        </div>
-      </div>
-
-      <div
-        className="grid surface-0 mb-4 shadow-2"
-      >
-        <div className="col-3 bg-primary flex justify-content-center align-items-center font-bold text-lg">
-          Jeans
-        </div>
-
-        <div className="col-9">
-          <Carousel
-            value={products}
-            numVisible={5}
-            numScroll={5}
-            responsiveOptions={responsiveOptions}
-            itemTemplate={productTemplate}
-          />
-        </div>
-      </div>
-
-      <div
-        className="grid surface-0 mb-4 shadow-2"
-      >
-        <div className="col-3 bg-primary flex justify-content-center align-items-center font-bold text-lg">
-          Bra
-        </div>
-
-        <div className="col-9">
-          <Carousel
-            value={products}
-            numVisible={5}
-            numScroll={5}
-            responsiveOptions={responsiveOptions}
-            itemTemplate={productTemplate}
-          />
-        </div>
-      </div> */}
     </div>
   )
 }

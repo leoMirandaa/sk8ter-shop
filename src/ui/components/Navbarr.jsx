@@ -10,10 +10,8 @@ import { Badge } from 'primereact/badge';
 
 export const Navbarr = () => {
 
-
   const navigate = useNavigate()
   const { globalUser } = useContext( UserContext )
-  // console.log('Navbar ', globalUser);
 
   const userOptions =  [
     {icon: 'pi pi-home', command: () => navigate('/home')},
@@ -29,7 +27,6 @@ export const Navbarr = () => {
     {label: 'Admin', command: () => navigate('/admin')},
   ];
   const items = (globalUser.name === "admin") ? adminOptions : userOptions
-  // const items = adminOptions
   const profileButton = [
     {
       label: 'Settings',
@@ -48,9 +45,7 @@ export const Navbarr = () => {
 
   ]
 
-
   const end =
-    // ( userInLocalStorage.name )
     ( globalUser.name )
     ?
       <div>
@@ -65,7 +60,6 @@ export const Navbarr = () => {
 
         <SplitButton
           label= { globalUser?.name }
-          // label= "test"
           icon="pi pi-user "
           className='p-button-primary p-button-text p-button-oulined'
           model={profileButton}>
@@ -103,7 +97,6 @@ export const Navbarr = () => {
     <div>
       <Menubar
         className='navbar-menubar bg-primary '
-        // className='navbar-menubar  font-bold'
         model={items}
         start={start}
         end={end}

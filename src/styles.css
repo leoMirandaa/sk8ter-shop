@@ -1,5 +1,4 @@
 :root {
-  /* --blue: 0, 0, 255; */
   --blue: 0, 0, 255;
   --alpha: .44;
 }
@@ -13,23 +12,10 @@ html,body {
   display: inline-block !important;
 }
 
-.p-breadcrumb-chevron	{
-  /* color: var(--primary-color) !important; */
-}
-
-/* .p-menuitem-text, .p-menuitem-icon		{
-  color: var(--secondary-color) !important
-} */
-
 .p-menubar {
-  /* padding: .5rem; */
-  /* padding: .2rem; */
   font-size: 1.1rem;
   background-color: transparent !important;
   border: none;
-  /* border-radius: 0px; */
-  /* color: white !important; */
-  /* border-bottom: 1px solid lightgray; */
 }
 
 .p-datatable {
@@ -39,32 +25,25 @@ html,body {
 .home-page-bg,
 .login-page-bg,
 .signup-page-bg {
-  /* background-image: linear-gradient(#883CAE, #883cae89) !important; */
   min-height: 100vh !important;
   height: 100 !important;
-  /* background-color: var(--primary-color	); */
-  /* background-image: linear-gradient(var(--primary-color-text	) , var(--primary-color)) !important; */
   background-color: var(--primary-color);
 }
 
 .home-page-container,
 .admin-page-container {
   padding: 20px 0px;
-  /* background: rgb(235, 235, 235) !important; */
   max-width: 70rem;
   margin: 0 auto;
-  /* padding-top: 5rem; */
 }
 
 .input-invalid {
   border: solid 1px red;
-  /* background-color: rgba(255, 0, 0, 0.038); */
   animation: input-error .3s linear ;
 }
 
 @keyframes input-error {
   0% {
-    /* background-color: tomato; */
     transform: translateX(0px);
   }
 
@@ -108,12 +87,7 @@ html,body {
   color: green;
   padding: .5rem 0px;
   border-radius: 5px;
-  /* background-color: red; */
 }
-/* .p-menuitem-text		{
-  color: var(--text-color) !important;
-} */
-
 
 /* Dropdown */
 .p-dropdown {
@@ -143,30 +117,3 @@ html,body {
 .p-scrolltop	{
   background-color: var(--primary-color) !important;
 }
-
-/* .pi-bolt {
-  color: var(--primary-color) !important;
-} */
-
-
-/* .carousel-demo .product-item .product-item-content {
-  border: 1px solid var(--surface-d);
-  border-radius: 3px;
-  margin: .3rem;
-  text-align: center;
-  padding: 2rem 0;
-}
-
-.carousel-demo .product-item .product-image {
-  width: 50%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-} */
-
-
-/* .p-carousel,
-.p-carousel-indicators,
-.p-carousel-indicator,
-.p-highlight {
-  background: var(--primary-color) !important;
-  color: white !important;
-} */
