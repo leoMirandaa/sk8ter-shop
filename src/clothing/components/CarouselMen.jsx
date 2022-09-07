@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
 import { Button } from 'primereact/button';
 import { ProductService } from '../../service/ProductService';
-// import './CarouselDemo.css';
-// import './carousel.css'
+
 
 const URL = import.meta.env.VITE_REACT_APP_URL
 
@@ -38,9 +37,7 @@ const CarouselMen = () => {
 
     useEffect(() => {
         retrieveProducts()
-        // console.log( productService.getProduct().then(data => setProducts(data.slice(0,9))))
-        // productService.getProduct().then(data => setProducts(data.slice(0,9)));
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, []); 
 
     const productTemplate = (product) => {
         return (

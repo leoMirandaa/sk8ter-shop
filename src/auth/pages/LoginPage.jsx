@@ -7,7 +7,6 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 
-// import './login.css';
 import { authenticateUser } from '../helpers/authenticateUser';
 import { UserContext } from '../context/UserContext';
 import { useEffect } from 'react';
@@ -40,8 +39,6 @@ export const LoginPage = () => {
 		}else {
 			localStorage.setItem('user', JSON.stringify(authenticated.data))
 			await handleSetGlobalUser(authenticated.data)
-			// console.log('globaluser ', JSON.stringify(authenticated.data));
-			// localStorage.setItem('User', JSON.stringify(authenticated.data) );
 			navigate('/home')
 		}
 	}
@@ -50,7 +47,6 @@ export const LoginPage = () => {
 		<span>
 			<Button
 				label="Sign in"
-				// style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center'}}
 				className='p-button-primary p-button-rounded w-6 md:w-auto lg:md-auto flex m-auto'
 				onClick={() => handleSubmit()}
 			/>
@@ -94,7 +90,6 @@ export const LoginPage = () => {
 										type="text"
 										className='w-full'
 										ref={userNameInput}
-										// className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
 									/>
 									<label htmlFor="name">User name</label>
 							</span>
@@ -109,14 +104,12 @@ export const LoginPage = () => {
 											password: e.target.value
 										})}
 										className="w-full"
-										// className={`w-full lg:w-auto ${isEmptyField && 'p-invalid'}`}
 										type="password"
 									/>
 									<label htmlFor="password">Password</label>
 							</span>
 						</div>
 					</Card>
-					{/* <Button onClick={showError} label="Error" className="p-button-danger" /> */}
 				</div>
 			</div>
     </>
