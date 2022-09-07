@@ -33,8 +33,8 @@ export const SignupPage = () => {
         country: '',
         city: '',
         zip:'',
-				cart: []
-				// cart: [ {productId: "", quantity: 0}]
+				// cart: []
+				cart: [ {productId: "", quantity: 0}]
 			},
 
 			validationSchema: basicSchema,
