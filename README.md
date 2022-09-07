@@ -54,7 +54,7 @@
 
 </div>
 
-Images taked from freepik:
+**Images taked from freepik:**
 
 <a href="https://www.freepik.com/free-photo/joyful-preteen-kid-with-curly-hair-laughing-camera-studio-shot-carefree-little-girl-isolated-pink-background_12431989.htm#query=child&position=13&from_view=search">Image by lookstudio</a> on Freepik
 
