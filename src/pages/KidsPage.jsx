@@ -1,8 +1,8 @@
-import { Stepper } from "../components/Stepper";
+import { Stepper } from "../clothing/components/Stepper";
 import { useEffect, useState } from "react";
-import { DataService } from "../../service/dataService";
-import CarouselMen from "../components/CarouselMen";
-import CarouselTeenGirls from "../components/CarouselTeenGirls";
+import { DataService } from "../service/dataService";
+import CarouselMen from "../clothing/components/CarouselMen";
+import CarouselTeenGirls from "../clothing/components/CarouselTeenGirls";
 import { Card } from "primereact/card";
 
 export const KidsPage = () => {

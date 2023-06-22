@@ -1,7 +1,7 @@
-import { Stepper } from "../components/Stepper";
+import { Stepper } from "../clothing/components/Stepper";
 import { useEffect, useState } from "react";
-import { DataService } from "../../service/dataService";
-import CarouselMen from "../components/CarouselMen";
+import { DataService } from "../service/dataService";
+import CarouselMen from "../clothing/components/CarouselMen";
 
 export const MenPage = () => {
   const [viewProduct, setViewProduct] = useState([]);

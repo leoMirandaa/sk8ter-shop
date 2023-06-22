@@ -138,9 +138,41 @@ body {
   /* height: calc(100vh - 56px); */
 }
 
+@media (max-width: 768px) {
+  .splash {
+    background-position: -50px;
+  }
+}
+
 .splashScreen-text {
-  right: 15%;
-  top: 30%;
+  right: 5%;
+  top: 25%;
+  background-color: rgba(255, 255, 255, 0.448);
+  padding: 20px;
+  border-radius: 10px;
+  /* width: 600px; */
+  /* background-color: red; */
+  /* text-shadow: 0.5px 0.5px 0.5px var(--surface-ground); */
+}
+
+@media (max-width: 1024px) {
+  .splashScreen-text {
+    /* position: static; */
+    background-color: rgba(255, 255, 255, 0.448);
+    /* min-width: 100%; */
+    /* color: white; */
+    /* text-shadow: 0.5px 0.5px 0.5px black; */
+    /* right: 0; */
+  }
+
+  .price {
+    /* background-color: white; */
+    width: 300px;
+    text-shadow: 0px;
+
+    margin: 0 auto;
+    border-radius: 10px;
+  }
 }
 
 .menuContainer {

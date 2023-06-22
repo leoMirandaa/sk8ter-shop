@@ -17,7 +17,7 @@ import "primereact/resources/themes/tailwind-light/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css"; //icons
 import { ClothingApp } from "./ClothingApp";
-import "./styles.css";
+import "./styles/styles.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
