@@ -1,143 +1,135 @@
-
 import { useEffect, useState } from "react";
-import {DataService } from "../../service/dataService";
+import { DataService } from "../../service/dataService";
 
-import "./admin.css";
+// import "./admin.css";
 import { CardUI } from "../components";
 
 export const AdminPage = () => {
-    const[coupon, setCoupon] = useState({});
-    const[product, setProduct] = useState({});
-    const [allCoupons, setAllCoupons] = useState({});
+  const [coupon, setCoupon] = useState({});
+  const [product, setProduct] = useState({});
+  const [allCoupons, setAllCoupons] = useState({});
 
-    const[errorVisible, setErrorVisible] = useState(false);
-    const[errorMessage, setErrorMessage] = useState("");
-    const [viewCoupons, setViewCoupons] = useState([]);
-    const [viewProduct, setViewProduct] = useState([]);
+  const [errorVisible, setErrorVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [viewCoupons, setViewCoupons] = useState([]);
+  const [viewProduct, setViewProduct] = useState([]);
 
-    const cardData = [
-			{ title: "Users", icon: "pi-user" },
-			{ title: "Products", icon: "pi-shopping-cart" },
-			{ title: "Coupons", icon: "pi-ticket" }
-		]
+  const cardData = [
+    { title: "Users", icon: "pi-user" },
+    { title: "Products", icon: "pi-shopping-cart" },
+    { title: "Coupons", icon: "pi-ticket" },
+  ];
 
-    const handleTextChange = (e) => {
-        let  copy = {...product};
+  const handleTextChange = (e) => {
+    let copy = { ...product };
 
-        copy[e.target.name] = e.target.value;
-        setProduct(copy);
-    };
+    copy[e.target.name] = e.target.value;
+    setProduct(copy);
+  };
 
-    const showError = (text) => {
-        setErrorMessage(text);
-        setErrorVisible(true);
-
+  const showError = (text) => {
+    setErrorMessage(text);
+    setErrorVisible(true);
+  };
+  const handleItemAdd = async () => {
+    if (0) {
+      //never
+      return;
     }
-    const handleItemAdd = async () => {
-        if(0){
-            //never
-            return;
-        }
 
-        if (product.title.length < 4 ) {
-            showError("Error, title must have aleast 4 charaters");
-            return;
-        }
-        if (!product.styleType) {
-            showError("Error, Style type must be filled in");
-            return;
-        }
-        if (!product.image) {
-            showError("Error, image must be filled in");
-            return;
-        }
-        let savedProduct = {...product};
-        savedProduct.price = parseFloat(product.price);
+    if (product.title.length < 4) {
+      showError("Error, title must have aleast 4 charaters");
+      return;
+    }
+    if (!product.styleType) {
+      showError("Error, Style type must be filled in");
+      return;
+    }
+    if (!product.image) {
+      showError("Error, image must be filled in");
+      return;
+    }
+    let savedProduct = { ...product };
+    savedProduct.price = parseFloat(product.price);
 
-        if(!savedProduct.price || savedProduct.price < 1){
-            showError("Error, Price must be at least $1");
-        }
-        setErrorVisible(false);
+    if (!savedProduct.price || savedProduct.price < 1) {
+      showError("Error, Price must be at least $1");
+    }
+    setErrorVisible(false);
 
-        //send product to server
-        let service = new DataService();
-        let res = await service.saveProduct(savedProduct);
+    //send product to server
+    let service = new DataService();
+    let res = await service.saveProduct(savedProduct);
 
-        let copy = [...product];
-        copy.push(res);
-        setAllCoupons(copy);
-    };
+    let copy = [...product];
+    copy.push(res);
+    setAllCoupons(copy);
+  };
 
-    useEffect(() => {
-        loadProduct();//Catalog loading
-        loadCoupons();//Coupons loading
-    }, []);
+  useEffect(() => {
+    loadProduct(); //Catalog loading
+    loadCoupons(); //Coupons loading
+  }, []);
 
-    const loadCoupons = async () =>{
-        const service = new DataService();
-        let coupon = await service.getCoupons();
-        setViewCoupons(coupon);
-    };
+  const loadCoupons = async () => {
+    const service = new DataService();
+    let coupon = await service.getCoupons();
+    setViewCoupons(coupon);
+  };
 
-    const loadProduct = async () =>{
-        const service = new DataService();
-        let prods = await service.getCatalog();
-        setViewProduct(prods);
-    };
+  const loadProduct = async () => {
+    const service = new DataService();
+    let prods = await service.getCatalog();
+    setViewProduct(prods);
+  };
 
-    const handleCodeChange = (e) => {
-        let  copy = {...coupon};
+  const handleCodeChange = (e) => {
+    let copy = { ...coupon };
 
-        copy[e.target.name] = e.target.value;
-        setCoupon(copy);
-    };
+    copy[e.target.name] = e.target.value;
+    setCoupon(copy);
+  };
 
+  const handleCodeAdd = async () => {
+    let couponSaved = { ...coupon };
+    couponSaved.discount = parseFloat(couponSaved.discount);
+    //Validation
+    if (!coupon.discount || coupon.discount > 35) {
+      showError(
+        "Error, discount can not be greater than 35% or you must add your discount amount"
+      );
+      return;
+    }
 
-    const handleCodeAdd = async () => {
-        let couponSaved = {...coupon};
-        couponSaved.discount = parseFloat(couponSaved.discount);
-            //Validation
-        if (!coupon.discount || coupon.discount > 35) {
-            showError("Error, discount can not be greater than 35% or you must add your discount amount");
-            return
-        }
+    if (couponSaved.code.length < 5) {
+      showError("Error, Must be at least 5 charaters");
+      return;
+    }
 
-        if(couponSaved.code.length < 5){
-            showError("Error, Must be at least 5 charaters");
-            return;
-        }
+    setErrorVisible(false);
+    //send to server
 
-        setErrorVisible(false);
-        //send to server
+    let service = new DataService();
+    let res = await service.saveCoupon(couponSaved);
 
-        let service = new DataService();
-        let res = await service.saveCoupon(couponSaved);
+    let copy = [...coupon];
+    copy.push(res);
+    setAllCoupons(copy);
+  };
 
+  return (
+    <div className="usersContainer animate__animated animate__fadeIn">
+      {/* <div className="pt-4 text-xl font-bold" style={{textAlign: 'center'}}>Dasboard</div> */}
 
-        let copy = [...coupon];
-        copy.push(res);
-        setAllCoupons(copy);
-    };
-
-
-	return(
-	<div className="usersContainer animate__animated animate__fadeIn">
-
-		{/* <div className="pt-4 text-xl font-bold" style={{textAlign: 'center'}}>Dasboard</div> */}
-
-		<div className="admin-page-container flex flex-column align-items-center justify-content-evenly  h-screen md:pt-8 md:flex-row justify-content-evenly md:h-10rem  ">
-			{
-				cardData.map(card => (
-					<CardUI
-						key={ card.title }
-						title={ card.title }
-						icon={ card.icon }
-					/>
-				))
-			}
-		</div>
-
-	</div>
-	)
-
+      <div className=" flex flex-column align-items-center justify-content-evenly  h-screen md:pt-8 md:flex-row justify-content-evenly md:h-10rem  ">
+        {cardData.map((card) => (
+          <CardUI
+            key={card.title}
+            title={card.title}
+            icon={card.icon}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };

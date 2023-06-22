@@ -1,106 +1,147 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react";
+import PrimeReact from "primereact/api";
 
-import { UserContext } from '../../auth/context/UserContext';
+import { UserContext } from "../../auth/context/UserContext";
 
-import { Menubar } from 'primereact/menubar';
-import { SplitButton } from 'primereact/splitbutton';
-import { useNavigate } from 'react-router-dom';
-import { Button } from 'primereact/button';
-import { Badge } from 'primereact/badge';
+import { Menubar } from "primereact/menubar";
+import { SplitButton } from "primereact/splitbutton";
+import { useNavigate } from "react-router-dom";
+import { Button } from "primereact/button";
+import { Badge } from "primereact/badge";
+PrimeReact.ripple = true;
 
 export const Navbarr = () => {
+  const navigate = useNavigate();
+  const { globalUser } = useContext(UserContext);
+  const [theme, setTheme] = useState("light");
 
-  const navigate = useNavigate()
-  const { globalUser } = useContext( UserContext )
+  const changeMyTheme = () => {
+    console.log("...");
+    const newTheme = theme === "dark" ? "light" : "dark";
+    PrimeReact?.changeTheme?.(
+      `tailwind-${theme}`,
+      `tailwind-${newTheme}`,
+      "app-theme",
+      () => setTheme(newTheme)
+    );
+  };
+  // const changeMyTheme = () => {
+  //   console.log("...");
+  //   const newTheme = theme === "dark" ? "light" : "dark";
+  //   PrimeReact?.changeTheme?.(
+  //     `lara-${theme}-teal`,
+  //     `lara-${newTheme}-teal`,
+  //     "app-theme",
+  //     () => setTheme(newTheme)
+  //   );
+  // };
 
-  const userOptions =  [
-    {icon: 'pi pi-home', command: () => navigate('/home')},
-    {icon: 'pi pi-bolt', label: 'Quizz' ,command: () => navigate('/quizz')},
-    {label: 'Women', command: () => navigate('/women')},
-    {label: 'Men', command: () => navigate('/men')},
-    {label: 'Kids', command: () => navigate('/kids')},
-    {label: 'Discounts', command: () => navigate('/coupons')},
+  const userOptions = [
+    { icon: "pi pi-home", command: () => navigate("/home") },
+    { icon: "pi pi-bolt", label: "Quizz", command: () => navigate("/quizz") },
+    { label: "Women", command: () => navigate("/women") },
+    { label: "Men", command: () => navigate("/men") },
+    { label: "Kids", command: () => navigate("/kids") },
+    { label: "Discounts", command: () => navigate("/coupons") },
   ];
 
-  const adminOptions =  [
+  const adminOptions = [
     ...userOptions,
-    {label: 'Admin', command: () => navigate('/admin')},
+    { label: "Admin", command: () => navigate("/admin") },
   ];
-  const items = (globalUser.name === "admin") ? adminOptions : userOptions
+  const items =
+    globalUser.name === "admin" || "leo" ? adminOptions : userOptions;
   const profileButton = [
     {
-      label: 'Settings',
-      icon: 'pi pi-cog',
-      command: () => { navigate('/settings')}
+      label: "Settings",
+      icon: "pi pi-cog",
+      command: () => {
+        navigate("/settings");
+      },
     },
     {
-      label: 'LogOut',
-      icon: 'pi pi-power-off',
+      label: "LogOut",
+      icon: "pi pi-power-off",
       command: () => {
         localStorage.clear();
         location.reload();
-        navigate('/home')
-      }
+        navigate("/home");
+      },
     },
+  ];
 
-  ]
+  const end = globalUser.name ? (
+    <div>
+      <Button
+        text
+        className="p-button-primary mr-2"
+        onClick={() => changeMyTheme()}
+      >
+        <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
+      </Button>
+      <Button
+        badge={globalUser?.cart?.length}
+        className={`p-button-primary p-button-rounded mr-4  ${
+          globalUser.name === "admin" ? "hidden" : ""
+        }`}
+        onClick={() => navigate("/cart")}
+      >
+        <i className="pi pi-shopping-cart"></i>
+      </Button>
 
-  const end =
-    ( globalUser.name )
-    ?
-      <div>
-        <Button
-          badge={ globalUser.cart.length }
-          className={`p-button-primary p-button-rounded mr-4  ${globalUser.name ==='admin' ?  'hidden': ''}`}
-          onClick={() => navigate('/cart')}
-        >
-          <i className="pi pi-shopping-cart"></i>
-        </Button>
+      <SplitButton
+        label={globalUser?.name}
+        icon="pi pi-user "
+        className="p-button-primary p-button-text p-button-oulined"
+        model={profileButton}
+      ></SplitButton>
+    </div>
+  ) : (
+    <span>
+      <Button
+        text
+        className="p-button-primary mr-2"
+        onClick={() => changeMyTheme()}
+      >
+        <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
+      </Button>
 
+      <Button
+        label="Log in"
+        className="p-button-primary p-button-outlined  mr-2"
+        onClick={() => navigate("/login")}
+      />
 
-        <SplitButton
-          label= { globalUser?.name }
-          icon="pi pi-user "
-          className='p-button-primary p-button-text p-button-oulined'
-          model={profileButton}>
-        </SplitButton>
-      </div>
-    :
-      <span>
-        <Button
-          label="Log in"
-          className='p-button-primary p-button-outlined  mr-2'
-          onClick={ () => navigate('/login')}
-        />
+      <Button
+        label="Sign up"
+        className="p-button-secondary  "
+        onClick={() => navigate("/sigup")}
+      />
+    </span>
+  );
 
-        <Button
-          label="Sign up"
-          className='p-button-secondary  '
-          onClick={ () => navigate('/sigup')}
-        />
-
-      </span>
-
-
-    const start =
+  const start = (
     <div>
       <b
-        className='mr-6 text-primary'
-        style={{cursor: 'pointer'}}
-        onClick={ () => navigate('/home')}
+        className="mr-6 text-primary"
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate("/home")}
       >
         Clothing store
       </b>
     </div>
+  );
 
   return (
-    <div>
+    <div className="sticky top-0 z-2">
       <Menubar
-        className='navbar-menubar bg-primary '
+        className=""
+        // className="navbar-menubar bg-primary"
+        // style={{ backgroundColor: "var(--secondary-color)" }}
         model={items}
         start={start}
         end={end}
       />
     </div>
-  )
-}
+  );
+};
