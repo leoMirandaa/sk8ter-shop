@@ -72,13 +72,13 @@ export const Navbarr = () => {
 
   const end = globalUser.name ? (
     <div>
-      <Button
+      {/* <Button
         text
         className="p-button-primary mr-2"
         onClick={() => changeMyTheme()}
       >
         <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button>
+      </Button> */}
       <Button
         badge={globalUser?.cart?.length}
         className={`p-button-primary p-button-rounded mr-4  ${
@@ -98,13 +98,13 @@ export const Navbarr = () => {
     </div>
   ) : (
     <span>
-      <Button
+      {/* <Button
         text
         className="p-button-primary mr-2"
         onClick={() => changeMyTheme()}
       >
         <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button>
+      </Button> */}
 
       <Button
         label="Log in"
