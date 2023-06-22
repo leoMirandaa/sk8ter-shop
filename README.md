@@ -4,7 +4,7 @@
 
 ## Version 2.0.0
 
-<img title="Home image" alt="Home image" src="./public/images/cloting-store-home.jpg">
+<img title="Home image" alt="Home image" src="./public/images/clothing-store-home.jpg">
 
 <br />
 

@@ -8,7 +8,7 @@ body {
   padding: 0;
   margin: 0;
   /* font-size: 14px; */
-  background-color: var(--surface-ground);
+  /* background-color: var(--surface-ground); */
 }
 
 .validation {
@@ -113,7 +113,7 @@ body {
 }
 
 .p-menuitem-icon {
-  color: var(--primary-color) !important;
+  /* color: var(--primary-color) !important; */
 }
 
 .p-scrolltop {
@@ -131,7 +131,7 @@ body {
 
   /* background-position: 0 25%; */
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   min-height: 100%;
   z-index: 1;
 
@@ -145,7 +145,7 @@ body {
 }
 
 .splashScreen-text {
-  right: 5%;
+  right: 15%;
   top: 25%;
   background-color: rgba(255, 255, 255, 0.448);
   padding: 20px;
@@ -180,8 +180,52 @@ body {
 }
 
 .container {
-  max-width: 1300px;
-  width: 1200px;
+  max-width: 1200px;
+  /* width: 1000px; */
   margin: 0 auto;
   /* background-color: red; */
+}
+
+.p-menuitem-text {
+  /* color: #ffffff !important; */
+  /* text-decoration: underline;
+  text-decoration-color: var(--primary-color) !important;
+  text-decoration-style: wavy; */
+}
+
+/* @font-face {
+  font-family: proxima;
+  src: url(../../public/proximanova-regular.otf);
+}
+
+.nova-bold {
+  font-family: proxima;
+} */
+
+/* E8DCD2 */
+
+a {
+  text-decoration: none;
+  color: var(--text-color-secondary);
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--text-color-secondary) !important;
+  text-decoration-style: wavy;
+}
+
+.card-text {
+  background: #ffffffd3;
+  color: #000000;
+  padding: 5px;
+  position: absolute;
+  text-align: center;
+}
+
+.card-container {
+  border-radius: 10px;
+  width: 320px;
+  height: auto;
+  overflow: hidden;
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import PrimeReact from "primereact/api";
 
 import { UserContext } from "../auth/context/UserContext";
@@ -7,10 +7,9 @@ import { Menubar } from "primereact/menubar";
 import { SplitButton } from "primereact/splitbutton";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
-import { Badge } from "primereact/badge";
 PrimeReact.ripple = true;
 
-export const Navbarr = () => {
+export const Navbar = () => {
   const navigate = useNavigate();
   const { globalUser } = useContext(UserContext);
   const [theme, setTheme] = useState("light");
@@ -37,12 +36,33 @@ export const Navbarr = () => {
   // };
 
   const userOptions = [
-    { icon: "pi pi-home", command: () => navigate("/home") },
-    { icon: "pi pi-bolt", label: "Quizz", command: () => navigate("/quizz") },
+    // { icon: "pi pi-home", command: () => navigate("/home") },
+    { label: "Quizz", command: () => navigate("/quizz") },
     { label: "Women", command: () => navigate("/women") },
-    { label: "Men", command: () => navigate("/men") },
+    {
+      label: "Men",
+      items: [
+        {
+          label: "Left",
+          icon: "pi pi-fw pi-align-left",
+        },
+        {
+          label: "Right",
+          icon: "pi pi-fw pi-align-right",
+          command: () => navigate("/men"),
+        },
+        {
+          label: "Center",
+          icon: "pi pi-fw pi-align-center",
+        },
+        {
+          label: "Justify",
+          icon: "pi pi-fw pi-align-justify",
+        },
+      ],
+    },
     { label: "Kids", command: () => navigate("/kids") },
-    { label: "Discounts", command: () => navigate("/coupons") },
+    { label: "Sale", command: () => navigate("/coupons") },
   ];
 
   const adminOptions = [
@@ -81,7 +101,7 @@ export const Navbarr = () => {
       </Button> */}
       <Button
         badge={globalUser?.cart?.length}
-        className={`p-button-primary p-button-rounded mr-4  ${
+        className={`p-button-rounded mr-4  ${
           globalUser.name === "admin" ? "hidden" : ""
         }`}
         onClick={() => navigate("/cart")}
@@ -92,7 +112,7 @@ export const Navbarr = () => {
       <SplitButton
         label={globalUser?.name}
         icon="pi pi-user "
-        className="p-button-primary p-button-text p-button-oulined"
+        className=" p-button-text p-button-oulined"
         model={profileButton}
       ></SplitButton>
     </div>
@@ -108,7 +128,7 @@ export const Navbarr = () => {
 
       <Button
         label="Log in"
-        className="p-button-primary p-button-outlined  mr-2"
+        className="p-button-outlined  mr-2"
         onClick={() => navigate("/login")}
       />
 
@@ -123,19 +143,19 @@ export const Navbarr = () => {
   const start = (
     <div>
       <b
-        className="mr-6 text-primary"
+        className="mr-6 text-2xl text-primary"
         style={{ cursor: "pointer" }}
         onClick={() => navigate("/home")}
       >
-        Clothing store
+        Clothing Style
       </b>
     </div>
   );
 
   return (
-    <div className="sticky top-0 z-2">
+    <div className="		sticky top-0 z-2">
       <Menubar
-        className=""
+        className="surface-0 font-bold"
         // className="navbar-menubar bg-primary"
         // style={{ backgroundColor: "var(--secondary-color)" }}
         model={items}
