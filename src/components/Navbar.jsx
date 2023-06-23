@@ -39,28 +39,7 @@ export const Navbar = () => {
     // { icon: "pi pi-home", command: () => navigate("/home") },
     { label: "Quizz", command: () => navigate("/quizz") },
     { label: "Women", command: () => navigate("/women") },
-    {
-      label: "Men",
-      items: [
-        {
-          label: "Left",
-          icon: "pi pi-fw pi-align-left",
-        },
-        {
-          label: "Right",
-          icon: "pi pi-fw pi-align-right",
-          command: () => navigate("/men"),
-        },
-        {
-          label: "Center",
-          icon: "pi pi-fw pi-align-center",
-        },
-        {
-          label: "Justify",
-          icon: "pi pi-fw pi-align-justify",
-        },
-      ],
-    },
+    { label: "Men", command: () => navigate("/men") },
     { label: "Kids", command: () => navigate("/kids") },
     { label: "Sale", command: () => navigate("/coupons") },
   ];
@@ -143,7 +122,7 @@ export const Navbar = () => {
   const start = (
     <div>
       <b
-        className="mr-6 text-2xl text-primary"
+        className="text-3xl text-primary mr-4"
         style={{ cursor: "pointer" }}
         onClick={() => navigate("/home")}
       >
@@ -153,7 +132,7 @@ export const Navbar = () => {
   );
 
   return (
-    <div className="		sticky top-0 z-2">
+    <div className="sticky top-0 z-2">
       <Menubar
         className="surface-0 font-bold"
         // className="navbar-menubar bg-primary"

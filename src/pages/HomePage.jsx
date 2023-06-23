@@ -12,7 +12,7 @@ export const HomePage = () => {
     >
       <div className="animate__animated animate__fadeIn splash relative">
         <div className="absolute splashScreen-text text-center">
-          <h2 className="text-5xl lg:text-6xl m-0">Find your style!</h2>
+          <h2 className="text-5xl lg:text-6xl m-0">Find your style</h2>
           <p className="text-2xl">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
