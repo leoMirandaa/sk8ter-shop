@@ -8,7 +8,7 @@ export const HomePage = () => {
     // <div style={{ backgroundColor: "#E8DCD2" }}>
     <div
       className="animate__animated animate__fadeIn"
-      style={{ backgroundColor: "var(--primary-color)" }}
+      // style={{ backgroundColor: "var(--primary-color)" }}
     >
       <div className="animate__animated animate__fadeIn splash relative">
         <div className="absolute splashScreen-text text-center">
@@ -35,23 +35,28 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <div
-        style={{ display: "flex", justifyContent: "center" }}
-        className=" grid container py-5"
-      >
-        {categories.map((category) => (
-          <div
-            style={{ display: "flex", justifyContent: "center" }}
-            className="sm:col-11 md:col-6 lg:col-4"
-          >
-            <CategoryCard
-              className="catalog"
+      <div style={{ backgroundColor: "var(--primary-color)" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+          className=" grid container py-5"
+        >
+          {categories.map((category) => (
+            <div
               key={category.title}
-              title={category.title}
-              img={category.img}
-            />
-          </div>
-        ))}
+              style={{ display: "flex", justifyContent: "center" }}
+              className="sm:col-11 md:col-6 lg:col-4"
+            >
+              <CategoryCard
+                className="catalog"
+                title={category.title}
+                img={category.img}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

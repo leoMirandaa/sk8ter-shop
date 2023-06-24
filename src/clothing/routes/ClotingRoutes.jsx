@@ -1,25 +1,20 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminRoutes } from "../../admin/routes/AdminRoutes";
-import { Navbar } from "../../components/Navbar";
 import { ImagesPage } from "../pages/ImagesPage";
 import { Layout } from "../../components/Layout";
 
 import {
   HomePage,
-  WomenPage,
-  MenPage,
-  KidsPage,
   CouponsPage,
   QuizzPage,
   Cart,
   TestingComponents,
 } from "../../pages";
+import { KidsPage, MenPage, WomenPage } from "../../pages/category";
 
 export const ClothingRoutes = () => {
   return (
-    // <div className="animate__animated animate__fadeIn usersContainer" style={{minHeight: '100vh'}}>
     <div className="animate__animated animate__fadeIn">
-      {/* <Navbar /> */}
       <Layout>
         <Routes>
           <Route

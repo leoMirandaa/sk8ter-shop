@@ -108,13 +108,13 @@ export const Navbar = () => {
       <Button
         label="Log in"
         className="p-button-outlined  mr-2"
-        onClick={() => navigate("/login")}
+        onClick={() => navigate("/sign_in")}
       />
 
       <Button
         label="Sign up"
         className="p-button-secondary  "
-        onClick={() => navigate("/sigup")}
+        onClick={() => navigate("/sign_up")}
       />
     </span>
   );
