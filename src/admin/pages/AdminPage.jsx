@@ -118,18 +118,19 @@ export const AdminPage = () => {
   };
 
   return (
-    <div className="usersContainer animate__animated animate__fadeIn">
-      {/* <div className="pt-4 text-xl font-bold" style={{textAlign: 'center'}}>Dasboard</div> */}
-
-      <div className=" flex flex-column align-items-center justify-content-evenly  h-screen md:pt-8 md:flex-row justify-content-evenly md:h-10rem  ">
-        {cardData.map((card) => (
-          <CardUI
-            key={card.title}
-            title={card.title}
-            icon={card.icon}
-          />
-        ))}
-      </div>
+    // <div className="usersContainer animate__animated animate__fadeIn ">
+    <div
+      // style={{ height: "calc(100vh - 223.5px)" }}
+      className="flex flex-column md:flex-row align-items-center md:align-items-start justify-content-evenly flex-grow-1"
+    >
+      {cardData.map((card) => (
+        <CardUI
+          key={card.title}
+          title={card.title}
+          icon={card.icon}
+        />
+      ))}
     </div>
+    // </div>
   );
 };
