@@ -2,7 +2,6 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 import { LoginPage } from "../auth/pages";
 import { ClothingRoutes } from "../clothing/routes/ClotingRoutes";
-import { AdminLoginPage } from "../admin/auth/adminLogin";
 import { SignupPage } from "../auth/pages/SignupPage";
 
 // import { Layout } from "../components/Layout";
@@ -31,11 +30,6 @@ export const AppRouter = () => {
           }
         />
       </Route>
-
-      <Route
-        path="adminLogin"
-        element={<AdminLoginPage />}
-      />
 
       <Route
         path="/*"

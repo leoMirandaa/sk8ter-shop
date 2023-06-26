@@ -183,7 +183,10 @@ body {
   max-width: 1200px;
   /* width: 1000px; */
   margin: 0 auto;
-  /* background-color: red; */
+}
+
+.padding-container {
+  padding: 4rem;
 }
 
 .p-menuitem-text {

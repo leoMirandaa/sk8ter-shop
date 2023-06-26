@@ -8,7 +8,7 @@ export const Layout = ({ children }) => {
       <div
         // className="bg-primary"
         // style={{ background: "#E8DCD2", minHeight: "calc(100vh - 175.5px)" }}
-        className="surface-ground p-4"
+        className="surface-ground"
         style={{ minHeight: "calc(100vh - 175.5px)" }}
       >
         {children}
