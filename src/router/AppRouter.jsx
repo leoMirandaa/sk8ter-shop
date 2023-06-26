@@ -1,12 +1,10 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 
-import { LoginPage } from "../auth/pages";
-import { ClothingRoutes } from "../clothing/routes/ClotingRoutes";
-import { SignupPage } from "../auth/pages/SignupPage";
+import { Login } from "../pages/auth";
+import { ClothingRoutes } from "./ClothingRoutes";
+import { Register } from "../pages/auth";
 
 // import { Layout } from "../components/Layout";
-import { ImagesPage } from "../clothing/pages/ImagesPage";
-import { AdminRoutes } from "../admin/routes/AdminRoutes";
 import { AuthLayout } from "../components/AuthLayout";
 export const AppRouter = () => {
   return (
@@ -14,11 +12,11 @@ export const AppRouter = () => {
       <Route element={<AuthLayout />}>
         <Route
           path="sign_in"
-          element={<LoginPage />}
+          element={<Login />}
         />
         <Route
           path="sign_up"
-          element={<SignupPage />}
+          element={<Register />}
         />
         <Route
           path="/users/*"

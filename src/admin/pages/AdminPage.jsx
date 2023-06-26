@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DataService } from "../../service/dataService";
+import { DataService } from "../../services/dataService";
 
 // import "./admin.css";
 import { CardUI } from "../components";

@@ -1,5 +1,4 @@
-export * from './CreateUserPage'
-export * from './DetailsUserPage'
-export * from './UpdateUserPage'
-export * from './UsersPage'
-
+export * from "./CreateUserPage";
+export * from "./DetailsUserPage";
+export * from "./UpdateUserPage";
+export * from "./UsersPage";

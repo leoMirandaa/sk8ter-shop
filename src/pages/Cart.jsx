@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
-import { UserContext } from "../auth/context/UserContext";
+import { UserContext } from "./auth/context/UserContext";
 import { Divider } from "primereact/divider";
-import { ScrollTop } from "primereact/scrolltop";
 
-import { getProducts } from "../clothing/helpers";
+import { getProducts } from "../services/clothingCategory/getProducts";
 
 const URL = import.meta.env.VITE_REACT_APP_URL;
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DataService } from "../../service/dataService";
+import { DataService } from "../../services/dataService";
 // import CarouselStyleAssessment from "../components/carousel";
 
 export const WomenPage = () => {

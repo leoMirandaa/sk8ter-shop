@@ -1,5 +1,4 @@
-import { Stepper } from "../../clothing/components/Stepper";
-import CarouselMen from "../../clothing/components/CarouselMen";
+import CarouselMen from "../../components/CarouselMen";
 
 export const MenPage = () => {
   return (
@@ -7,7 +6,6 @@ export const MenPage = () => {
       <h1 className="text-center">Men</h1>
 
       <div className="py-4 px-8 surface-50">
-        <Stepper />
         <CarouselMen />
       </div>
     </div>

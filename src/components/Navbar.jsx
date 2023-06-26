@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import PrimeReact from "primereact/api";
 
-import { UserContext } from "../auth/context/UserContext";
+import { UserContext } from "../pages/auth/context/UserContext";
 
 import { Menubar } from "primereact/menubar";
 import { SplitButton } from "primereact/splitbutton";
