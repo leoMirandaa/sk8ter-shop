@@ -5,11 +5,12 @@ import {
   UpdateUserPage,
   UsersPage,
 } from "../users";
+
 import {
   CreateProductPage,
   DetailsProductPage,
   UpdateProductPage,
-} from "../products";
+} from "../../pages/admin/products";
 
 import { AddNewCoupon } from "../../pages/admin/coupons/addNewCoupon";
 import { UpdateCoupon } from "../../pages/admin/coupons/updateCoupon";
