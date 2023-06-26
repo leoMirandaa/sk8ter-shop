@@ -1,10 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+
 import {
   CreateUserPage,
   DetailsUserPage,
   UpdateUserPage,
   UsersPage,
-} from "../users";
+} from "../../pages/users";
 
 import {
   CreateProductPage,
