@@ -37,11 +37,10 @@ export const Navbar = () => {
 
   const userOptions = [
     // { icon: "pi pi-home", command: () => navigate("/home") },
-    { label: "Quizz", command: () => navigate("/quizz") },
     { label: "Women", command: () => navigate("/women") },
     { label: "Men", command: () => navigate("/men") },
     { label: "Kids", command: () => navigate("/kids") },
-    { label: "Sale", command: () => navigate("/coupons") },
+    { label: "Sale", command: () => navigate("/sale") },
   ];
 
   const adminOptions = [

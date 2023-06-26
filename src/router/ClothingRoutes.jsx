@@ -2,8 +2,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminRoutes } from "../admin/routes/AdminRoutes";
 import { Layout } from "../components/Layout";
 
-import { HomePage, CouponsPage, QuizzPage, Cart } from "../pages";
-import { KidsPage, MenPage, WomenPage } from "../pages/category";
+import { HomePage, Cart } from "../pages";
+import { KidsPage, MenPage, WomenPage, SalePage } from "../pages/clothing";
 
 export const ClothingRoutes = () => {
   return (
@@ -14,10 +14,7 @@ export const ClothingRoutes = () => {
             path="home"
             element={<HomePage />}
           />
-          <Route
-            path="quizz"
-            element={<QuizzPage />}
-          />
+
           <Route
             path="women"
             element={<WomenPage />}
@@ -31,8 +28,8 @@ export const ClothingRoutes = () => {
             element={<KidsPage />}
           />
           <Route
-            path="coupons"
-            element={<CouponsPage />}
+            path="sale"
+            element={<SalePage />}
           />
 
           <Route

@@ -1,10 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import {
-  CouponsPage,
-  CreateCouponPage,
-  DetailsCouponPage,
-  UpdateCouponPage,
-} from "../coupons";
+import { Navigate, Route, Routes } from "react-router-dom";
 import {
   CreateUserPage,
   DetailsUserPage,
@@ -14,15 +8,15 @@ import {
 import {
   CreateProductPage,
   DetailsProductPage,
-  ProductsPage,
   UpdateProductPage,
 } from "../products";
-import { AdminPage } from "../pages";
-import { useEffect, useState } from "react";
+
+import { AddNewCoupon } from "../../pages/admin/coupons/addNewCoupon";
+import { UpdateCoupon } from "../../pages/admin/coupons/updateCoupon";
+import { Coupons } from "../../pages/admin/coupons";
+import { AdminPage } from "../../pages/admin/index";
 
 export const AdminRoutes = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <Routes>
@@ -51,39 +45,29 @@ export const AdminRoutes = () => {
 
         <Route
           path="coupons"
-          element={<CouponsPage />}
-        >
-          <Route
-            index
-            element={<DetailsCouponPage />}
-          />
-          <Route
-            path="create"
-            element={<CreateCouponPage />}
-          />
-          <Route
-            path="update/:id"
-            element={<UpdateCouponPage />}
-          />
-        </Route>
+          element={<Coupons />}
+        />
+        <Route
+          path="create"
+          element={<AddNewCoupon />}
+        />
+        <Route
+          path="update/:id"
+          element={<UpdateCoupon />}
+        />
 
         <Route
           path="products"
-          element={<ProductsPage />}
-        >
-          <Route
-            index
-            element={<DetailsProductPage />}
-          />
-          <Route
-            path="create"
-            element={<CreateProductPage />}
-          />
-          <Route
-            path="update/:id"
-            element={<UpdateProductPage />}
-          />
-        </Route>
+          element={<DetailsProductPage />}
+        />
+        <Route
+          path="create"
+          element={<CreateProductPage />}
+        />
+        <Route
+          path="update/:id"
+          element={<UpdateProductPage />}
+        />
 
         <Route
           path="/*"

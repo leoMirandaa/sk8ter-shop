@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DataService } from "../../services/dataService";
 
 // import "./admin.css";
-import { CardUI } from "../components";
+import { CardUI } from "../../admin/components/CardUI";
 
 export const AdminPage = () => {
   const [coupon, setCoupon] = useState({});
