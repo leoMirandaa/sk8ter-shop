@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-import { FormUI } from "../../components/users";
-import { getUser, updateUser } from "../../services/users";
+import { FormUI } from "../../../components/users";
+import { getUser, updateUser } from "../../../services/users";
 
 import { BreadCrumb } from "primereact/breadcrumb";
 import { Toast } from "primereact/toast";

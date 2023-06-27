@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Card } from "primereact/card";
-import "../styles/AdminDashboardCard.css";
+import "../styles/adminDashboardCard.css";
 
 export const CardUI = ({ title, icon }) => {
   const navigate = useNavigate();

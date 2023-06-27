@@ -4,10 +4,9 @@ import {
   CreateUserPage,
   DetailsUserPage,
   UpdateUserPage,
-} from "../pages/users";
+} from "../pages/admin/users";
 
-import { UsersPage } from "../pages/users/usersPage";
-
+import { UsersPage } from "../pages/admin/users/UsersPage";
 import {
   CreateProductPage,
   DetailsProductPage,
@@ -18,6 +17,7 @@ import { AddNewCoupon } from "../pages/admin/coupons/addNewCoupon";
 import { UpdateCoupon } from "../pages/admin/coupons/updateCoupon";
 import { Coupons } from "../pages/admin/coupons";
 import { AdminPage } from "../pages/admin/index";
+import { AdminLayout } from "../components/AdminLayout";
 
 export const AdminRoutes = () => {
   return (
@@ -25,52 +25,58 @@ export const AdminRoutes = () => {
       <Routes>
         <Route
           path="/"
-          element={<AdminPage />}
-        />
-
-        <Route
-          path="users"
-          element={<UsersPage />}
+          element={<AdminLayout />}
         >
           <Route
             index
-            element={<DetailsUserPage />}
+            element={<AdminPage />}
           />
-          <Route
-            path="create"
-            element={<CreateUserPage />}
-          />
-          <Route
-            path="update/:id"
-            element={<UpdateUserPage />}
-          />
+
+          <Route path="users">
+            <Route
+              index
+              element={<DetailsUserPage />}
+            />
+            <Route
+              path="create"
+              element={<CreateUserPage />}
+            />
+            <Route
+              path="update/:id"
+              element={<UpdateUserPage />}
+            />
+          </Route>
+
+          <Route path="coupons">
+            <Route
+              index
+              element={<Coupons />}
+            />
+            <Route
+              path="create"
+              element={<AddNewCoupon />}
+            />
+            <Route
+              path="update/:id"
+              element={<UpdateCoupon />}
+            />
+          </Route>
+
+          <Route path="products">
+            <Route
+              index
+              element={<DetailsProductPage />}
+            />
+            <Route
+              path="create"
+              element={<CreateProductPage />}
+            />
+            <Route
+              path="update/:id"
+              element={<UpdateProductPage />}
+            />
+          </Route>
         </Route>
-
-        <Route
-          path="coupons"
-          element={<Coupons />}
-        />
-        <Route
-          path="create"
-          element={<AddNewCoupon />}
-        />
-        <Route
-          path="update/:id"
-          element={<UpdateCoupon />}
-        />
-
-        <Route
-          path="products"
-          element={<DetailsProductPage />}
-        />
-        <Route
-          path="create"
-          element={<CreateProductPage />}
-        />
-        <Route
-          path="update/:id"
-          element={<UpdateProductPage />}
-        />
 
         <Route
           path="/*"

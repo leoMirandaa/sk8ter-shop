@@ -118,11 +118,7 @@ export const AdminPage = () => {
   };
 
   return (
-    // <div className="usersContainer animate__animated animate__fadeIn ">
-    <div
-      // style={{ height: "calc(100vh - 223.5px)" }}
-      className="flex flex-column md:flex-row align-items-center md:align-items-start justify-content-evenly flex-grow-1"
-    >
+    <div className="animate__animated animate__fadeIn fullWidthHeight flex flex-column md:flex-row align-items-center md:align-items-start justify-content-evenly">
       {cardData.map((card) => (
         <CardUI
           key={card.title}
@@ -131,6 +127,5 @@ export const AdminPage = () => {
         />
       ))}
     </div>
-    // </div>
   );
 };

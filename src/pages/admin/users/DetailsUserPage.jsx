@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TableUI, SkeletonUI } from "../../components/users";
-import { getAllUsers, getUserByName } from "../../services/users";
+import { TableUI, SkeletonUI } from "../../../components/users";
+import { getAllUsers, getUserByName } from "../../../services/users";
 
 import { BreadCrumb } from "primereact/breadcrumb";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 
-import "./usersPage";
+import "./usersPage.css";
 
 export const DetailsUserPage = () => {
   const [users, setUsers] = useState([]);
