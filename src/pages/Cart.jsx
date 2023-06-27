@@ -48,7 +48,7 @@ export const Cart = () => {
   );
 
   return (
-    <div>
+    <div className="p-4">
       {globalUser?.cart?.length < 1 ? (
         <div className="flex justify-content-center align-items-center mt-8 text-2xl opacity-70">
           There is not Items in Cart

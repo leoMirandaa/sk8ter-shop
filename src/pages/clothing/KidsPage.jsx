@@ -3,9 +3,7 @@ import { Card } from "primereact/card";
 export const KidsPage = () => {
   return (
     <div className="animate__animated animate__fadeIn">
-      <h1 className="text-center">Teen Girl</h1>
-
-      <Card className="py-4 px-8"></Card>
+      <h1 className="mt-0 text-center">Kids</h1>
     </div>
   );
 };

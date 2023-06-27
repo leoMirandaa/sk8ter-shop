@@ -55,7 +55,7 @@ export const Table = ({ coupons, title, getCoupons }) => {
 
       <Card
         title={title}
-        className="w-full lg:w-10"
+        className="w-full lg:w-10 animate__animated animate__fadeInLeft"
       >
         {/* <Card title={title}> */}
         <DataTable

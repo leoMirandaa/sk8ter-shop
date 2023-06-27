@@ -228,7 +228,7 @@ a:hover {
 }
 
 .fullWidthHeight {
-  min-height: calc(100vh - 175.5px);
-  padding: 2rem;
+  min-height: calc(100vh - 223.5px);
+  /* padding: 2rem; */
   /* background-color: var(--primary-color); */
 }

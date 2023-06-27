@@ -82,7 +82,7 @@ export const Coupons = () => {
   };
 
   return (
-    <>
+    <div>
       {isLoading ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <TableSkeleton fields={skeletonFields} />
@@ -104,6 +104,6 @@ export const Coupons = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
