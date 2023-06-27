@@ -123,7 +123,7 @@ export const TableUI = ({ products, title, getProducts }) => {
       <Card
         title={title}
         // className="min-w-full md:min-w-0">
-        className="w-full lg:w-10"
+        className="w-full lg:w-10 animate__animated animate__fadeInLeft"
       >
         {/* <Card title={title}> */}
         <DataTable
@@ -135,7 +135,7 @@ export const TableUI = ({ products, title, getProducts }) => {
           selection
           stripedRows
           dataKey="id"
-          // scrollHeight="400px"
+          scrollHeight="380px"
           breakpoint="950px"
           paginator
           rows={8}
