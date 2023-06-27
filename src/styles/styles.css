@@ -15,12 +15,6 @@ body {
   display: inline-block !important;
 }
 
-.p-menubar {
-  /* font-size: 1.1rem; */
-  /* background-color: transparent !important; */
-  /* border: none; */
-}
-
 .p-datatable {
   border: solid 1px lightgray;
 }
@@ -231,4 +225,10 @@ a:hover {
   width: 320px;
   height: auto;
   overflow: hidden;
+}
+
+.fullWidthHeight {
+  min-height: calc(100vh - 175.5px);
+  padding: 2rem;
+  /* background-color: var(--primary-color); */
 }

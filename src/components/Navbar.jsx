@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import PrimeReact from "primereact/api";
 
-import { UserContext } from "../auth/context/UserContext";
+import { UserContext } from "../pages/auth/context/UserContext";
 
 import { Menubar } from "primereact/menubar";
 import { SplitButton } from "primereact/splitbutton";
@@ -37,11 +37,10 @@ export const Navbar = () => {
 
   const userOptions = [
     // { icon: "pi pi-home", command: () => navigate("/home") },
-    { label: "Quizz", command: () => navigate("/quizz") },
     { label: "Women", command: () => navigate("/women") },
     { label: "Men", command: () => navigate("/men") },
     { label: "Kids", command: () => navigate("/kids") },
-    { label: "Sale", command: () => navigate("/coupons") },
+    { label: "Sale", command: () => navigate("/sale") },
   ];
 
   const adminOptions = [

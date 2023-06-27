@@ -1,0 +1,3 @@
+export * from "./DetailsProductPage";
+export * from "./CreateProductPage";
+export * from "./UpdateProductPage";
