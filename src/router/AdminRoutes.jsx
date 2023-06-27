@@ -4,19 +4,20 @@ import {
   CreateUserPage,
   DetailsUserPage,
   UpdateUserPage,
-  UsersPage,
-} from "../../pages/users";
+} from "../pages/users";
+
+import { UsersPage } from "../pages/users/usersPage";
 
 import {
   CreateProductPage,
   DetailsProductPage,
   UpdateProductPage,
-} from "../../pages/admin/products";
+} from "../pages/admin/products";
 
-import { AddNewCoupon } from "../../pages/admin/coupons/addNewCoupon";
-import { UpdateCoupon } from "../../pages/admin/coupons/updateCoupon";
-import { Coupons } from "../../pages/admin/coupons";
-import { AdminPage } from "../../pages/admin/index";
+import { AddNewCoupon } from "../pages/admin/coupons/addNewCoupon";
+import { UpdateCoupon } from "../pages/admin/coupons/updateCoupon";
+import { Coupons } from "../pages/admin/coupons";
+import { AdminPage } from "../pages/admin/index";
 
 export const AdminRoutes = () => {
   return (

@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { AdminRoutes } from "../admin/routes/AdminRoutes";
+import { AdminRoutes } from "./AdminRoutes";
 import { Layout } from "../components/Layout";
 
 import { HomePage, Cart } from "../pages";
