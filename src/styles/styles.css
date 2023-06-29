@@ -27,13 +27,6 @@ body {
   /* background-color: var(--primary-color); */
 }
 
-.home-page-container,
-.admin-page-container {
-  /* padding: 20px 0px; */
-  /* max-width: 70rem;
-  margin: 0 auto; */
-}
-
 .input-invalid {
   border: solid 1px red;
   animation: input-error 0.3s linear;
@@ -100,84 +93,24 @@ body {
   padding: 2rem 0;
 }
 
-/* Woman page */
-.bg-with-blur {
-  /* background-color: var(--primary-color) !important; */
-  /* filter: blur(4px); */
-}
-
-.p-menuitem-icon {
-  /* color: var(--primary-color) !important; */
-}
-
-.p-scrolltop {
-  /* background-color: var(--primary-color) !important; */
-}
-
-.splash {
-  background-image: url("../public/images/splashScreen3.jpeg");
-  background-repeat: no-repeat;
-  /* background-attachment: scroll; */
-  /* background-size: contain; */
-  background-size: cover, 100% 100%;
-
-  /* background-position: 0 5%; */
-
-  /* background-position: 0 25%; */
-  width: 100%;
-  height: 60vh;
-  min-height: 100%;
-  z-index: 1;
-
-  /* height: calc(100vh - 56px); */
-}
-
-@media (max-width: 768px) {
-  .splash {
-    background-position: -50px;
-  }
-}
-
-.splashScreen-text {
-  right: 15%;
-  top: 25%;
-  background-color: rgba(255, 255, 255, 0.448);
-  padding: 20px;
-  border-radius: 10px;
-  /* width: 600px; */
-  /* background-color: red; */
-  /* text-shadow: 0.5px 0.5px 0.5px var(--surface-ground); */
-}
-
-@media (max-width: 1024px) {
-  .splashScreen-text {
-    /* position: static; */
-    background-color: rgba(255, 255, 255, 0.448);
-    /* min-width: 100%; */
-    /* color: white; */
-    /* text-shadow: 0.5px 0.5px 0.5px black; */
-    /* right: 0; */
-  }
-
-  .price {
-    /* background-color: white; */
-    width: 300px;
-    text-shadow: 0px;
-
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-}
-
 .menuContainer {
   top: 30%;
 }
 
 .container {
-  max-width: 1200px;
-  /* width: 1000px; */
-  margin: 0 auto;
+  /* max-width: 1280px; */
+  max-width: 1620px;
+  margin: auto;
+  /* width: 90%; */
+  padding: 0 1rem;
+  /* background: blue; */
 }
+
+/* @media (max-width: 640px) {
+  .container {
+    background: red !important;
+  }
+} */
 
 .padding-container {
   padding: 4rem;
@@ -223,8 +156,22 @@ a:hover {
 .card-container {
   border-radius: 10px;
   width: 320px;
-  height: auto;
+  /* height: auto; */
+  height: 400px;
   overflow: hidden;
+  position: absolute;
+}
+
+.card-container img {
+  object-fit: cover;
+  transition: all 0.2s ease-in-out;
+  filter: brightness(1);
+}
+
+.card-container img:hover {
+  /* filter: grayscale(0.4); */
+  transform: scale(1.1);
+  filter: brightness(0.8);
 }
 
 .fullWidthHeight {

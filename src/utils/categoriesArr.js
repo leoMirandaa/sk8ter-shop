@@ -1,8 +1,8 @@
 export const categories = [
-  { title: "Girls", img: "/static/kid-girl-img.jpg" },
-  { title: "Teen Girls", img: "/static/teen-girl-img.jpg" },
-  { title: "Women", img: "/static/woman-img.jpg" },
-  { title: "Boys", img: "/static/kid-boy-img.jpg" },
-  { title: "Teen Boys", img: "/static/teen-boy-img.jpg" },
-  { title: "Men", img: "/static/man-img.jpg" },
+  { title: "Girls", img: "/static/kid-girl-img.avif" },
+  { title: "Teen Girls", img: "/static/teen-girl-img.avif" },
+  { title: "Women", img: "/static/woman-img.avif" },
+  { title: "Boys", img: "/static/kid-boy-img.avif" },
+  { title: "Teen Boys", img: "/static/teen-boy-img.avif" },
+  { title: "Men", img: "/static/man-img.avif" },
 ];
