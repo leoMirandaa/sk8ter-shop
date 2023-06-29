@@ -131,11 +131,10 @@ export const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-2">
+    <div className="container">
+      {/* // <div className="sticky top-0 z-2"> */}
       <Menubar
-        className="surface-0 font-bold"
-        // className="navbar-menubar bg-primary"
-        // style={{ backgroundColor: "var(--secondary-color)" }}
+        className="font-bold border-0 surface-0"
         model={items}
         start={start}
         end={end}

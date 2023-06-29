@@ -6,8 +6,8 @@ export const Layout = ({ children }) => {
     <>
       <Navbarr />
       <div
-        className="surface-ground"
-        style={{ minHeight: "calc(100vh - 175.5px)" }}
+      // className="surface-ground"
+      // style={{ minHeight: "calc(100vh - 173.66px)" }}
       >
         {children}
       </div>

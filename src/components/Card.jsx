@@ -9,7 +9,7 @@ export const Card = ({ img, title }) => {
       onClick={() => {
         navigate(`/${title}`);
       }}
-      className="relative card-container cursor-pointer"
+      className="relative card-container cursor-pointer shadow-1"
     >
       <img
         width="100%"
@@ -22,7 +22,7 @@ export const Card = ({ img, title }) => {
         }
       />
       <div
-        className="card-text text-xl"
+        className="card-text text-2xl"
         style={{
           width: "100%",
           left: "50%",

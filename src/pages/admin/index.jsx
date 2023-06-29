@@ -118,7 +118,7 @@ export const AdminPage = () => {
   };
 
   return (
-    <div className="animate__animated animate__fadeIn fullWidthHeight flex flex-column md:flex-row align-items-center md:align-items-start justify-content-evenly p-4">
+    <div className="animate__animated animate__fadeIn fullWidthHeight flex flex-column lg:flex-row align-items-center lg:align-items-start justify-content-evenly p-4">
       {cardData.map((card) => (
         <CardUI
           key={card.title}
