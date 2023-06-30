@@ -1,0 +1,21 @@
+.textLogo {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: bolder;
+  margin-right: 2rem;
+  padding: 1rem;
+  text-transform: uppercase;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+}
+
+.navbar {
+  border: none;
+  background-color: var(--surface-0);
+  border-bottom: solid 1px var(--surface-border) !important;
+  font-weight: bold;
+}

@@ -4,12 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 
 // import "primereact/resources/themes/saga-purple/theme.css"; //theme
 // import "primereact/resources/themes/saga-blue/theme.css"; //theme
-import "primereact/resources/themes/tailwind-light/theme.css"; //theme
+// import "primereact/resources/themes/tailwind-light/theme.css"; //theme
 // import "primereact/resources/themes/bootstrap4-light-purple/theme.css"; //theme
 // import "primereact/resources/themes/bootstrap4-dark-purple/theme.css";  //theme
 // import "primereact/resources/themes/mdc-light-indigo/theme.css"; //theme
 // import "primereact/resources/themes/mdc-light-deeppurple/theme.css"; //theme
 // import "primereact/resources/themes/lara-dark-indigo/theme.css";
+// import "primereact/resources/themes/lara-light-teal/theme.css";
 // import "primereact/resources/themes/lara-dark-teal/theme.css";
 // import "primereact/resources/themes/viva-light/theme.css";
 // import "primereact/resources/themes/viva-dark/theme.css";

@@ -7,6 +7,8 @@ import { Menubar } from "primereact/menubar";
 import { SplitButton } from "primereact/splitbutton";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
+import logo from "../../public/images/clothing-logo.svg";
+import "../styles/navbar.scss";
 PrimeReact.ripple = true;
 
 export const Navbar = () => {
@@ -18,8 +20,8 @@ export const Navbar = () => {
     console.log("...");
     const newTheme = theme === "dark" ? "light" : "dark";
     PrimeReact?.changeTheme?.(
-      `tailwind-${theme}`,
-      `tailwind-${newTheme}`,
+      `lara-${theme}-teal`,
+      `lara-${newTheme}-teal`,
       "app-theme",
       () => setTheme(newTheme)
     );
@@ -70,18 +72,16 @@ export const Navbar = () => {
 
   const end = globalUser.name ? (
     <div>
-      {/* <Button
+      <Button
         text
         className="p-button-primary mr-2"
         onClick={() => changeMyTheme()}
       >
         <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button> */}
+      </Button>
       <Button
         badge={globalUser?.cart?.length}
-        className={`p-button-rounded mr-4  ${
-          globalUser.name === "admin" ? "hidden" : ""
-        }`}
+        className={`mr-4  ${globalUser.name === "admin" ? "hidden" : ""}`}
         onClick={() => navigate("/cart")}
       >
         <i className="pi pi-shopping-cart"></i>
@@ -96,13 +96,13 @@ export const Navbar = () => {
     </div>
   ) : (
     <span>
-      {/* <Button
+      <Button
         text
         className="p-button-primary mr-2"
         onClick={() => changeMyTheme()}
       >
         <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button> */}
+      </Button>
 
       <Button
         label="Log in"
@@ -119,22 +119,25 @@ export const Navbar = () => {
   );
 
   const start = (
-    <div>
-      <b
-        className="text-3xl text-primary mr-4"
-        style={{ cursor: "pointer" }}
-        onClick={() => navigate("/home")}
-      >
-        Clothing Style
-      </b>
-    </div>
+    <span
+      className="textLogo"
+      style={{ cursor: "pointer" }}
+      onClick={() => navigate("/home")}
+    >
+      {/* <img
+          src={logo}
+          width={30}
+          height={30}
+        /> */}
+      Cool Style
+    </span>
   );
 
   return (
     <div className="container">
-      {/* // <div className="sticky top-0 z-2"> */}
+      {/* <div className="container sticky top-0 z-2"> */}
       <Menubar
-        className="font-bold border-0 surface-0"
+        className="navbar"
         model={items}
         start={start}
         end={end}

@@ -11,8 +11,8 @@ export const Footer = () => {
         <p>Be the first to hear about new product</p>
 
         <div className="footer__mailSection__search">
-          <InputText />
-          <Button severity="secondary">Search</Button>
+          <InputText placeholder="Your Email" />
+          <Button severity="secondary">SIGN UP</Button>
         </div>
 
         <div className="footer__mailSection__followSection">
@@ -21,10 +21,11 @@ export const Footer = () => {
           <span className="footer__mailSection__followSection__icons">
             {socialItems.map((item) => (
               <Button
+                key={item.name}
                 size="small"
                 icon={item.icon}
                 className="bg-white text-primary"
-                aria-label="Bookmark"
+                // aria-label="Bookmark"
               />
             ))}
           </span>

@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--bg-gray);
+  background-color: var(--surface-100);
   margin-top: 5rem;
 
   @media (min-width: 1024px) {
@@ -24,11 +24,12 @@
     }
 
     background: var(--primary-color);
+    // background: var(--surface-ground);
     color: #ffffff;
     padding: 0.5rem 1rem !important;
 
     &__search input {
-      width: 75%;
+      width: 65%;
     }
 
     &__followSection {
@@ -52,6 +53,9 @@
   }
 
   &__links {
+    // background-color: tomato;
+    // width: 500px;
+
     @media (min-width: 1024px) {
       display: flex;
       flex-direction: column;
@@ -73,11 +77,12 @@
     & ul li {
       list-style-type: none;
       margin-bottom: 0.3rem;
+      cursor: pointer;
     }
 
     & h4,
     h5 {
-      color: #71717a;
+      color: var(--text-color-secondary);
     }
 
     @media (min-width: 1024px) {
@@ -88,8 +93,7 @@
 
   &__author {
     padding: 0.5rem 0 1rem 1rem !important;
-    color: #71717a;
-    // background: skyblue;
+    color: var(--text-color-secondary);
 
     & h4 {
       margin: 0 0 0.5rem 0;
