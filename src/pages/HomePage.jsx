@@ -23,7 +23,10 @@ export const HomePage = () => {
       </header>
 
       <div className="container">
-        <section className="discounts">
+        <section
+          className="discounts"
+          // style={{ background: "black", color: "white" }}
+        >
           <div>20% OFF</div>
           <div>20% OFF</div>
           <div>20% OFF</div>

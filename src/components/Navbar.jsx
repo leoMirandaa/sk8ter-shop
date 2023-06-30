@@ -1,15 +1,14 @@
 import React, { useContext, useState } from "react";
 import PrimeReact from "primereact/api";
 
-import { UserContext } from "../pages/auth/context/UserContext";
-
 import { Menubar } from "primereact/menubar";
 import { SplitButton } from "primereact/splitbutton";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
+
+import { UserContext } from "../pages/auth/context/UserContext";
 import logo from "../../public/images/clothing-logo.svg";
 import "../styles/navbar.scss";
-PrimeReact.ripple = true;
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -26,19 +25,8 @@ export const Navbar = () => {
       () => setTheme(newTheme)
     );
   };
-  // const changeMyTheme = () => {
-  //   console.log("...");
-  //   const newTheme = theme === "dark" ? "light" : "dark";
-  //   PrimeReact?.changeTheme?.(
-  //     `lara-${theme}-teal`,
-  //     `lara-${newTheme}-teal`,
-  //     "app-theme",
-  //     () => setTheme(newTheme)
-  //   );
-  // };
 
   const userOptions = [
-    // { icon: "pi pi-home", command: () => navigate("/home") },
     { label: "Women", command: () => navigate("/women") },
     { label: "Men", command: () => navigate("/men") },
     { label: "Kids", command: () => navigate("/kids") },
@@ -71,29 +59,30 @@ export const Navbar = () => {
   ];
 
   const end = globalUser.name ? (
-    <div>
+    <>
       <Button
         text
-        className="p-button-primary mr-2"
+        className="mr-2"
         onClick={() => changeMyTheme()}
       >
         <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
       </Button>
+
       <Button
         badge={globalUser?.cart?.length}
-        className={`mr-4  ${globalUser.name === "admin" ? "hidden" : ""}`}
+        className={`mr-2 ${globalUser.name === "admin" ? "hidden" : ""}`}
         onClick={() => navigate("/cart")}
       >
         <i className="pi pi-shopping-cart"></i>
       </Button>
 
       <SplitButton
+        text
         label={globalUser?.name}
         icon="pi pi-user "
-        className=" p-button-text p-button-oulined"
         model={profileButton}
       ></SplitButton>
-    </div>
+    </>
   ) : (
     <span>
       <Button
@@ -105,14 +94,14 @@ export const Navbar = () => {
       </Button>
 
       <Button
-        label="Log in"
-        className="p-button-outlined  mr-2"
+        label="Sign in"
+        className="p-button-outlined mr-2"
         onClick={() => navigate("/sign_in")}
       />
 
       <Button
         label="Sign up"
-        className="p-button-secondary  "
+        className="p-button-secondary "
         onClick={() => navigate("/sign_up")}
       />
     </span>
@@ -121,14 +110,13 @@ export const Navbar = () => {
   const start = (
     <span
       className="textLogo"
-      style={{ cursor: "pointer" }}
       onClick={() => navigate("/home")}
     >
       {/* <img
-          src={logo}
-          width={30}
-          height={30}
-        /> */}
+        src={logo}
+        width={30}
+        height={30}
+      /> */}
       Cool Style
     </span>
   );

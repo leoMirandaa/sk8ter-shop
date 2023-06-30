@@ -5,7 +5,7 @@ import { socialItems } from "../utils/socialItemArr";
 import "../styles/footer.scss";
 export const Footer = () => {
   return (
-    <div className="footer ">
+    <footer className="footer ">
       <div className="footer__mailSection ">
         <h2>Sign up for our mailing list</h2>
         <p>Be the first to hear about new product</p>
@@ -25,7 +25,6 @@ export const Footer = () => {
                 size="small"
                 icon={item.icon}
                 className="bg-white text-primary"
-                // aria-label="Bookmark"
               />
             ))}
           </span>
@@ -78,10 +77,10 @@ export const Footer = () => {
         </div>
 
         <div className="footer__author">
-          <h4>Made by Leopoldo Miranda</h4>
-          <h5>All rights reserved</h5>
+          <p>Made by Leopoldo Miranda</p>
+          <p>All rights reserved</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };

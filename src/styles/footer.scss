@@ -21,10 +21,10 @@
 
     & > p {
       margin-top: 0.5rem;
+      font-size: 20px;
     }
 
     background: var(--primary-color);
-    // background: var(--surface-ground);
     color: #ffffff;
     padding: 0.5rem 1rem !important;
 
@@ -53,9 +53,6 @@
   }
 
   &__links {
-    // background-color: tomato;
-    // width: 500px;
-
     @media (min-width: 1024px) {
       display: flex;
       flex-direction: column;
@@ -78,6 +75,7 @@
       list-style-type: none;
       margin-bottom: 0.3rem;
       cursor: pointer;
+      font-size: 20px;
     }
 
     & h4,
@@ -93,13 +91,12 @@
 
   &__author {
     padding: 0.5rem 0 1rem 1rem !important;
+    font-size: 20px;
+
     color: var(--text-color-secondary);
 
-    & h4 {
+    & p {
       margin: 0 0 0.5rem 0;
-    }
-    & h5 {
-      margin: 0 0;
     }
 
     @media (min-width: 1024px) {
