@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import PrimeReact from "primereact/api";
 
-import { UserContext } from "../pages/auth/context/UserContext";
-
 import { Menubar } from "primereact/menubar";
 import { SplitButton } from "primereact/splitbutton";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
-PrimeReact.ripple = true;
+
+import { UserContext } from "../pages/auth/context/UserContext";
+import logo from "../../public/images/clothing-logo.svg";
+import "../styles/navbar.scss";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -18,25 +19,14 @@ export const Navbar = () => {
     console.log("...");
     const newTheme = theme === "dark" ? "light" : "dark";
     PrimeReact?.changeTheme?.(
-      `tailwind-${theme}`,
-      `tailwind-${newTheme}`,
+      `lara-${theme}-teal`,
+      `lara-${newTheme}-teal`,
       "app-theme",
       () => setTheme(newTheme)
     );
   };
-  // const changeMyTheme = () => {
-  //   console.log("...");
-  //   const newTheme = theme === "dark" ? "light" : "dark";
-  //   PrimeReact?.changeTheme?.(
-  //     `lara-${theme}-teal`,
-  //     `lara-${newTheme}-teal`,
-  //     "app-theme",
-  //     () => setTheme(newTheme)
-  //   );
-  // };
 
   const userOptions = [
-    // { icon: "pi pi-home", command: () => navigate("/home") },
     { label: "Women", command: () => navigate("/women") },
     { label: "Men", command: () => navigate("/men") },
     { label: "Kids", command: () => navigate("/kids") },
@@ -69,72 +59,73 @@ export const Navbar = () => {
   ];
 
   const end = globalUser.name ? (
-    <div>
-      {/* <Button
+    <>
+      <Button
         text
-        className="p-button-primary mr-2"
+        className="mr-2"
         onClick={() => changeMyTheme()}
       >
         <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button> */}
+      </Button>
+
       <Button
         badge={globalUser?.cart?.length}
-        className={`p-button-rounded mr-4  ${
-          globalUser.name === "admin" ? "hidden" : ""
-        }`}
+        className={`mr-2 ${globalUser.name === "admin" ? "hidden" : ""}`}
         onClick={() => navigate("/cart")}
       >
         <i className="pi pi-shopping-cart"></i>
       </Button>
 
       <SplitButton
+        text
         label={globalUser?.name}
         icon="pi pi-user "
-        className=" p-button-text p-button-oulined"
         model={profileButton}
       ></SplitButton>
-    </div>
+    </>
   ) : (
     <span>
-      {/* <Button
+      <Button
         text
         className="p-button-primary mr-2"
         onClick={() => changeMyTheme()}
       >
         <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button> */}
+      </Button>
 
       <Button
-        label="Log in"
-        className="p-button-outlined  mr-2"
+        label="Sign in"
+        className="p-button-outlined mr-2"
         onClick={() => navigate("/sign_in")}
       />
 
       <Button
         label="Sign up"
-        className="p-button-secondary  "
+        className="p-button-secondary "
         onClick={() => navigate("/sign_up")}
       />
     </span>
   );
 
   const start = (
-    <div>
-      <b
-        className="text-3xl text-primary mr-4"
-        style={{ cursor: "pointer" }}
-        onClick={() => navigate("/home")}
-      >
-        Clothing Style
-      </b>
-    </div>
+    <span
+      className="textLogo"
+      onClick={() => navigate("/home")}
+    >
+      {/* <img
+        src={logo}
+        width={30}
+        height={30}
+      /> */}
+      Cool Style
+    </span>
   );
 
   return (
     <div className="container">
-      {/* // <div className="sticky top-0 z-2"> */}
+      {/* <div className="container sticky top-0 z-2"> */}
       <Menubar
-        className="font-bold border-0 surface-0"
+        className="navbar"
         model={items}
         start={start}
         end={end}

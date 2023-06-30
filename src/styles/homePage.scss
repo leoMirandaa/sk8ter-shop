@@ -50,14 +50,14 @@
 }
 
 .discounts {
-  border-top: solid 2px #d4d4d8;
+  // border-top: solid 2px #d4d4d8;
   border-bottom: solid 2px #d4d4d8;
 
   font-weight: bold;
   display: flex;
   justify-content: center;
-  padding: 1.5rem;
-  margin: 2rem 0px;
+  padding: 1.5rem 0;
+  // margin: 2rem 0px;
 
   display: flex;
   justify-content: space-around;
@@ -65,7 +65,7 @@
 
 .quote {
   text-align: center;
-  margin: 3rem 0rem;
+  margin: 2rem 0rem;
 
   &__author {
     font-size: 30px;
@@ -89,7 +89,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: 40px;
-    gap: 30px;
+    // gap: 1.5rem;
+    gap: 1rem;
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(2, 1fr);

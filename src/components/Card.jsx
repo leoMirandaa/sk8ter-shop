@@ -13,8 +13,7 @@ export const Card = ({ img, title }) => {
     >
       <img
         width="100%"
-        height="100%"
-        alt="Card"
+        alt={img}
         src={`${URL}/${img}`}
         onError={(e) =>
           (e.target.src =
@@ -22,11 +21,11 @@ export const Card = ({ img, title }) => {
         }
       />
       <div
-        className="card-text text-2xl"
+        className="card-text text-xl"
         style={{
-          width: "100%",
-          left: "50%",
-          bottom: "0%",
+          width: "35%",
+          left: "20%",
+          top: "5%",
           transform: "translate(-50%, 0%)",
         }}
       >
