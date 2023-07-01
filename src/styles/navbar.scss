@@ -1,0 +1,44 @@
+.textLogo {
+  font-size: 28px;
+
+  // color: var(--primary-color);
+  background-color: var(--primary-color);
+  // background-color: black;
+
+  color: #ffffff;
+  font-weight: bolder;
+  margin-right: 2rem;
+  padding: 1rem;
+  text-transform: uppercase;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    // background-color: var(--primary-color);
+    // color: #ffffff;
+    color: var(--primary-color);
+    // background-color: var(--surface-0);
+    background-color: var(--surface-card);
+  }
+}
+
+.navbar {
+  border: none;
+  border-radius: 0;
+  background-color: var(--surface-0);
+  border-bottom: solid 1px var(--surface-border) !important;
+  font-weight: bold;
+
+  max-width: var(--max-w);
+  margin: auto;
+}
+
+// .nav {
+//   background: linear-gradient(
+//     to right,
+//     var(--primary-color) 0%,
+//     var(--primary-color) 50%,
+//     var(--surface-0) 50%,
+//     var(--surface-0) 100%
+//   );
+// }

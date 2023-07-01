@@ -1,0 +1,111 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  // background-color: var(--surface-500);
+  background-color: var(--surface-100);
+  margin-top: 3rem;
+
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+  }
+
+  &__mailSection {
+    & div &__title {
+      font-size: 28px;
+      margin: 0rem;
+      text-transform: uppercase;
+      margin-bottom: 0rem;
+    }
+
+    & div > p {
+      margin-top: 0.5rem;
+      font-size: 20px;
+    }
+
+    background: var(--primary-color);
+    padding: 1rem 0;
+
+    color: #ffffff;
+    // padding: 0.5rem 1rem !important;
+
+    &__search input {
+      width: 65%;
+    }
+
+    &__followSection {
+      &__title {
+        text-transform: uppercase;
+        font-size: 20px;
+        width: 100px;
+        padding: 0 !important;
+      }
+
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+
+      &__icons Button:nth-child(1) {
+        margin-left: 1rem;
+      }
+
+      &__icons Button {
+        background: #000;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &__links {
+    padding: 1rem 0;
+
+    @media (min-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__links__container {
+    // padding: 0.5rem 1rem;
+
+    & h2 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    & ul {
+      padding: 0;
+      margin-top: 0;
+    }
+    & ul li {
+      list-style-type: none;
+      margin-bottom: 0.3rem;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    & h4,
+    h5 {
+      color: var(--text-color-secondary);
+    }
+
+    @media (min-width: 1024px) {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  &__author {
+    font-size: 20px;
+
+    color: var(--text-color-secondary);
+
+    & p {
+      margin: 0 0 0.5rem 0;
+    }
+
+    @media (min-width: 1024px) {
+      text-align: center;
+    }
+  }
+}
