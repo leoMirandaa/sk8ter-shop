@@ -57,7 +57,7 @@ export const TableUI = ({ users, title, getUsers }) => {
       <Card
         title={title}
         // className="min-w-full md:min-w-0">
-        className="w-full lg:w-10"
+        className="w-full lg:w-10 animate__animated animate__fadeInLeft"
       >
         {/* <Card title={title}> */}
         <DataTable
