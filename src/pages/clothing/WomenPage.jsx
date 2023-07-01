@@ -16,9 +16,7 @@ export const WomenPage = () => {
 
   return (
     <div className="animate__animated animate__fadeIn">
-      <div className="py-4 px-8 surface-50 bg-primary">
-        {/* <CarouselStyleAssessment /> */}
-      </div>
+      <h1 className="mt-0 text-center">Women</h1>
     </div>
   );
 };

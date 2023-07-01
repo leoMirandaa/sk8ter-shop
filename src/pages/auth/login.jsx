@@ -1,14 +1,14 @@
-import { useContext, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
+
 import { Toast } from "primereact/toast";
 
 import { authenticateUser } from "../../services/auth/authenticateUser";
 import { UserContext } from "./context/UserContext";
-import { useEffect } from "react";
+import "../../styles/auth/login.scss";
 
 export const Login = () => {
   const { handleSetGlobalUser } = useContext(UserContext);
@@ -46,71 +46,64 @@ export const Login = () => {
     }
   };
 
-  const footer = (
-    <span>
-      <Button
-        label="Sign in"
-        className="p-button-primary p-button-rounded w-6 md:w-auto lg:md-auto flex m-auto"
-        onClick={() => handleSubmit()}
-      />
-
-      <br />
-
-      <div className="mt-2 flex justify-content-end">
-        <Button
-          label="Register"
-          className="p-button-secondary p-button-text p-button-rounded underline"
-          onClick={() => navigate("/sign_up")}
-        />
-      </div>
-    </span>
-  );
-
   return (
     <>
       <Toast ref={toast} />
-      <Link to="/home">Home</Link>
-      <Link to="/adminLogin">Admin</Link>
-      <Card
-        className="animate__animated animate__fadeInLeft w-full md:w-auto text-center"
-        title="Log in"
-        footer={footer}
-      >
-        <div className="mt-2">
-          <span className="p-float-label inline-block w-full">
-            <InputText
-              id="name"
-              value={name}
-              onChange={(e) =>
-                setUser({
-                  ...user,
-                  name: e.target.value,
-                })
-              }
-              type="text"
-              className="w-full"
-              ref={userNameInput}
-            />
-            <label htmlFor="name">User name</label>
-          </span>
+      <section className="logIn">
+        <h1 className="logIn__title">Login</h1>
 
-          <span className="p-float-label inline-block w-full mt-5">
-            <InputText
-              id="password"
-              value={password}
-              onChange={(e) =>
-                setUser({
-                  ...user,
-                  password: e.target.value,
-                })
-              }
-              className="w-full"
-              type="password"
-            />
-            <label htmlFor="password">Password</label>
-          </span>
+        <div className="logIn__userNameInput p-float-label">
+          <InputText
+            id="name"
+            value={name}
+            onChange={(e) =>
+              setUser({
+                ...user,
+                name: e.target.value,
+              })
+            }
+            type="text"
+            ref={userNameInput}
+          />
+          <label htmlFor="name">User name</label>
         </div>
-      </Card>
+
+        <div className="logIn__passwordInput p-float-label">
+          <InputText
+            id="password"
+            value={password}
+            onChange={(e) =>
+              setUser({
+                ...user,
+                password: e.target.value,
+              })
+            }
+            type="password"
+          />
+          <label htmlFor="password">Password</label>
+        </div>
+
+        <div className="logIn__forgotPassword">
+          <a href="#">Forgot your password?</a>
+        </div>
+
+        <Button
+          label="Sign in"
+          className="logIn__button"
+          onClick={handleSubmit}
+        />
+
+        <p className="logIn__register">
+          Don't you have account?{" "}
+          <a
+            className="text-primary"
+            href="/sign_up"
+          >
+            Register now
+          </a>
+          {/* <a href="/home">Home</a> */}
+        </p>
+      </section>
     </>
   );
 };
