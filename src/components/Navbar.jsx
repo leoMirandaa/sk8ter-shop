@@ -122,10 +122,10 @@ export const Navbar = () => {
   );
 
   return (
-    <div className="">
+    <div className="container">
       {/* <div className="container sticky top-0 z-2"> */}
       <Menubar
-        className="navbar px-0"
+        className="navbar"
         model={items}
         start={start}
         end={end}

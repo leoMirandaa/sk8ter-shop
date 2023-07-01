@@ -1,9 +1,6 @@
 .footer {
-  display: flex;
-  flex-direction: column;
-  // background-color: var(--surface-500);
   background-color: var(--surface-100);
-  margin-top: 3rem;
+  margin-top: 5rem;
 
   @media (min-width: 1024px) {
     display: grid;
@@ -11,34 +8,34 @@
   }
 
   &__mailSection {
-    & div &__title {
-      font-size: 28px;
-      margin: 0rem;
+    & h2 {
+      font-size: 32px;
+      margin: 0.5rem 0rem;
+    }
+
+    & > h2 {
       text-transform: uppercase;
+      width: 70%;
       margin-bottom: 0rem;
     }
 
-    & div > p {
+    & > p {
       margin-top: 0.5rem;
       font-size: 20px;
     }
 
     background: var(--primary-color);
-    padding: 1rem 0;
 
     color: #ffffff;
-    // padding: 0.5rem 1rem !important;
+    padding: 0.5rem 1rem !important;
 
     &__search input {
       width: 65%;
     }
 
     &__followSection {
-      &__title {
-        text-transform: uppercase;
-        font-size: 20px;
+      & h2 {
         width: 100px;
-        padding: 0 !important;
       }
 
       margin-top: 1rem;
@@ -46,7 +43,7 @@
       align-items: center;
 
       &__icons Button:nth-child(1) {
-        margin-left: 1rem;
+        margin-left: 1.5rem;
       }
 
       &__icons Button {
@@ -57,8 +54,6 @@
   }
 
   &__links {
-    padding: 1rem 0;
-
     @media (min-width: 1024px) {
       display: flex;
       flex-direction: column;
@@ -67,10 +62,10 @@
   }
 
   &__links__container {
-    // padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
 
     & h2 {
-      margin: 0 0 0.5rem 0;
+      margin-bottom: 0.5rem;
     }
 
     & ul {
