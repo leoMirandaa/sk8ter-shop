@@ -117,15 +117,15 @@ export const Navbar = () => {
         width={30}
         height={30}
       /> */}
-      Cool Style
+      Stylo
     </span>
   );
 
   return (
-    <div className="container">
+    <div className="">
       {/* <div className="container sticky top-0 z-2"> */}
       <Menubar
-        className="navbar"
+        className="navbar px-0"
         model={items}
         start={start}
         end={end}
