@@ -72,6 +72,4 @@
 
 <a href="https://www.freepik.com/free-photo/curly-funny-male-model-jumping-laughing-joyful-young-man-t-shirt-jeans-dancing_13462326.htm#query=man&position=3&from_view=search">Image by lookstudio</a> on Freepik
 
-Image by <a href="https://www.freepik.com/free-photo/young-handsome-man-posing_12976234.htm#page=2&query=man%20model&position=49&from_view=search&track=ais">Freepik</a>
-
-Photo by <a href="https://unsplash.com/@rafaelladiniz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rafaella Mendes Diniz</a> on <a href="https://unsplash.com/photos/et_78QkMMQs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Photo by <a href="https://unsplash.com/fr/@mintosko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">mintosko</a> on <a href="https://unsplash.com/photos/Ro0PNXcpCus?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

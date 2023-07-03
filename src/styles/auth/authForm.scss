@@ -1,22 +1,22 @@
-.logIn {
+.form {
+  & form &__inputContainer:nth-child(even) {
+    margin: 1.5rem 0;
+  }
+
+  max-width: 400px;
   &__title {
     text-align: center;
     margin-top: 0;
     font-size: 40px;
   }
 
-  &__userNameInput,
-  &__passwordInput {
+  &__inputContainer {
     width: 100%;
     display: inline-block;
 
     & input {
       width: 100%;
     }
-  }
-
-  &__passwordInput {
-    margin: 1.5rem 0 0.1rem 0;
   }
 
   &__forgotPassword {
@@ -28,7 +28,7 @@
     margin-top: 1.5rem;
   }
 
-  &__register {
+  &__linkForm {
     margin-bottom: 0;
     text-align: center;
   }
