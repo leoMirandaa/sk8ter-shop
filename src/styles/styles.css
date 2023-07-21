@@ -160,7 +160,7 @@ a:hover {
 /* //todo: this should be in homePage.scss */
 .card-container {
   display: flex;
-  border-radius: 6px;
+  /* border-radius: 6px; */
 
   overflow: hidden;
   position: absolute;

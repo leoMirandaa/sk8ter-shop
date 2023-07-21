@@ -8,7 +8,7 @@
   color: #ffffff;
   font-weight: bolder;
   margin-right: 2rem;
-  padding: 1rem;
+  padding: 0.9rem;
   text-transform: uppercase;
   transition: all 0.1s ease-in-out;
   cursor: pointer;
@@ -19,6 +19,7 @@
     color: var(--primary-color);
     // background-color: var(--surface-0);
     background-color: var(--surface-card);
+    border: solid 1px var(--primary-color);
   }
 }
 
