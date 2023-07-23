@@ -4,6 +4,11 @@ import { Card as CategoryCard } from "../components/Card";
 import { categories } from "../utils/categoriesArr";
 import "../styles/homePage.scss";
 
+interface categoryProps {
+  title: string;
+  img: string;
+}
+
 export const HomePage = () => {
   return (
     <div className="animate__animated animate__fadeIn">
@@ -40,7 +45,7 @@ export const HomePage = () => {
         <div className="container">
           <h2 className="categories__title">Categories</h2>
           <div className="categories__container">
-            {categories.map((category) => (
+            {categories.map((category: categoryProps) => (
               <div
                 key={category.title}
                 className="categories__container__card"
