@@ -22,7 +22,7 @@ export const CreateProductPage = () => {
   const [product, setProduct] = useState(initialProduct);
 
   const [isEmptyField, setIsEmptyField] = useState(false);
-  const [imageObject, setImageObject] = useState({});
+  const [imageObject, setImageObject] = useState<any>({});
   // const { name, email, password, country, city, zip } = user
 
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ export const CreateProductPage = () => {
 
       let formdata = new FormData();
       formdata.append("file", imageObject);
-      console.log("file 2... ", imageObject);
+      // console.log("file 2... ", imageObject);
 
       console.log("formdata** ", formdata);
       await uploadImage(formdata);

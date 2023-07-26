@@ -9,7 +9,7 @@ import { getProducts } from "../services/clothingCategory/getProducts";
 const URL = import.meta.env.VITE_REACT_APP_URL;
 
 export const Cart = () => {
-  const { globalUser } = useContext(UserContext);
+  const { globalUser } = useContext<any>(UserContext);
   const [productsInCart, setProductsInCart] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
 
