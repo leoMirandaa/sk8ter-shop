@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 export const AdminLayout = () => {
   return (
-    <div className="animate__animated animate__fadeIn p-4 pt-0">
+    <div className="p-4 pt-0">
       <Outlet />
     </div>
   );

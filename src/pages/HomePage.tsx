@@ -7,6 +7,7 @@ import "../styles/homePage.scss";
 interface categoryProps {
   title: string;
   img: string;
+  url: string;
 }
 
 export const HomePage = () => {
@@ -29,7 +30,7 @@ export const HomePage = () => {
 
       <section
         className="discounts"
-        // style={{ background: "black", color: "white" }}
+        // style={{ background: "#0e0e0e", color: "white" }}
       >
         <div>20% OFF</div>
         <div>20% OFF</div>
@@ -37,8 +38,10 @@ export const HomePage = () => {
       </section>
 
       <section className="quote">
-        <h2 className="quote__author">John Galliano</h2>
-        <p className="quote__phrase">"The joy of dressing is an art." </p>
+        <h2 className="quote__author">Marc Johnson</h2>
+        <p className="quote__phrase">
+          "All skateboarding is putting ideas into action."{" "}
+        </p>
       </section>
 
       <main className="categories">
@@ -51,9 +54,9 @@ export const HomePage = () => {
                 className="categories__container__card"
               >
                 <CategoryCard
-                  className="catalog"
                   title={category.title}
                   img={category.img}
+                  url={category.url}
                 />
               </div>
             ))}
