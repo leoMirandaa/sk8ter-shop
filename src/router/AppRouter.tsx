@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 
 import { Login } from "../pages/auth";
-import { ClothingRoutes } from "./ClothingRoutes";
+import { ProductRoutes } from "./ProductRoutes";
 import { Register } from "../pages/auth";
 
 // import { Layout } from "../components/Layout";
@@ -31,7 +31,7 @@ export const AppRouter = () => {
 
       <Route
         path="/*"
-        element={<ClothingRoutes />}
+        element={<ProductRoutes />}
       />
     </Routes>
   );
