@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DataService } from "../../services/dataService";
 // import CarouselStyleAssessment from "../components/carousel";
 
-export const WomenPage = () => {
+export const LongBoardPage = () => {
   const [viewProduct, setViewProduct] = useState([]);
 
   const loadProduct = async () => {
@@ -10,13 +10,10 @@ export const WomenPage = () => {
     let prods = await service.getCatalog();
     setViewProduct(prods);
   };
-  useEffect(() => {
-    loadProduct(); //Catalog loading
-  }, []);
 
   return (
     <div className="animate__animated animate__fadeIn">
-      <h1 className="mt-0 text-center">Women</h1>
+      <h1 className="mt-0 text-center">LongBoards</h1>
     </div>
   );
 };
