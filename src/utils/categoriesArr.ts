@@ -1,8 +1,14 @@
 export const categories = [
-  { title: "Girls", img: "/static/kid-girl-img.avif" },
-  { title: "Teen Girls", img: "/static/teen-girl-img.avif" },
-  { title: "Women", img: "/static/woman-img.avif" },
-  { title: "Boys", img: "/static/kid-boy-img.avif" },
-  { title: "Teen Boys", img: "/static/teen-boy-img.avif" },
-  { title: "Men", img: "/static/man-img.avif" },
+  {
+    title: "Penny Board",
+    url: "pennyboards",
+    img: "/static/skb/pennyboard.jpeg",
+  },
+  {
+    title: "Skateboard",
+    url: "skateboards",
+    img: "/static/skb/skateboard.jpg",
+  },
+  { title: "Longboard", url: "longboards", img: "/static/skb/longboard.jpeg" },
+  { title: "T-shirts", url: "tshirts", img: "/static/skb/tshirt.jpg" },
 ];
