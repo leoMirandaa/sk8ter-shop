@@ -29,7 +29,8 @@ export const Footer = () => {
                   key={item.name}
                   size="small"
                   icon={item.icon}
-                  className="bg-white text-primary"
+                  // className="bg-white text-primary"
+                  severity="secondary"
                 />
               ))}
             </span>
