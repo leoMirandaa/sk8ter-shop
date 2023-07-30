@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import PrimeReact from "primereact/api";
 
 import { Menubar } from "primereact/menubar";
@@ -7,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 
 import { UserContext } from "../pages/auth/context/UserContext";
-import logo from "../../public/images/clothing-logo.svg";
 import "../styles/navbar.scss";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { globalUser } = useContext(UserContext);
+  const { globalUser } = useContext<any>(UserContext);
   const [theme, setTheme] = useState("light");
 
   const changeMyTheme = () => {
@@ -27,9 +26,9 @@ export const Navbar = () => {
   };
 
   const userOptions = [
-    { label: "Women", command: () => navigate("/women") },
-    { label: "Men", command: () => navigate("/men") },
-    { label: "Kids", command: () => navigate("/kids") },
+    { label: "PennyBoards", command: () => navigate("/pennyboards") },
+    { label: "SkateBoards", command: () => navigate("/skateboards") },
+    { label: "LongBoards", command: () => navigate("/longboards") },
     { label: "Sale", command: () => navigate("/sale") },
   ];
 
@@ -112,12 +111,7 @@ export const Navbar = () => {
       className="textLogo"
       onClick={() => navigate("/home")}
     >
-      {/* <img
-        src={logo}
-        width={30}
-        height={30}
-      /> */}
-      Stylo
+      Sk8er
     </span>
   );
 
