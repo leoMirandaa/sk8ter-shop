@@ -1,9 +1,8 @@
 .footer {
   display: flex;
   flex-direction: column;
-  // background-color: var(--surface-500);
-  background-color: var(--surface-100);
-  margin-top: 3rem;
+  background-color: var(--surface-ground);
+  border-top: 1px solid var(--surface-border);
 
   @media (min-width: 1024px) {
     display: grid;

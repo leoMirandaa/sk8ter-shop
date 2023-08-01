@@ -1,5 +1,4 @@
 import { Button } from "primereact/button";
-import { Image } from "primereact/image";
 import { Dialog } from "primereact/dialog";
 import { useState } from "react";
 
@@ -14,20 +13,18 @@ interface ImageProps {
   url: string;
 }
 
-export const ProductCart = ({ id, name, img, price }: ProductProps) => {
+export const ProductCard = ({ id, name, img, price }: ProductProps) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
     <span
       key={name}
-      className="cursor-pointer header__hoverBoard border-300 border-1 text-center p-2"
       onClick={() => console.log(id)}
     >
-      <Image
+      <img
         width="80px"
         src={img.url}
         alt={name}
-        preview
       />
       <div className="text-center">
         <h3 className="my-1">{name}</h3>
@@ -41,7 +38,6 @@ export const ProductCart = ({ id, name, img, price }: ProductProps) => {
           className="mr-3"
           outlined
           onClick={() => setIsVisible(true)}
-          // icon="pi pi-eye"
         />
         <Button icon="pi pi-shopping-cart" />
       </div>

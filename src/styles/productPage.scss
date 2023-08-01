@@ -1,0 +1,55 @@
+// PennyBoardPage.tsx
+.header {
+  &__heroImage-penny {
+    background-image: url("https://res.cloudinary.com/dbzv9xfjp/image/upload/v1690920986/products/pennyboard-hero-image_q2vf4z.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover, 100% 100%;
+    height: 550px;
+    min-height: 100%;
+    max-width: var(--max-w);
+    margin: auto;
+    z-index: 1;
+    position: relative;
+
+    @media (min-width: 1024px) {
+      background-position: 0 -50px;
+    }
+  }
+
+  // Skateboard.tsx
+  &__heroImage-skateboard {
+    background-image: url("https://res.cloudinary.com/dbzv9xfjp/image/upload/v1690920893/products/skateboard-hero-image_mkrfrn.jpg");
+    background-repeat: no-repeat;
+    background-position: 70%;
+    background-size: cover, 100% 100%;
+    height: 550px;
+    min-height: 100%;
+    max-width: var(--max-w);
+    margin: auto;
+    z-index: 1;
+    position: relative;
+
+    @media (min-width: 1024px) {
+      background-position: 0 -100px;
+    }
+  }
+
+  // Longboard.tsx
+  &__heroImage-longboard {
+    background-image: url("https://res.cloudinary.com/dbzv9xfjp/image/upload/v1690920826/products/longboard-hero-image_mnvouj.jpg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover, 100% 100%;
+    height: 550px;
+    min-height: 100%;
+    max-width: var(--max-w);
+    margin: auto;
+    z-index: 1;
+    position: relative;
+
+    @media (min-width: 1024px) {
+      background-position: 0 -150px;
+    }
+  }
+}
