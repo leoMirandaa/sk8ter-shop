@@ -9,6 +9,9 @@
   display: grid;
   gap: 2rem;
 
+  max-width: 1024px;
+  margin: auto;
+
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -27,6 +30,7 @@
   background-color: var(--surface-card);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  border: solid 1px var(--surface-border);
 
   &__title {
     padding: 0;
@@ -34,11 +38,23 @@
   }
 }
 
+// .menu__card:hover {
+//   background-color: #99f6e32c;
+// }
+
 .menu__card i {
+  transition: all 0.2s ease-in-out;
+}
+.menu__card h3 {
   transition: all 0.2s ease-in-out;
 }
 
 .menu__card:hover i {
+  // box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+  filter: brightness(0.8);
+}
+.menu__card:hover h3 {
   // box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
   transform: scale(1.1);
   filter: brightness(0.8);

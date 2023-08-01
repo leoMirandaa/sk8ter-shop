@@ -1,7 +1,7 @@
-import axios from "axios";
-import { Button } from "primereact/button";
 import { useEffect, useState } from "react";
-import { ProductCart } from "../../components/products/ProductCart";
+import axios from "axios";
+import { ProductCard } from "../../components/products/ProductCard";
+import "../../styles/productPage.scss";
 
 export const PennyBoardPage = () => {
   const [boards, setBoards] = useState<any>([]);
@@ -20,7 +20,7 @@ export const PennyBoardPage = () => {
   return (
     <div className="animate__animated animate__fadeIn">
       {/* <h1 className="mt-0 text-center">Penny Boards</h1> */}
-      <div className="header__heroImage2"></div>
+      <div className="header__heroImage-penny"></div>
 
       <div className="container">
         <h2 className="categories__title">Baby Colors</h2>
@@ -30,7 +30,7 @@ export const PennyBoardPage = () => {
           style={{ maxWidth: "1440px", margin: "0 auto" }}
         >
           {boards.map((board: any) => (
-            <ProductCart
+            <ProductCard
               id={board._id}
               name={board.name}
               img={board.img}

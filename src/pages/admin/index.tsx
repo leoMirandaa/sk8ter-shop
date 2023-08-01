@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { DataService } from "../../services/dataService";
 
 // import "./admin.css";
-import { CardUI } from "../../components/AdminDashboardCard";
+import { MenuCard } from "../../components/admin/MenuCard";
+import "../../styles/admin.scss";
 
 export const AdminPage = () => {
   const [coupon, setCoupon] = useState({});
@@ -16,7 +17,8 @@ export const AdminPage = () => {
 
   const cardData = [
     { title: "Users", icon: "pi-user" },
-    { title: "Products", icon: "pi-shopping-cart" },
+    { title: "Categories", icon: "pi-th-large" },
+    { title: "Products", icon: "pi-table" },
     { title: "Coupons", icon: "pi-ticket" },
   ];
 
@@ -118,10 +120,9 @@ export const AdminPage = () => {
   };
 
   return (
-    <div className="animate__animated animate__fadeIn fullWidthHeight flex flex-column lg:flex-row align-items-center lg:align-items-start justify-content-evenly p-4">
+    <div className="animate__animated animate__fadeIn admin___container">
       {cardData.map((card) => (
-        <CardUI
-          key={card.title}
+        <MenuCard
           title={card.title}
           icon={card.icon}
         />
