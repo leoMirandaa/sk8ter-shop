@@ -1,11 +1,46 @@
 .header {
-  &__heroImage {
-    background-image: url("../public/images/splashScreen.avif");
+  &__heroImage2 {
+    background-image: url("../public/images/pennyBoard4.jpg");
     background-repeat: no-repeat;
+    // background-position: top;
+    background-position: 0 -50px;
+    background-size: cover, 100% 100%;
+    height: 550px;
+    min-height: 100%;
+    max-width: var(--max-w);
+    margin: auto;
+    z-index: 1;
+
+    position: relative;
+  }
+
+  &__hoverBoard {
+    overflow: hidden;
+    // border: solid 1px lightgray;
+    // transition: all 0.2s ease-in-out;
+  }
+  &__hoverBoard:hover {
+    background-color: #99f6e32c;
+  }
+  &__hoverBoard img {
+    transition: all 0.2s ease-in-out;
+    // filter: brightness(1);
+  }
+
+  &__hoverBoard:hover img {
+    transform: scale(1.1);
+    // filter: brightness(0.8);
+  }
+
+  &__heroImage {
+    // background-image: url("../public/images/splashScreen.avif");
+    background-image: url("../public/images/skate-hero-image.avif");
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover, 100% 100%;
     height: 720px;
     min-height: 100%;
-    max-width: var(--max-w);
+    // max-width: var(--max-w);
     margin: auto;
     z-index: 1;
 
@@ -50,10 +85,6 @@
   }
 }
 
-.d {
-  background: red;
-}
-
 .discounts {
   // border-top: solid 2px #d4d4d8;
   border-bottom: solid 2px #d4d4d8;
@@ -93,20 +124,66 @@
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     padding-bottom: 40px;
-    gap: 1rem;
 
-    @media (max-width: 1024px) {
+    gap: 2rem;
+    // margin: auto 0;
+
+    @media (min-width: 640px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    &__card {
-      margin: 0 auto;
-      border-radius: 10px;
-    }
+    // &__card {
+    //   grid-row: 1/2;
+    //   margin: 0 auto;
+    // }
+
+    // &__card:last-child {
+    //   // grid-column: 1 / span2;
+    //   border: solid 4px red;
+    //   grid-column: 1/3;
+    //   grid-row: 2/3;
+    //   height: 400px;
+    //   min-width: 100% !important;
+    //   // display: flex;
+
+    // margin: 0 auto;
+    //   //   // border-radius: 10px;
+    // }
+
+    // &__image22 {
+    //   border: solid 2px red;
+    //   background-image: url("../public/images/skate-clothing.jpeg");
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+    //   background-size: cover, 100% 100%;
+    //   height: 520px;
+    //   width: 100%;
+    //   // min-height: 100%;
+    // }
   }
+}
+
+/* //todo: this should be in homePage.scss */
+.card-container {
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+}
+
+.card-container img {
+  // object-fit: cover;
+  transition: all 0.2s ease-in-out;
+  // filter: brightness(1);
+}
+
+.card-container img:hover {
+  /* filter: grayscale(0.4); */
+  transform: scale(1.1);
+  filter: brightness(0.8);
 }
