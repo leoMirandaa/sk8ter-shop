@@ -1,22 +1,4 @@
 .header {
-  &__hoverBoard {
-    overflow: hidden;
-    // border: solid 1px lightgray;
-    // transition: all 0.2s ease-in-out;
-  }
-  &__hoverBoard:hover {
-    background-color: #99f6e32c;
-  }
-  &__hoverBoard img {
-    transition: all 0.2s ease-in-out;
-    // filter: brightness(1);
-  }
-
-  &__hoverBoard:hover img {
-    transform: scale(1.1);
-    // filter: brightness(0.8);
-  }
-
   &__heroImage {
     // background-image: url("../public/images/splashScreen.avif");
     background-image: url("../public/images/skate-hero-image.avif");

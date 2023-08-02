@@ -53,3 +53,21 @@
     }
   }
 }
+
+.card__container {
+  cursor: pointer;
+  padding: 1.5rem;
+  text-align: center;
+  // border: solid 1px var(--surface-border);
+
+  &:hover {
+    // background-color: #99f6e32c;
+    // border: solid 1px var(--surface-border);
+    background: var(--surface-hover);
+  }
+
+  &:hover img {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+  }
+}

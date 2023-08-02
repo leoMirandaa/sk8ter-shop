@@ -38,9 +38,11 @@
   }
 }
 
-// .menu__card:hover {
-//   background-color: #99f6e32c;
-// }
+.menu__card:hover {
+  background-color: #99f6e32c;
+  border: solid 1px var(--surface-border);
+  background: var(--surface-hover);
+}
 
 .menu__card i {
   transition: all 0.2s ease-in-out;
@@ -49,13 +51,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.menu__card:hover i {
-  // box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-  filter: brightness(0.8);
-}
-.menu__card:hover h3 {
-  // box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-  filter: brightness(0.8);
-}
+// .menu__card:hover i {
+//   transform: scale(1.1);
+//   filter: brightness(0.8);
+// }
+// .menu__card:hover h3 {
+//   transform: scale(1.1);
+//   filter: brightness(0.8);
+// }

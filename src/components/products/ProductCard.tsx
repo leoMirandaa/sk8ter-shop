@@ -18,6 +18,7 @@ export const ProductCard = ({ id, name, img, price }: ProductProps) => {
 
   return (
     <span
+      className="card__container"
       key={name}
       onClick={() => console.log(id)}
     >
