@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminRoutes } from "./AdminRoutes";
-import { Layout } from "../components/Layout";
+import { ShopLayout } from "../components/layouts/ShopLayout";
 
 import { HomePage, Cart } from "../pages";
 import {
@@ -13,7 +13,7 @@ import {
 export const ProductRoutes = () => {
   return (
     <div className="">
-      <Layout>
+      <ShopLayout>
         <Routes>
           <Route
             path="home"
@@ -54,7 +54,7 @@ export const ProductRoutes = () => {
             element={<AdminRoutes />}
           />
         </Routes>
-      </Layout>
+      </ShopLayout>
     </div>
   );
 };
