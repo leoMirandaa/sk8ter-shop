@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 import { FormUI } from "../../../components/users";
-import { createUser } from "../../../services/users";
+import { getUser, updateUser } from "../../../services/users";
 
 import { BreadCrumb } from "primereact/breadcrumb";
 import { Toast } from "primereact/toast";
 
-export const CreateUserPage = () => {
+export const UpdateUser = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -18,12 +18,22 @@ export const CreateUserPage = () => {
   });
 
   const [isEmptyField, setIsEmptyField] = useState(false);
-  // const { name, email, password, country, city, zip } = user
 
+  // const { name, email, password, country, city, zip } = user
+  const params = useParams();
   const navigate = useNavigate();
   const toast = useRef(null);
 
-  const handleCreateUser = async (user) => {
+  useEffect(() => {
+    handleGetUser();
+  }, []);
+
+  const handleGetUser = async () => {
+    const user_request = await getUser(params.id);
+    setUser(user_request.data);
+  };
+
+  const handleUpdateUser = async (user) => {
     setIsEmptyField(false);
     if (user.name === "" || user.password === "" || user.email === "") {
       setIsEmptyField(true);
@@ -35,22 +45,12 @@ export const CreateUserPage = () => {
         life: 3000,
       });
     } else {
-      const response = await createUser(user);
-      console.log("handleCreateUser reponse ", response);
-
-      setUser({
-        name: "",
-        email: "",
-        password: "",
-        country: "",
-        city: "",
-        zip: "",
-      });
-
+      const response = await updateUser(params.id, user);
+      console.log("handleUpdateUser ", response);
       toast.current.show({
         severity: "success",
         summary: "Success",
-        detail: "User created",
+        detail: "User updated",
         life: 3000,
       });
       // navigate(-1)
@@ -68,11 +68,11 @@ export const CreateUserPage = () => {
     });
   };
 
-  const items = [
+  const breadCrumbItems = [
     { label: "Users", command: () => navigate(-1) },
-    { label: "Create user" },
+    { label: "Update user" },
   ];
-  const home = {
+  const breadCrumbHome = {
     icon: "pi pi-home",
     label: "Admin",
     command: () => navigate(-2),
@@ -83,15 +83,15 @@ export const CreateUserPage = () => {
       <Toast ref={toast} />
 
       <BreadCrumb
-        model={items}
-        home={home}
+        model={breadCrumbItems}
+        home={breadCrumbHome}
       />
 
       <FormUI
-        formTitle="Create user"
+        formTitle={"Update user"}
         user={user}
         setUser={setUser}
-        handleUser={handleCreateUser}
+        handleUser={handleUpdateUser}
         resetForm={handleCancelCreateUser}
         isEmptyField={isEmptyField}
       />

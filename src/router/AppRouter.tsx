@@ -3,9 +3,9 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { Login } from "../pages/auth";
 import { ProductRoutes } from "./ProductRoutes";
 import { Register } from "../pages/auth";
+import { AuthLayout } from "../components/layouts";
 
 // import { Layout } from "../components/Layout";
-import { AuthLayout } from "../components/AuthLayout";
 export const AppRouter = () => {
   return (
     <Routes>

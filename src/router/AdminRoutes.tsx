@@ -1,12 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import {
-  CreateUserPage,
-  DetailsUserPage,
-  UpdateUserPage,
-} from "../pages/admin/users";
+import { CreateUser, UserList, UpdateUser } from "../pages/admin/users";
 
-import { UsersPage } from "../pages/admin/users/UsersPage";
 import {
   CreateProductPage,
   DetailsProductPage,
@@ -17,7 +12,7 @@ import { AddNewCoupon } from "../pages/admin/coupons/addNewCoupon";
 import { UpdateCoupon } from "../pages/admin/coupons/updateCoupon";
 import { Coupons } from "../pages/admin/coupons";
 import { AdminPage } from "../pages/admin/index";
-import { AdminLayout } from "../components/AdminLayout";
+import { AdminLayout } from "../components/layouts";
 
 export const AdminRoutes = () => {
   return (
@@ -35,15 +30,15 @@ export const AdminRoutes = () => {
           <Route path="users">
             <Route
               index
-              element={<DetailsUserPage />}
+              element={<UserList />}
             />
             <Route
               path="create"
-              element={<CreateUserPage />}
+              element={<CreateUser />}
             />
             <Route
               path="update/:id"
-              element={<UpdateUserPage />}
+              element={<UpdateUser />}
             />
           </Route>
 
