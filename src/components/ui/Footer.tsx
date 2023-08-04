@@ -1,8 +1,8 @@
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { socialItems } from "../utils/socialItemArr";
+import { socialItems } from "../../utils/socialItemArr";
 
-import "../styles/footer.scss";
+import "../../styles/footer.scss";
 export const Footer = () => {
   return (
     <footer className="footer">

@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 
-import { TableHeader } from "../../../components/admin/TableHeader";
-import { TableSkeleton } from "../../../components/ui";
-import { Table } from "../../../components/admin/Table";
+import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
 import { userTableColumns } from "../../../utils/userTableColumns";
 import {
   deleteUser,
@@ -94,7 +92,6 @@ export const UserList = () => {
             users={usersFiltered}
             columns={userTableColumns}
             title={title}
-            getUsers={getUsers}
             handleUpdate={handleUpdate}
             handleDelete={handleDelete}
           />

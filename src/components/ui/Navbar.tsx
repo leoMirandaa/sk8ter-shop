@@ -6,8 +6,8 @@ import { SplitButton } from "primereact/splitbutton";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 
-import { UserContext } from "../pages/auth/context/UserContext";
-import "../styles/navbar.scss";
+import { UserContext } from "../../pages/auth/context/UserContext";
+import "../../styles/navbar.scss";
 
 export const Navbar = () => {
   const navigate = useNavigate();
