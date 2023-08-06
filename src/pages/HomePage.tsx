@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "primereact/button";
 
-import { Card as CategoryCard } from "../components/Card";
+import { HomeCategoryCard } from "../components/HomeCategoryCard";
 import { categories } from "../utils/categoriesArr";
 import "../styles/homePage.scss";
 import { ProductCard } from "../components/products/ProductCard";
@@ -67,16 +67,16 @@ export const HomePage = () => {
           <h2 className="categories__title">Categories</h2>
           <div className="categories__container">
             {categories.map((category: categoryProps) => (
-              <div
+              <section
                 key={category.title}
                 className="categories__container__card"
               >
-                <CategoryCard
+                <HomeCategoryCard
                   title={category.title}
                   img={category.img}
                   url={category.url}
                 />
-              </div>
+              </section>
             ))}
           </div>
         </div>
