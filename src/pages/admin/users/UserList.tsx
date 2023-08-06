@@ -5,7 +5,7 @@ import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
-import { userTableColumns } from "../../../utils/userTableColumns";
+import { userTableColumns } from "../../../utils/AdminTableColumns";
 import {
   deleteUser,
   getAllUsers,

@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminRoutes } from "./AdminRoutes";
-import { ShopLayout } from "../components/layouts/ShopLayout";
+import { ShopLayout } from "../components/layouts";
 
 import { HomePage, Cart } from "../pages";
 import {
