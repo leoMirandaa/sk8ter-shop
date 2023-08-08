@@ -1,29 +1,29 @@
-import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { FormUI } from "../../../components/users";
-import { createUser } from "../../../services/users";
-
-import { BreadCrumb } from "primereact/breadcrumb";
+import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 
+import { createUser } from "../../../services/users";
+import { TableForm } from "../../../components/admin";
+
+const userInitState = {
+  name: "",
+  email: "",
+  password: "",
+  country: "",
+  city: "",
+  zip: "",
+  role: "User",
+};
+
 export const CreateUser = () => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-    country: "",
-    city: "",
-    zip: "",
-  });
-
+  const [user, setUser] = useState(userInitState);
   const [isEmptyField, setIsEmptyField] = useState(false);
-  // const { name, email, password, country, city, zip } = user
-
-  const navigate = useNavigate();
   const toast = useRef(null);
+  const navigate = useNavigate();
 
-  const handleCreateUser = async (user) => {
+  const handleCreate = async (user) => {
     setIsEmptyField(false);
     if (user.name === "" || user.password === "" || user.email === "") {
       setIsEmptyField(true);
@@ -36,16 +36,9 @@ export const CreateUser = () => {
       });
     } else {
       const response = await createUser(user);
-      console.log("handleCreateUser reponse ", response);
+      console.log("handleCreate reponse ", response);
 
-      setUser({
-        name: "",
-        email: "",
-        password: "",
-        country: "",
-        city: "",
-        zip: "",
-      });
+      setUser(userInitState);
 
       toast.current.show({
         severity: "success",
@@ -57,44 +50,61 @@ export const CreateUser = () => {
     }
   };
 
-  const handleCancelCreateUser = () => {
-    setUser({
-      name: "",
-      email: "",
-      password: "",
-      country: "",
-      city: "",
-      zip: "",
-    });
+  const resetForm = () => {
+    setUser(userInitState);
   };
 
-  const items = [
-    { label: "Users", command: () => navigate(-1) },
-    { label: "Create user" },
-  ];
-  const home = {
-    icon: "pi pi-home",
-    label: "Admin",
-    command: () => navigate(-2),
+  const title = () => {
+    return (
+      <div className="table__header__container__backbutton">
+        <Button
+          text
+          rounded
+          icon="pi pi-arrow-left"
+          onClick={() => navigate(-1)}
+        />
+        Create User
+      </div>
+    );
+  };
+
+  const footer = () => {
+    return (
+      <div style={{ textAlign: "right" }}>
+        <Button
+          outlined
+          className="mr-2"
+          label="Reset"
+          severity="secondary"
+          onClick={resetForm}
+        />
+        <Button
+          label="Confirm"
+          onClick={() => handleCreate(user)}
+        />
+      </div>
+    );
   };
 
   return (
     <>
       <Toast ref={toast} />
 
-      <BreadCrumb
-        model={items}
-        home={home}
-      />
-
-      <FormUI
-        formTitle="Create user"
+      <TableForm
+        title={title}
+        footer={footer}
         user={user}
         setUser={setUser}
-        handleUser={handleCreateUser}
-        resetForm={handleCancelCreateUser}
         isEmptyField={isEmptyField}
       />
+
+      {/* <Table
+        users={usersFiltered}
+        columns={userTableColumns}
+        title={title}
+        handleUpdate={handleUpdate}
+        handleDelete={handleDelete}
+      /> */}
     </>
   );
 };

@@ -1,0 +1,41 @@
+.table__header__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__backbutton {
+    display: flex;
+    align-items: center;
+  }
+
+  &__search {
+    order: 1;
+
+    @media (min-width: 768px) {
+      order: 0;
+    }
+
+    & input {
+      width: 100%;
+
+      @media (min-width: 768px) {
+        width: 380px;
+      }
+    }
+  }
+
+  &__addbutton {
+    margin: 0 0 1rem 0rem;
+    order: 0;
+    text-align: right;
+
+    @media (min-width: 768px) {
+      margin: 0;
+    }
+  }
+}
