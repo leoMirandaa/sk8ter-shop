@@ -2,6 +2,7 @@
   --blue: 0, 0, 255;
   --alpha: 0.44;
   --max-w: 1440px;
+  --max-table-width: 65rem;
 }
 
 html,
@@ -14,10 +15,6 @@ body {
 
 .validation {
   display: inline-block !important;
-}
-
-.p-datatable {
-  border: solid 1px lightgray;
 }
 
 .home-page-bg,
@@ -79,12 +76,6 @@ body {
   border-radius: 5px;
 }
 
-/* Dropdown */
-.p-dropdown {
-  width: 15rem !important;
-  text-align: left;
-}
-
 /* Carousel */
 .carousel-demo .product-item .product-item-content {
   border: 1px solid var(--surface-d);
@@ -144,21 +135,13 @@ a:hover {
   text-decoration: underline;
 }
 
-.card-text {
-  /* background: #ffffffd3; */
-  /* color: #000000; */
-  font-weight: bold;
-  color: var(--text-0);
-  background: var(--surface-0);
-  /* border-radius: 6px; */
-
-  padding: 5px;
-  position: absolute;
-  text-align: center;
-}
-
 .fullWidthHeight {
   min-height: calc(100vh - 223.5px);
   /* padding: 2rem; */
   /* background-color: var(--primary-color); */
+}
+
+.p-card {
+  box-shadow: none;
+  border: solid 1px var(--surface-border);
 }
