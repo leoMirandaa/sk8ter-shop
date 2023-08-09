@@ -72,6 +72,7 @@ export const UserList = () => {
   const title = () => {
     return (
       <TableHeader
+        title="Users"
         inputSearchFilter={inputSearchFilter}
         handleInputSearch={handleInputSearch}
         handleCreate={handleCreate}
@@ -89,7 +90,7 @@ export const UserList = () => {
           <ConfirmPopup />
 
           <Table
-            users={usersFiltered}
+            data={usersFiltered}
             columns={userTableColumns}
             title={title}
             handleUpdate={handleUpdate}
