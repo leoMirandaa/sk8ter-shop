@@ -2,6 +2,7 @@ import { Card } from "primereact/card";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { Skeleton } from "primereact/skeleton";
+import "../../styles/admin/tableSkeleton.scss";
 
 export const TableSkeleton = ({ fields }) => {
   const products = Array.from({ length: 8 });
@@ -12,7 +13,7 @@ export const TableSkeleton = ({ fields }) => {
 
   const title = () => {
     return (
-      <div className="flex justify-content-between">
+      <div className="skeleton__container">
         {[8, 23, 8.5].map((item) => (
           <Skeleton
             width={`${item}rem`}
@@ -33,10 +34,15 @@ export const TableSkeleton = ({ fields }) => {
           <Column
             key={field}
             field={field}
-            header={field}
+            header={field.charAt(0).toUpperCase() + field.slice(1)}
             body={bodyTemplate}
           />
         ))}
+        <Column
+          // field={field}
+          header="Actions"
+          body={bodyTemplate}
+        />
       </DataTable>
     </Card>
   );
