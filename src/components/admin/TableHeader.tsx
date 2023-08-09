@@ -5,6 +5,7 @@ import { InputText } from "primereact/inputtext";
 import "../../styles/admin/tableHeader.scss";
 
 export const TableHeader = ({
+  title,
   inputSearchFilter,
   handleInputSearch,
   handleCreate,
@@ -20,7 +21,7 @@ export const TableHeader = ({
           text
           onClick={() => navigate(-1)}
         />
-        Users
+        {title}
       </span>
 
       <span className="table__header__container__search p-input-icon-left">
