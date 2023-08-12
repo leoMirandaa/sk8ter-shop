@@ -16,6 +16,7 @@ export const TableSkeleton = ({ fields }) => {
       <div className="skeleton__container">
         {[8, 23, 8.5].map((item) => (
           <Skeleton
+            key={`skeleton-table-header-${item}`}
             width={`${item}rem`}
             height="2.5rem"
           />
@@ -32,7 +33,7 @@ export const TableSkeleton = ({ fields }) => {
       >
         {fields.map((field: any) => (
           <Column
-            key={field}
+            key={`skeleton-table-item-${field}`}
             field={field}
             header={field.charAt(0).toUpperCase() + field.slice(1)}
             body={bodyTemplate}

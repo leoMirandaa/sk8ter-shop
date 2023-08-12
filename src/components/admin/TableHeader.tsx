@@ -16,9 +16,9 @@ export const TableHeader = ({
     <div className="table__header__container">
       <span className="table__header__container__backbutton">
         <Button
-          icon="pi pi-arrow-left"
           rounded
           text
+          icon="pi pi-arrow-left"
           onClick={() => navigate(-1)}
         />
         {title}
