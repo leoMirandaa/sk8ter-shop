@@ -1,74 +1,54 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
+import { useForm } from "react-hook-form";
 
-import { category } from "../../../interfaces";
+import { Category } from "../../../interfaces";
 import CategoriesService from "../../../services/categories.service";
 import "../../../styles/admin/cardForm.scss";
 
-const userInitState = {
-  id: "",
-  name: "",
-  status: true,
-  createdAt: "",
-  updatedAt: "",
-};
-
 export const CreateCategory = () => {
-  const [category, setCategory] = useState<category>(userInitState);
-  const [isEmptyField, setIsEmptyField] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
   const toast = useRef(null);
 
-  const { name } = category;
+  const handleSubmitForm = async (data: Category) => {
+    const { name } = data;
 
-  const handleCreate = async (e: any, category: category) => {
-    console.log("HandleCreate");
-    e.preventDefault();
-    const { name } = category;
-    setIsEmptyField(false);
+    const response = await CategoriesService.createCategory(name);
 
-    if (name === "") {
-      setIsEmptyField(true);
-
+    if (response === 400) {
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: "Field required",
+        detail: "Error creating category",
         life: 3000,
       });
-    } else {
-      const response = await CategoriesService.createCategory(name);
-
-      if (response === 400) {
-        console.log("status 400");
-        toast.current.show({
-          severity: "error",
-          summary: "Error",
-          detail: "Error creating category",
-          life: 3000,
-        });
-        return;
-      }
-
-      toast.current.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Category created",
-        life: 3000,
-      });
-
-      resetForm();
-      // navigate(-1);
+      return;
     }
+
+    toast.current.show({
+      severity: "success",
+      summary: "Success",
+      detail: "Category created",
+      life: 3000,
+    });
+
+    resetForm();
+    // navigate("/admin/categories");
   };
 
   const resetForm = () => {
-    setCategory(userInitState);
+    reset();
   };
 
   const title = () => {
@@ -78,7 +58,8 @@ export const CreateCategory = () => {
           text
           rounded
           icon="pi pi-arrow-left"
-          onClick={() => navigate(-1)}
+          type="button"
+          onClick={() => navigate("/admin/Categories")}
         />
         Create Category
       </div>
@@ -93,12 +74,12 @@ export const CreateCategory = () => {
           className="mr-2"
           label="Reset"
           severity="secondary"
+          type="button"
           onClick={resetForm}
         />
         <Button
           label="Confirm"
           type="submit"
-          // onClick={() => handleCreate(category)}
         />
       </div>
     );
@@ -108,7 +89,7 @@ export const CreateCategory = () => {
     <>
       <Toast ref={toast} />
       <div className="table__container">
-        <form onSubmit={(e) => handleCreate(e, category)}>
+        <form onSubmit={handleSubmit(handleSubmitForm)}>
           <Card
             className="card__form animate__animated animate__fadeIn"
             title={title}
@@ -119,22 +100,20 @@ export const CreateCategory = () => {
                 <label htmlFor="username">Category Name</label>
                 <InputText
                   id="username"
-                  value={name}
-                  onChange={(e) =>
-                    setCategory({
-                      ...category,
-                      name: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
+                  className={`${errors.name && "p-invalid"}`}
+                  {...register("name", {
+                    required: "Field required",
+                    minLength: { value: 3, message: "Min length 3" },
+                  })}
                 />
-
-                {/* <small
-                  id="username-help"
-                  className="p-error"
-                >
-                  Invalid Value
-                </small> */}
+                {errors.name && (
+                  <small
+                    id="username-help"
+                    className="p-error"
+                  >
+                    {errors?.name?.message?.toString()}
+                  </small>
+                )}{" "}
               </div>
             </div>
           </Card>
