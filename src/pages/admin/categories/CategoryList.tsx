@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 
+import { Category } from "../../../interfaces";
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
 import { dateFormat } from "../../../helpers/dateFormat";
 import { categoryTableColumns } from "../../../utils/AdminTableColumns";
@@ -11,9 +12,10 @@ import categoryService from "../../../services/categories.service";
 import "../../../styles/admin/table.scss";
 
 export const CategoryList = () => {
-  const [categories, setCategories] = useState<[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [inputSearchFilter, setInputSearchFilter] = useState("");
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const toast = useRef(null);
   const navigate = useNavigate();
 
@@ -21,9 +23,20 @@ export const CategoryList = () => {
     getCategories();
   }, []);
 
+  useEffect(() => {
+    let flteredCategories = categories;
+
+    if (searchTerm.length > 0) {
+      flteredCategories = flteredCategories.filter((category: any) =>
+        category.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    setFilteredCategories(flteredCategories);
+  }, [searchTerm]);
+
   const getCategories = async () => {
     const response = await categoryService.getCategories();
-    const aux = response.data.map(({ createdAt, updatedAt, ...rest }) => {
+    const data = response.data.map(({ createdAt, updatedAt, ...rest }) => {
       return {
         createdAt: dateFormat(createdAt),
         updatedAt: dateFormat(updatedAt),
@@ -31,15 +44,9 @@ export const CategoryList = () => {
       };
     });
 
-    setCategories(aux);
+    setCategories(data);
+    setFilteredCategories(data);
     setIsLoading(false);
-  };
-
-  const handleInputSearch = async (event) => {
-    //Todo
-    // let name = event.target.value;
-    // setInputSearchFilter(name);
-    // setCouponsFiltered(getCouponByFilter(coupons, name));
   };
 
   const handleCreate = () => {
@@ -77,12 +84,20 @@ export const CategoryList = () => {
     return (
       <TableHeader
         title="Categories"
-        inputSearchFilter={inputSearchFilter}
-        handleInputSearch={handleInputSearch}
-        handleCreate={handleCreate}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onCreate={handleCreate}
       />
     );
   };
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="table__container">
+  //       <TableSkeleton fields={categoryTableColumns} />;
+  //     </div>
+  //   );
+  // }
 
   return (
     <main className="table__container">
@@ -94,11 +109,11 @@ export const CategoryList = () => {
           <ConfirmPopup />
 
           <Table
-            data={categories}
+            data={filteredCategories}
             columns={categoryTableColumns}
             title={title}
-            handleUpdate={handleUpdate}
-            handleDelete={handleDelete}
+            onUpdate={handleUpdate}
+            onDelete={handleDelete}
           />
         </>
       )}

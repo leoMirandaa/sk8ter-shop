@@ -68,7 +68,6 @@ const deleteCategory = async (id: string) => {
 };
 
 const updateCategory = async (id: string, name: string) => {
-  console.log({ id, name });
   const data = { name };
   try {
     const response = await axios({
