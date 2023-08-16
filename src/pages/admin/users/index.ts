@@ -1,3 +1,3 @@
-export * from "./CreateUserPage";
-export * from "./DetailsUserPage";
-export * from "./UpdateUserPage";
+export * from "./CreateUser";
+export * from "./UserList";
+export * from "./UpdateUser";
