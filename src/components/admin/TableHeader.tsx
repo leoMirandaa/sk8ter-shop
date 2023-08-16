@@ -4,12 +4,7 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import "../../styles/admin/tableHeader.scss";
 
-export const TableHeader = ({
-  title,
-  inputSearchFilter,
-  handleInputSearch,
-  handleCreate,
-}) => {
+export const TableHeader = ({ title, searchTerm, setSearchTerm, onCreate }) => {
   const navigate = useNavigate();
 
   return (
@@ -19,7 +14,7 @@ export const TableHeader = ({
           rounded
           text
           icon="pi pi-arrow-left"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/admin")}
         />
         {title}
       </span>
@@ -27,8 +22,8 @@ export const TableHeader = ({
       <span className="table__header__container__search p-input-icon-left">
         <i className="pi pi-search" />
         <InputText
-          value={inputSearchFilter}
-          onChange={handleInputSearch}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search"
         />
       </span>
@@ -38,7 +33,7 @@ export const TableHeader = ({
           label="Add New"
           icon="pi pi-plus"
           className="p-button-primary md:mt-0"
-          onClick={handleCreate}
+          onClick={onCreate}
         />
       </div>
     </div>
