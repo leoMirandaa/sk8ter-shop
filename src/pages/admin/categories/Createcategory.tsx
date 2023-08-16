@@ -12,14 +12,15 @@ import CategoriesService from "../../../services/categories.service";
 import "../../../styles/admin/cardForm.scss";
 
 export const CreateCategory = () => {
+  const navigate = useNavigate();
+  const toast = useRef(null);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
-  const toast = useRef(null);
 
   const handleSubmitForm = async (data: Category) => {
     const { name } = data;
@@ -88,37 +89,39 @@ export const CreateCategory = () => {
   return (
     <>
       <Toast ref={toast} />
-      <div className="table__container">
-        <form onSubmit={handleSubmit(handleSubmitForm)}>
-          <Card
-            className="card__form animate__animated animate__fadeIn"
-            title={title}
-            footer={footer}
-          >
-            <div className="card__form__row">
-              <div className="card__form__row__container">
-                <label htmlFor="username">Category Name</label>
-                <InputText
-                  id="username"
-                  className={`${errors.name && "p-invalid"}`}
-                  {...register("name", {
-                    required: "Field required",
-                    minLength: { value: 3, message: "Min length 3" },
-                  })}
-                />
-                {errors.name && (
-                  <small
-                    id="username-help"
-                    className="p-error"
-                  >
-                    {errors?.name?.message?.toString()}
-                  </small>
-                )}{" "}
-              </div>
+
+      <form
+        className="table__container"
+        onSubmit={handleSubmit(handleSubmitForm)}
+      >
+        <Card
+          className="card__form animate__animated animate__fadeIn"
+          title={title}
+          footer={footer}
+        >
+          <div className="card__form__row">
+            <div className="card__form__row__container">
+              <label htmlFor="username">Category Name</label>
+              <InputText
+                id="username"
+                className={`${errors.name && "p-invalid"}`}
+                {...register("name", {
+                  required: "Field required",
+                  minLength: { value: 3, message: "Min length 3" },
+                })}
+              />
+              {errors.name && (
+                <small
+                  id="username-help"
+                  className="p-error"
+                >
+                  {errors?.name?.message?.toString()}
+                </small>
+              )}{" "}
             </div>
-          </Card>
-        </form>
-      </div>
+          </div>
+        </Card>
+      </form>
     </>
   );
 };
