@@ -4,20 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 
+import { User } from "../../../interfaces";
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
-import { userTableColumns } from "../../../utils/AdminTableColumns";
-import {
-  deleteUser,
-  getAllUsers,
-  getUserByName,
-} from "../../../services/users";
+import userService from "../../../services/users.service";
+import tableColumns from "../../../utils/adminTableColumns";
 import "../../../styles/admin/table.scss";
 
 export const UserList = () => {
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [inputSearchFilter, setInputSearchFilter] = useState("");
-  const [usersFiltered, setUsersFiltered] = useState("");
+  const [users, setUsers] = useState<User[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
   const toast = useRef(null);
 
@@ -25,10 +22,30 @@ export const UserList = () => {
     getUsers();
   }, []);
 
+  useEffect(() => {
+    let filteredUsers = users;
+    if (filteredUsers.length > 0) {
+      filteredUsers = filteredUsers.filter((user: User) =>
+        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    setFilteredUsers(filteredUsers);
+  }, [searchTerm]);
+
   const getUsers = async () => {
-    const fetchUsers = await getAllUsers();
-    setUsers(fetchUsers.data);
-    setUsersFiltered(fetchUsers.data);
+    const response = await userService.getUsers();
+    const data = response.data.map(({ address, ...rest }: User) => {
+      return {
+        street: address?.street,
+        country: address?.country,
+        state: address?.state,
+        city: address?.city,
+        zip: address?.zip,
+        ...rest,
+      };
+    });
+    setUsers(data);
+    setFilteredUsers(data);
     setIsLoading(false);
   };
 
@@ -49,7 +66,7 @@ export const UserList = () => {
       message: "Are you sure you want to delete this user?",
       icon: "pi pi-exclamation-triangle",
       accept: async () => {
-        await deleteUser(userId);
+        await userService.deleteUser(userId);
 
         toast.current.show({
           severity: "success",
@@ -63,19 +80,13 @@ export const UserList = () => {
     });
   };
 
-  const handleInputSearch = async (event) => {
-    let name = event.target.value;
-    setInputSearchFilter(name);
-    setUsersFiltered(getUserByName(users, name));
-  };
-
   const title = () => {
     return (
       <TableHeader
         title="Users"
-        inputSearchFilter={inputSearchFilter}
-        handleInputSearch={handleInputSearch}
-        handleCreate={handleCreate}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onCreate={handleCreate}
       />
     );
   };
@@ -83,18 +94,18 @@ export const UserList = () => {
   return (
     <main className="table__container">
       {isLoading ? (
-        <TableSkeleton fields={userTableColumns} />
+        <TableSkeleton fields={tableColumns.userColumns} />
       ) : (
         <>
           <Toast ref={toast} />
           <ConfirmPopup />
 
           <Table
-            data={usersFiltered}
-            columns={userTableColumns}
+            data={filteredUsers}
+            columns={tableColumns.userColumns}
             title={title}
-            handleUpdate={handleUpdate}
-            handleDelete={handleDelete}
+            onUpdate={handleUpdate}
+            onDelete={handleDelete}
           />
         </>
       )}

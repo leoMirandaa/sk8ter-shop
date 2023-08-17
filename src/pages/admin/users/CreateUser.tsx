@@ -6,57 +6,71 @@ import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { RadioButton, RadioButtonChangeEvent } from "primereact/radiobutton";
 import { Toast } from "primereact/toast";
+import { useForm, Controller } from "react-hook-form";
 
-import { createUser } from "../../../services/users";
+import usersService from "../../../services/users.service";
+import { User } from "../../../interfaces";
 import "../../../styles/admin/cardForm.scss";
 
-const userInitState = {
-  name: "",
-  email: "",
-  password: "",
-  country: "",
-  city: "",
-  zip: "",
-  role: "User",
-};
-
 export const CreateUser = () => {
-  const [user, setUser] = useState(userInitState);
-  const [isEmptyField, setIsEmptyField] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const toast = useRef(null);
 
-  const { name, email, password, country, city, zip, role } = user;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    control,
+    formState: { errors },
+  } = useForm();
 
-  const handleCreate = async (user) => {
-    setIsEmptyField(false);
-    if (user.name === "" || user.password === "" || user.email === "") {
-      setIsEmptyField(true);
+  const handleSubmitForm = async (data: any) => {
+    console.log("data: ", data);
+    const {
+      street,
+      country,
+      city,
+      state,
+      zip,
+      confirmPassword,
+      role,
+      ...rest
+    } = data;
 
+    const user = {
+      ...rest,
+      address: {
+        street,
+        country,
+        city,
+        state,
+        zip,
+      },
+    };
+
+    const response = await usersService.createUser(user);
+    if (response === 400) {
       toast.current.show({
         severity: "error",
         summary: "Error",
         detail: "Fields required",
         life: 3000,
       });
-    } else {
-      const response = await createUser(user);
-
-      setUser(userInitState);
-
-      toast.current.show({
-        severity: "success",
-        summary: "Success",
-        detail: "User created",
-        life: 3000,
-      });
-      // navigate(-1)
+      return;
     }
+
+    toast.current.show({
+      severity: "success",
+      summary: "Success",
+      detail: "User created",
+      life: 3000,
+    });
+    // navigate(-1)
   };
 
   const resetForm = () => {
-    setUser(userInitState);
+    reset();
   };
 
   const title = () => {
@@ -85,7 +99,7 @@ export const CreateUser = () => {
         />
         <Button
           label="Confirm"
-          onClick={() => handleCreate(user)}
+          type="submit"
         />
       </div>
     );
@@ -95,71 +109,74 @@ export const CreateUser = () => {
     <>
       <Toast ref={toast} />
       <div className="table__container">
-        <Card
-          className="card__form animate__animated animate__fadeIn"
-          title={title}
-          footer={footer}
-        >
-          <form action="#">
+        <form onSubmit={handleSubmit(handleSubmitForm)}>
+          <Card
+            className="card__form animate__animated animate__fadeIn"
+            title={title}
+            footer={footer}
+          >
             <div className="card__form__row">
               <div className="card__form__row__container">
                 <label htmlFor="username">User Name</label>
                 <InputText
                   id="username"
-                  value={name}
-                  onChange={(e) =>
-                    setUser({
-                      ...user,
-                      name: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
+                  className={`${errors.name && "p-invalid"}`}
+                  {...register("name", {
+                    required: "Field required",
+                    minLength: { value: 5, message: "Min length 3" },
+                  })}
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid Value
-              </small> */}
+                {errors.name && (
+                  <small
+                    id="username-help"
+                    className="p-error"
+                  >
+                    {errors?.name?.message?.toString()}
+                  </small>
+                )}
               </div>
+
               <div className="card__form__row__container">
                 <label htmlFor="password">Password</label>
                 <InputText
                   id="password"
-                  value={password}
-                  onChange={(e) =>
-                    setUser({
-                      ...user,
-                      password: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
                   type="password"
+                  className={`${errors.password && "p-invalid"}`}
+                  {...register("password", {
+                    required: "Field required",
+                    minLength: { value: 5, message: "Min length 3" },
+                  })}
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid Value
-              </small> */}
+                {errors.password && (
+                  <small
+                    id="password-help"
+                    className="p-error"
+                  >
+                    {errors?.password?.message?.toString()}
+                  </small>
+                )}
               </div>
 
               <div className="card__form__row__container">
                 <label htmlFor="confirmPassword">Confirm Password</label>
                 <InputText
                   id="confirmPassword"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className={`${isEmptyField && "p-invalid"}`}
                   type="password"
-                  aria-describedby="username2-help"
+                  className={`${errors.confirmPassword && "p-invalid"}`}
+                  {...register("confirmPassword", {
+                    required: "Field required",
+                    minLength: { value: 5, message: "Min length 3" },
+                  })}
+                  // aria-describedby="username2-help"
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid User Name.
-              </small> */}
+                {errors.confirmPassword && (
+                  <small
+                    id="confirmPassword-help"
+                    className="p-error"
+                  >
+                    {errors?.confirmPassword?.message?.toString()}
+                  </small>
+                )}
               </div>
             </div>
 
@@ -168,145 +185,187 @@ export const CreateUser = () => {
                 <label htmlFor="email">Email</label>
                 <InputText
                   id="email"
-                  value={email}
-                  onChange={(e) =>
-                    setUser({
-                      ...user,
-                      email: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
                   type="email"
+                  className={`${errors.email && "p-invalid"}`}
+                  {...register("email", {
+                    required: "Field required",
+                    pattern:
+                      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  })}
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid value
-              </small> */}
+                {errors.email && (
+                  <small
+                    id="email-help"
+                    className="p-error"
+                  >
+                    {errors?.email?.message?.toString()}
+                  </small>
+                )}
               </div>
 
               <div className="card__form__row__container">
-                <label htmlFor="country">Country</label>
+                <label htmlFor="zip">Street</label>
                 <InputText
-                  id="country"
-                  value={country}
-                  onChange={(e) =>
-                    setUser({
-                      ...user,
-                      country: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
+                  id="street"
+                  className={`${errors?.street && "p-invalid"}`}
+                  // keyfilter="num"
+                  {...register("street", {
+                    required: "Field require",
+                  })}
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid value
-              </small> */}
+                {errors.street && (
+                  <small
+                    id="street-help"
+                    className="p-error"
+                  >
+                    {errors?.street?.message?.toString()}
+                  </small>
+                )}
               </div>
 
               <div className="card__form__row__container">
                 <label htmlFor="city">City</label>
                 <InputText
                   id="city"
-                  value={city}
-                  onChange={(e) =>
-                    setUser({
-                      ...user,
-                      city: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
+                  className={`${errors.city && "p-invalid"}`}
+                  {...register("city", {
+                    required: "Field required",
+                  })}
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid value
-              </small> */}
+                {errors.city && (
+                  <small
+                    id="city-help"
+                    className="p-error"
+                  >
+                    {errors?.city?.message?.toString()}
+                  </small>
+                )}
               </div>
             </div>
 
             <div className="card__form__row">
               <div className="card__form__row__container">
-                <label htmlFor="zip">Street</label>
+                <label htmlFor="state">State</label>
                 <InputText
-                  id="zip"
-                  value={zip}
-                  onChange={(e) =>
-                    setUser({
-                      ...user,
-                      zip: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
-                  keyfilter="num"
+                  id="state"
+                  className={`${errors.state && "p-invalid"}`}
+                  {...register("state", {
+                    required: "Field required",
+                  })}
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid value
-              </small> */}
+                {errors.state && (
+                  <small
+                    id="state-help"
+                    className="p-error"
+                  >
+                    {errors?.state?.message?.toString()}
+                  </small>
+                )}
+              </div>
+
+              <div className="card__form__row__container">
+                <label htmlFor="country">Country</label>
+                <InputText
+                  id="country"
+                  className={`${errors.country && "p-invalid"}`}
+                  {...register("country", {
+                    required: "Field required",
+                  })}
+                />
+                {errors.country && (
+                  <small
+                    id="country-help"
+                    className="p-error"
+                  >
+                    {errors?.country?.message?.toString()}
+                  </small>
+                )}
               </div>
 
               <div className="card__form__row__container">
                 <label htmlFor="zip">Zip</label>
                 <InputText
                   id="zip"
-                  value={zip}
-                  onChange={(e) =>
-                    setUser({
-                      ...user,
-                      zip: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
+                  className={`${errors?.zip && "p-invalid"}`}
                   keyfilter="num"
+                  {...register("zip", {
+                    required: "Field required",
+                    minLength: { value: 5, message: "Min length 5" },
+                  })}
                 />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid value
-              </small> */}
+                {errors.zip && (
+                  <small
+                    id="zip-help"
+                    className="p-error"
+                  >
+                    {errors?.zip?.message?.toString()}
+                  </small>
+                )}
               </div>
             </div>
 
-            <div className="card__form__row__role">
-              <h4>Select a role: </h4>
-              <div className="card__form__row__role__container">
-                <div>
-                  <RadioButton
-                    inputId="user"
-                    name="user"
-                    value="User"
-                    onChange={(e: RadioButtonChangeEvent) =>
-                      setUser({ ...user, role: e.target.value })
-                    }
-                    checked={role === "User"}
-                  />
-                  <label htmlFor="user">User</label>
-                </div>
-                <div>
-                  <RadioButton
-                    inputId="admin"
-                    name="admin"
-                    value="Admin"
-                    onChange={(e: RadioButtonChangeEvent) =>
-                      setUser({ ...user, role: e.target.value })
-                    }
-                    checked={role === "Admin"}
-                  />
-                  <label htmlFor="admin">Admin</label>
-                </div>
+            <div className="card__form__row">
+              <div className="card__form__row__container">
+                <label htmlFor="phone">Phone</label>
+                <InputText
+                  id="phone"
+                  type="number"
+                  className={`${errors.phone && "p-invalid"}`}
+                  {...register("phone", {
+                    required: "Field required",
+                  })}
+                />
+                {errors.phone && (
+                  <small
+                    id="phone-help"
+                    className="p-error"
+                  >
+                    {errors?.phone?.message?.toString()}
+                  </small>
+                )}
               </div>
             </div>
-          </form>
-        </Card>
+
+            <Controller
+              name="role"
+              defaultValue="User"
+              control={control}
+              rules={{ required: "Value is required." }}
+              render={({ field }) => (
+                <div className="card__form__row__role">
+                  <h4>Select a role: </h4>
+                  <div className="card__form__row__role__container">
+                    <div>
+                      <RadioButton
+                        inputId="user"
+                        {...field}
+                        value="User"
+                        type="radio"
+                        checked={field.value === "User"}
+                      />
+                      <label htmlFor="user">User</label>
+                    </div>
+                    <div>
+                      <RadioButton
+                        inputId="admin"
+                        {...field}
+                        name="role"
+                        value="Admin"
+                        type="radio"
+                        checked={field.value === "Admin"}
+                      />
+                      <label htmlFor="admin">Admin</label>
+                    </div>
+                  </div>
+                </div>
+              )}
+            />
+          </Card>
+        </form>
+        {JSON.stringify(watch())}
       </div>
     </>
   );
 };
+
+//313
