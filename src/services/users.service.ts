@@ -66,4 +66,23 @@ const deleteUser = async (id: string) => {
   }
 };
 
-export default { getUsers, getUser, createUser, deleteUser };
+const updateUser = async (id: string, data: any) => {
+  console.log("DATA:", data);
+
+  try {
+    const response = await axios({
+      url: `${url}/users/${id}`,
+      method: "PUT",
+      data,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log("ERROR_UPDATE_USER", error);
+    return 400;
+  }
+};
+
+export default { getUsers, getUser, createUser, updateUser, deleteUser };
