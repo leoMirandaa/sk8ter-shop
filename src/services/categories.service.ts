@@ -1,9 +1,10 @@
 import axios from "axios";
+const url = import.meta.env.VITE_REACT_APP_URL2;
 
 const getCategory = async (id: string) => {
   try {
     const response = await axios({
-      url: `http://localhost:3002/categories/${id}`,
+      url: `${url}/categories/${id}`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +20,7 @@ const getCategory = async (id: string) => {
 const getCategories = async () => {
   try {
     const response = await axios({
-      url: "http://localhost:3002/categories",
+      url: `${url}/categories`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +38,7 @@ const createCategory = async (name: string) => {
 
   try {
     const response = await axios({
-      url: "http://localhost:3002/categories",
+      url: `${url}/categories`,
       method: "POST",
       data,
       headers: {
@@ -54,7 +55,7 @@ const createCategory = async (name: string) => {
 const deleteCategory = async (id: string) => {
   try {
     const response = await axios({
-      url: `http://localhost:3002/categories/${id}`,
+      url: `${url}/categories/${id}`,
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +72,7 @@ const updateCategory = async (id: string, name: string) => {
   const data = { name };
   try {
     const response = await axios({
-      url: `http://localhost:3002/categories/${id}`,
+      url: `${url}/categories/${id}`,
       method: "PUT",
       data,
       headers: {
