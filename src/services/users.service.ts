@@ -1,5 +1,6 @@
 import axios from "axios";
 import { User } from "../interfaces";
+
 const url = import.meta.env.VITE_REACT_APP_URL2;
 
 const getUsers = async () => {
@@ -33,7 +34,6 @@ const getUser = async (id: string) => {
 };
 
 const createUser = async (user: User) => {
-  console.log({ user });
   try {
     const response = await axios({
       url: `${url}/users`,
@@ -46,7 +46,7 @@ const createUser = async (user: User) => {
     return response;
   } catch (error) {
     console.log("ERROR_CREATE_USER ", error);
-    return 400;
+    return error.response;
   }
 };
 
@@ -67,13 +67,28 @@ const deleteUser = async (id: string) => {
 };
 
 const updateUser = async (id: string, data: any) => {
-  console.log("DATA:", data);
+  console.log("updateUser:", data);
+  const { street, country, city, state, zip, ...rest } = data;
+  console.log("ADDRess: ", rest);
+  const newData = {
+    ...rest,
+    address: {
+      street,
+      country: country.code,
+      city,
+      state,
+      zip,
+    },
+  };
+
+  console.log("newDAta: ", newData);
 
   try {
     const response = await axios({
       url: `${url}/users/${id}`,
       method: "PUT",
-      data,
+      // data,
+      data: newData,
       headers: {
         "Content-Type": "application/json",
       },
