@@ -1,15 +1,17 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
+import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
-import { RadioButton, RadioButtonChangeEvent } from "primereact/radiobutton";
+import { RadioButton } from "primereact/radiobutton";
 import { Toast } from "primereact/toast";
 import { useForm, Controller } from "react-hook-form";
 
+import { CountryList } from "../../../utils/countryList";
+import { UserType } from "../../../interfaces";
 import usersService from "../../../services/users.service";
-import { User } from "../../../interfaces";
 import "../../../styles/admin/cardForm.scss";
 
 export const CreateUser = () => {
@@ -29,12 +31,13 @@ export const CreateUser = () => {
     console.log("data: ", data);
     const {
       street,
+      country: { code },
       country,
       city,
       state,
       zip,
       confirmPassword,
-      role,
+
       ...rest
     } = data;
 
@@ -42,7 +45,7 @@ export const CreateUser = () => {
       ...rest,
       address: {
         street,
-        country,
+        country: code,
         city,
         state,
         zip,
@@ -50,11 +53,12 @@ export const CreateUser = () => {
     };
 
     const response = await usersService.createUser(user);
-    if (response === 400) {
+
+    if (response?.status === 400) {
       toast.current.show({
         severity: "error",
-        summary: "Error",
-        detail: "Fields required",
+        summary: "Error in " + response?.data?.errors[0]?.path,
+        detail: response?.data?.errors[0]?.msg,
         life: 3000,
       });
       return;
@@ -80,7 +84,8 @@ export const CreateUser = () => {
           text
           rounded
           icon="pi pi-arrow-left"
-          onClick={() => navigate(-1)}
+          type="button"
+          onClick={() => navigate("/admin/users")}
         />
         Create User
       </div>
@@ -117,25 +122,44 @@ export const CreateUser = () => {
           >
             <div className="card__form__row">
               <div className="card__form__row__container">
-                <label htmlFor="username">User Name</label>
+                <label htmlFor="firstName">First Name</label>
                 <InputText
-                  id="username"
-                  className={`${errors.name && "p-invalid"}`}
-                  {...register("name", {
+                  id="firstName"
+                  className={`${errors.firstName && "p-invalid"}`}
+                  {...register("firstName", {
                     required: "Field required",
-                    minLength: { value: 5, message: "Min length 3" },
+                    minLength: { value: 3, message: "Min length 3" },
                   })}
                 />
-                {errors.name && (
+                {errors.firstName && (
                   <small
-                    id="username-help"
+                    id="firstName-help"
                     className="p-error"
                   >
-                    {errors?.name?.message?.toString()}
+                    {errors?.firstName?.message?.toString()}
                   </small>
                 )}
               </div>
 
+              <div className="card__form__row__container">
+                <label htmlFor="lastName">Last Name</label>
+                <InputText
+                  id="lastName"
+                  className={`${errors.lastName && "p-invalid"}`}
+                  {...register("lastName", {
+                    required: "Field required",
+                    minLength: { value: 3, message: "Min length 3" },
+                  })}
+                />
+                {errors.lastName && (
+                  <small
+                    id="lastName-help"
+                    className="p-error"
+                  >
+                    {errors?.lastName?.message?.toString()}
+                  </small>
+                )}
+              </div>
               <div className="card__form__row__container">
                 <label htmlFor="password">Password</label>
                 <InputText
@@ -178,9 +202,7 @@ export const CreateUser = () => {
                   </small>
                 )}
               </div>
-            </div>
 
-            <div className="card__form__row">
               <div className="card__form__row__container">
                 <label htmlFor="email">Email</label>
                 <InputText
@@ -188,7 +210,7 @@ export const CreateUser = () => {
                   type="email"
                   className={`${errors.email && "p-invalid"}`}
                   {...register("email", {
-                    required: "Field required",
+                    required: "Email required",
                     pattern:
                       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                   })}
@@ -241,9 +263,7 @@ export const CreateUser = () => {
                   </small>
                 )}
               </div>
-            </div>
 
-            <div className="card__form__row">
               <div className="card__form__row__container">
                 <label htmlFor="state">State</label>
                 <InputText
@@ -263,24 +283,34 @@ export const CreateUser = () => {
                 )}
               </div>
 
-              <div className="card__form__row__container">
-                <label htmlFor="country">Country</label>
-                <InputText
-                  id="country"
-                  className={`${errors.country && "p-invalid"}`}
-                  {...register("country", {
-                    required: "Field required",
-                  })}
-                />
-                {errors.country && (
-                  <small
-                    id="country-help"
-                    className="p-error"
-                  >
-                    {errors?.country?.message?.toString()}
-                  </small>
+              <Controller
+                name="country"
+                control={control}
+                rules={{ required: "Country is required" }}
+                render={({ field, fieldState }) => (
+                  <div className="card__form__row__container">
+                    <label htmlFor="country">Country</label>
+                    <Dropdown
+                      id={field.name}
+                      value={field.value}
+                      optionLabel="name"
+                      focusInputRef={field.ref}
+                      placeholder="Selece a country"
+                      options={CountryList}
+                      onChange={(e) => field.onChange(e.value)}
+                      className={`${errors.country && "p-invalid"}`}
+                    />
+                    {errors.country && (
+                      <small
+                        id="phone-help"
+                        className="p-error"
+                      >
+                        {errors?.country?.message?.toString()}
+                      </small>
+                    )}
+                  </div>
                 )}
-              </div>
+              />
 
               <div className="card__form__row__container">
                 <label htmlFor="zip">Zip</label>
@@ -302,9 +332,7 @@ export const CreateUser = () => {
                   </small>
                 )}
               </div>
-            </div>
 
-            <div className="card__form__row">
               <div className="card__form__row__container">
                 <label htmlFor="phone">Phone</label>
                 <InputText
@@ -328,7 +356,7 @@ export const CreateUser = () => {
 
             <Controller
               name="role"
-              defaultValue="User"
+              defaultValue={1}
               control={control}
               rules={{ required: "Value is required." }}
               render={({ field }) => (
@@ -339,9 +367,9 @@ export const CreateUser = () => {
                       <RadioButton
                         inputId="user"
                         {...field}
-                        value="User"
+                        value={UserType.USER}
                         type="radio"
-                        checked={field.value === "User"}
+                        checked={field.value === UserType.USER}
                       />
                       <label htmlFor="user">User</label>
                     </div>
@@ -350,13 +378,21 @@ export const CreateUser = () => {
                         inputId="admin"
                         {...field}
                         name="role"
-                        value="Admin"
+                        value={UserType.ADMIN}
                         type="radio"
-                        checked={field.value === "Admin"}
+                        checked={field.value === UserType.ADMIN}
                       />
                       <label htmlFor="admin">Admin</label>
                     </div>
                   </div>
+                  {errors.role && (
+                    <small
+                      id="role-help"
+                      className="p-error"
+                    >
+                      {errors?.role?.message?.toString()}
+                    </small>
+                  )}
                 </div>
               )}
             />
@@ -367,5 +403,3 @@ export const CreateUser = () => {
     </>
   );
 };
-
-//313
