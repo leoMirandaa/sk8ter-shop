@@ -4,13 +4,16 @@ import { CreateUser, UserList, UpdateUser } from "../pages/admin/users";
 
 import {
   CreateProductPage,
-  DetailsProductPage,
+  ProductList,
   UpdateProductPage,
 } from "../pages/admin/products";
 
-import { AddNewCoupon } from "../pages/admin/coupons/addNewCoupon";
-import { UpdateCoupon } from "../pages/admin/coupons/updateCoupon";
-import { Coupons } from "../pages/admin/coupons";
+import { CouponList, CreateCoupon, UpdateCoupon } from "../pages/admin/coupons";
+import {
+  CategoryList,
+  CreateCategory,
+  UpdateCategory,
+} from "../pages/admin/categories";
 import { AdminPage } from "../pages/admin/index";
 import { AdminLayout } from "../components/layouts";
 
@@ -26,6 +29,21 @@ export const AdminRoutes = () => {
             index
             element={<AdminPage />}
           />
+
+          <Route path="categories">
+            <Route
+              index
+              element={<CategoryList />}
+            />
+            <Route
+              path="create"
+              element={<CreateCategory />}
+            />
+            <Route
+              path="update/:id"
+              element={<UpdateCategory />}
+            />
+          </Route>
 
           <Route path="users">
             <Route
@@ -45,11 +63,11 @@ export const AdminRoutes = () => {
           <Route path="coupons">
             <Route
               index
-              element={<Coupons />}
+              element={<CouponList />}
             />
             <Route
               path="create"
-              element={<AddNewCoupon />}
+              element={<CreateCoupon />}
             />
             <Route
               path="update/:id"
@@ -60,7 +78,7 @@ export const AdminRoutes = () => {
           <Route path="products">
             <Route
               index
-              element={<DetailsProductPage />}
+              element={<ProductList />}
             />
             <Route
               path="create"
