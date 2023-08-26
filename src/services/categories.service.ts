@@ -34,6 +34,7 @@ const getCategories = async () => {
 };
 
 const createCategory = async (name: string) => {
+  console.log("... createCategory:", name);
   const data = { name };
 
   try {
@@ -47,8 +48,8 @@ const createCategory = async (name: string) => {
     });
     return response;
   } catch (error) {
-    console.log("ERROR_CREATE_CATEGORY", error);
-    return 400;
+    console.log("ERROR_CREATE_CATEGORY..", error);
+    return error.response;
   }
 };
 
