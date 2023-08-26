@@ -26,7 +26,7 @@ export const UserList = () => {
     let filteredUsers = users;
     if (filteredUsers.length > 0) {
       filteredUsers = filteredUsers.filter((user: User) =>
-        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+        user?.firstName?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
     setFilteredUsers(filteredUsers);

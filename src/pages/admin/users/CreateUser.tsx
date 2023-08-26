@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { Dropdown } from "primereact/dropdown";
+import { InputMask } from "primereact/inputmask";
 import { InputText } from "primereact/inputtext";
 import { RadioButton } from "primereact/radiobutton";
 import { Toast } from "primereact/toast";
@@ -210,7 +211,7 @@ export const CreateUser = () => {
                   type="email"
                   className={`${errors.email && "p-invalid"}`}
                   {...register("email", {
-                    required: "Email required",
+                    required: "Field required",
                     pattern:
                       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                   })}
@@ -286,7 +287,7 @@ export const CreateUser = () => {
               <Controller
                 name="country"
                 control={control}
-                rules={{ required: "Country is required" }}
+                rules={{ required: "Filed required" }}
                 render={({ field, fieldState }) => (
                   <div className="card__form__row__container">
                     <label htmlFor="country">Country</label>
@@ -302,7 +303,7 @@ export const CreateUser = () => {
                     />
                     {errors.country && (
                       <small
-                        id="phone-help"
+                        id="country-help"
                         className="p-error"
                       >
                         {errors?.country?.message?.toString()}
@@ -335,14 +336,23 @@ export const CreateUser = () => {
 
               <div className="card__form__row__container">
                 <label htmlFor="phone">Phone</label>
-                <InputText
+                <InputMask
+                  id="phone"
+                  mask="(999) 999-9999"
+                  placeholder="(999) 999-9999"
+                  className={`${errors.phone && "p-invalid"}`}
+                  {...register("phone", {
+                    required: "Field required",
+                  })}
+                />
+                {/* <InputText
                   id="phone"
                   type="number"
                   className={`${errors.phone && "p-invalid"}`}
                   {...register("phone", {
                     required: "Field required",
                   })}
-                />
+                /> */}
                 {errors.phone && (
                   <small
                     id="phone-help"
