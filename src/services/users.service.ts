@@ -96,7 +96,7 @@ const updateUser = async (id: string, data: any) => {
     return response;
   } catch (error) {
     console.log("ERROR_UPDATE_USER", error);
-    return 400;
+    return error.response;
   }
 };
 
