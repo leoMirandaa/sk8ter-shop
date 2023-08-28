@@ -7,7 +7,7 @@ import { Toast } from "primereact/toast";
 import { Category } from "../../../interfaces";
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
 import { dateFormat } from "../../../helpers/dateFormat";
-import { categoryTableColumns } from "../../../utils/AdminTableColumns";
+import tableColumns from "../../../utils/adminTableColumns";
 import categoryService from "../../../services/categories.service";
 import "../../../styles/admin/table.scss";
 
@@ -25,9 +25,8 @@ export const CategoryList = () => {
 
   useEffect(() => {
     let flteredCategories = categories;
-
     if (searchTerm.length > 0) {
-      flteredCategories = flteredCategories.filter((category: any) =>
+      flteredCategories = flteredCategories.filter((category: Category) =>
         category.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
@@ -102,7 +101,7 @@ export const CategoryList = () => {
   return (
     <main className="table__container">
       {isLoading ? (
-        <TableSkeleton fields={categoryTableColumns} />
+        <TableSkeleton fields={tableColumns.categoryColumns} />
       ) : (
         <>
           <Toast ref={toast} />
@@ -110,7 +109,7 @@ export const CategoryList = () => {
 
           <Table
             data={filteredCategories}
-            columns={categoryTableColumns}
+            columns={tableColumns.categoryColumns}
             title={title}
             onUpdate={handleUpdate}
             onDelete={handleDelete}
