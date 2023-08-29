@@ -26,12 +26,12 @@ export const CreateCategory = () => {
     const { name } = data;
 
     const response = await CategoriesService.createCategory(name);
-
-    if (response === 400) {
+    console.log("Response: ", response);
+    if (response?.status === 400) {
       toast.current.show({
         severity: "error",
-        summary: "Error",
-        detail: "Error creating category",
+        summary: "Error in " + response?.data?.errors[0]?.path,
+        detail: response?.data?.errors[0]?.msg,
         life: 3000,
       });
       return;
@@ -117,7 +117,7 @@ export const CreateCategory = () => {
                 >
                   {errors?.name?.message?.toString()}
                 </small>
-              )}{" "}
+              )}
             </div>
           </div>
         </Card>
