@@ -36,11 +36,11 @@ export const UpdateCategory = () => {
     const { _id, name } = data;
     const response = await CategoriesService.updateCategory(_id, name);
 
-    if (response === 400) {
+    if (response?.status === 400) {
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: "Error updating category",
+        detail: response?.data?.errors[0]?.msg,
         life: 3000,
       });
       return;
