@@ -4,48 +4,54 @@ import { useNavigate } from "react-router-dom";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 
-// import {
-//   getAllProducts,
-//   getProductsFiltered,
-// } from "../../../services/products";
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
 import { Product } from "../../../interfaces";
-import { productTableColumns } from "../../../utils/AdminTableColumns";
+import tableColumns from "../../../utils/adminTableColumns";
 import ProductService from "../../../services/products.service";
 import "../../../styles/admin/table.scss";
-
-const productInitialState = {
-  name: "",
-  description: "",
-  price: 1,
-  img: { public_id: "", url: "" },
-  status: true,
-  category: { _id: "", name: "" }, //shirts,pants,hoodies,hats
-};
+import categoriesService from "../../../services/categories.service";
 
 export const ProductList = () => {
-  const [products, setProducts] = useState<Product>(productInitialState);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
-  const [inputSearchFilter, setInputSearchFilter] = useState("");
-  const [productsFiltered, setProductsFiltered] = useState("");
-  const navigate = useNavigate();
   const toast = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProducts();
+    getCategory();
   }, []);
+
+  useEffect(() => {
+    let filteredProducts = products;
+    if (searchTerm.length > 0) {
+      filteredProducts = filteredProducts.filter((product: Product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    setFilteredProducts(filteredProducts);
+  }, [searchTerm]);
+
+  const getCategory = async () => {
+    const response = await categoriesService.getCategory(
+      "64c2d97e105160d0391b04e8"
+    );
+    console.log("GetCategory: ", response.data);
+  };
 
   const getProducts = async () => {
     const response = await ProductService.getProducts();
-    const aux = response.data.map(({ img, category, ...rest }: Product) => {
+    const data = response.data.map(({ img, category, ...rest }: Product) => {
       return {
         img: img.url,
-        category: category.name,
+        category: category?.name, //TODO: fix in enum
         ...rest,
       };
     });
-    setProducts(aux);
-    setProductsFiltered(aux);
+    setProducts(data);
+    setFilteredProducts(data);
     setIsLoading(false);
   };
 
@@ -53,15 +59,8 @@ export const ProductList = () => {
     navigate("create");
   };
 
-  const handleInputSearch = async (event) => {
-    // console.log('handleInputSearch');
-    let name = event.target.value;
-    setInputSearchFilter(name);
-    // setProductsFiltered(getProductsFiltered(products, name));
-  };
-
-  function handleUpdate() {
-    console.log("Handle update");
+  function handleUpdate(productId: string) {
+    navigate(`update/${productId}`);
   }
 
   const handleDelete = async (
@@ -91,9 +90,9 @@ export const ProductList = () => {
     return (
       <TableHeader
         title="Products"
-        inputSearchFilter={inputSearchFilter}
-        handleInputSearch={handleInputSearch}
-        handleCreate={handleCreate}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onCreate={handleCreate}
       />
     );
   };
@@ -101,15 +100,15 @@ export const ProductList = () => {
   return (
     <main className="table__container">
       {isLoading ? (
-        <TableSkeleton fields={productTableColumns} />
+        <TableSkeleton fields={tableColumns.productColumns} />
       ) : (
         <>
           <Toast ref={toast} />
           <ConfirmPopup />
 
           <Table
-            data={products}
-            columns={productTableColumns}
+            data={filteredProducts}
+            columns={tableColumns.productColumns}
             title={title}
             onUpdate={handleUpdate}
             onDelete={handleDelete}

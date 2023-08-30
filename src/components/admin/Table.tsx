@@ -1,10 +1,12 @@
 import { useRef } from "react";
 
+import { Badge } from "primereact/badge";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { Toast } from "primereact/toast";
+import { UserType } from "../../interfaces";
 
 export const Table = ({ data, columns, title, onUpdate, onDelete }) => {
   const toast = useRef(null);
@@ -48,6 +50,26 @@ export const Table = ({ data, columns, title, onUpdate, onDelete }) => {
       />
     );
   };
+  const roleBodyTemplate = (rowData) => {
+    const role = UserType[rowData.role];
+
+    return (
+      <Badge
+        severity={`${rowData.role === UserType.USER ? "info" : "warning"}`}
+        value={role.charAt(0) + role.slice(1).toLowerCase()}
+      />
+    );
+  };
+
+  const handleBodyTemplate = (field) => {
+    switch (field) {
+      case "img":
+        return imageBodyTemplate;
+
+      case "role":
+        return roleBodyTemplate;
+    }
+  };
 
   return (
     <>
@@ -66,7 +88,7 @@ export const Table = ({ data, columns, title, onUpdate, onDelete }) => {
           // breakpoint="950px"
           size="small"
           selectionMode="single"
-          scrollHeight="400px"
+          scrollHeight="500px"
           rows={8}
           value={data}
           rowsPerPageOptions={[8, 15, 20]}
@@ -76,7 +98,8 @@ export const Table = ({ data, columns, title, onUpdate, onDelete }) => {
               key={`table-item-${field}`}
               field={field}
               header={field.charAt(0).toUpperCase() + field.slice(1)}
-              body={field === "img" ? imageBodyTemplate : null}
+              // body={field === "img" ? imageBodyTemplate : null}
+              body={handleBodyTemplate(field)}
             />
           ))}
 
