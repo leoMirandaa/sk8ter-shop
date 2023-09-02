@@ -83,7 +83,7 @@ const updateCategory = async (id: string, name: string) => {
     return response;
   } catch (error) {
     console.log("ERROR_UPDATE_CATEGORY", error);
-    return 400;
+    return error.response;
   }
 };
 
