@@ -1,7 +1,6 @@
 import axios from "axios";
 import { User } from "../interfaces";
-
-const url = import.meta.env.VITE_REACT_APP_URL2;
+const url = import.meta.env.VITE_REACT_APP_URL;
 
 const getUsers = async () => {
   try {
@@ -50,26 +49,8 @@ const createUser = async (user: User) => {
   }
 };
 
-const deleteUser = async (id: string) => {
-  try {
-    const response = await axios({
-      url: `${url}/users/${id}`,
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return response;
-  } catch (error) {
-    console.log("ERROR_DELETE_USER ", error);
-    return 400;
-  }
-};
-
 const updateUser = async (id: string, data: any) => {
-  console.log("updateUser:", data);
   const { street, country, city, state, zip, ...rest } = data;
-  console.log("ADDRess: ", rest);
   const newData = {
     ...rest,
     address: {
@@ -87,7 +68,6 @@ const updateUser = async (id: string, data: any) => {
     const response = await axios({
       url: `${url}/users/${id}`,
       method: "PUT",
-      // data,
       data: newData,
       headers: {
         "Content-Type": "application/json",
@@ -97,6 +77,22 @@ const updateUser = async (id: string, data: any) => {
   } catch (error) {
     console.log("ERROR_UPDATE_USER", error);
     return error.response;
+  }
+};
+
+const deleteUser = async (id: string) => {
+  try {
+    const response = await axios({
+      url: `${url}/users/${id}`,
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log("ERROR_DELETE_USER ", error);
+    return 400;
   }
 };
 
