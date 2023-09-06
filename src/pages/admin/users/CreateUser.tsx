@@ -12,12 +12,12 @@ import { useForm, Controller } from "react-hook-form";
 
 import { CountryList } from "../../../utils/countryList";
 import { UserType } from "../../../interfaces";
-import usersService from "../../../services/users.service";
+import userService from "../../../services/user.service";
 import "../../../styles/admin/cardForm.scss";
 
 export const CreateUser = () => {
-  const navigate = useNavigate();
   const toast = useRef(null);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -29,7 +29,6 @@ export const CreateUser = () => {
   } = useForm();
 
   const handleSubmitForm = async (data: any) => {
-    console.log("data: ", data);
     const {
       street,
       country: { code },
@@ -38,7 +37,6 @@ export const CreateUser = () => {
       state,
       zip,
       confirmPassword,
-
       ...rest
     } = data;
 
@@ -53,7 +51,7 @@ export const CreateUser = () => {
       },
     };
 
-    const response = await usersService.createUser(user);
+    const response = await userService.createUser(user);
 
     if (response?.status === 400) {
       toast.current.show({
@@ -101,6 +99,7 @@ export const CreateUser = () => {
           className="mr-2"
           label="Reset"
           severity="secondary"
+          type="button"
           onClick={resetForm}
         />
         <Button
@@ -345,14 +344,7 @@ export const CreateUser = () => {
                     required: "Field required",
                   })}
                 />
-                {/* <InputText
-                  id="phone"
-                  type="number"
-                  className={`${errors.phone && "p-invalid"}`}
-                  {...register("phone", {
-                    required: "Field required",
-                  })}
-                /> */}
+
                 {errors.phone && (
                   <small
                     id="phone-help"
@@ -408,7 +400,6 @@ export const CreateUser = () => {
             />
           </Card>
         </form>
-        {JSON.stringify(watch())}
       </div>
     </>
   );

@@ -6,13 +6,13 @@ import { Card } from "primereact/card";
 import { Dropdown } from "primereact/dropdown";
 import { InputMask } from "primereact/inputmask";
 import { InputText } from "primereact/inputtext";
-import { RadioButton, RadioButtonChangeEvent } from "primereact/radiobutton";
+import { RadioButton } from "primereact/radiobutton";
 import { Toast } from "primereact/toast";
 import { useForm, Controller } from "react-hook-form";
 
 import { CountryList } from "../../../utils/countryList";
 import { User, UserType } from "../../../interfaces";
-import usersService from "../../../services/users.service";
+import userService from "../../../services/user.service";
 import "../../../styles/admin/cardForm.scss";
 
 interface Country {
@@ -43,7 +43,7 @@ export const UpdateUser = () => {
   };
 
   const handleGetUser = async () => {
-    const { data }: { data: User } = await usersService.getUser(params.id);
+    const { data }: { data: User } = await userService.getUser(params.id);
     const {
       _id,
       firstName,
@@ -75,10 +75,8 @@ export const UpdateUser = () => {
 
   const handleSubmitForm = async (data: User) => {
     const { _id } = data;
+    const response = await userService.updateUser(_id, data);
 
-    const response = await usersService.updateUser(_id, data);
-
-    console.log("Response UPUS: ", response?.data);
     if (response?.status === 400) {
       toast.current.show({
         severity: "error",
@@ -366,14 +364,7 @@ export const UpdateUser = () => {
                     required: "Field required",
                   })}
                 />
-                {/* <InputText
-                  id="phone"
-                  type="number"
-                  className={`${errors.phone && "p-invalid"}`}
-                  {...register("phone", {
-                    required: "Field required",
-                  })}
-                /> */}
+
                 {errors.phone && (
                   <small
                     id="phone-help"
@@ -421,7 +412,6 @@ export const UpdateUser = () => {
             />
           </Card>
         </form>
-        {/* {JSON.stringify(watch())} */}
       </div>
     </>
   );
