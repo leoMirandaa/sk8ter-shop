@@ -1,5 +1,6 @@
 import axios from "axios";
-const url = import.meta.env.VITE_REACT_APP_URL2;
+import { Category } from "../interfaces";
+const url = import.meta.env.VITE_REACT_APP_URL;
 
 const getCategory = async (id: string) => {
   try {
@@ -33,8 +34,7 @@ const getCategories = async () => {
   }
 };
 
-const createCategory = async (name: string) => {
-  console.log("... createCategory:", name);
+const createCategory = async (name: Category) => {
   const data = { name };
 
   try {
@@ -48,7 +48,25 @@ const createCategory = async (name: string) => {
     });
     return response;
   } catch (error) {
-    console.log("ERROR_CREATE_CATEGORY..", error);
+    console.log("ERROR_CREATE_CATEGORY", error);
+    return error.response;
+  }
+};
+
+const updateCategory = async (id: string, name: Category) => {
+  const data = { name };
+  try {
+    const response = await axios({
+      url: `${url}/categories/${id}`,
+      method: "PUT",
+      data,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log("ERROR_UPDATE_CATEGORY", error);
     return error.response;
   }
 };
@@ -66,24 +84,6 @@ const deleteCategory = async (id: string) => {
   } catch (error) {
     console.log("ERROR_DELETE_CATEGORY", error);
     return 400;
-  }
-};
-
-const updateCategory = async (id: string, name: string) => {
-  const data = { name };
-  try {
-    const response = await axios({
-      url: `${url}/categories/${id}`,
-      method: "PUT",
-      data,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return response;
-  } catch (error) {
-    console.log("ERROR_UPDATE_CATEGORY", error);
-    return error.response;
   }
 };
 

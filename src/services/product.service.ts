@@ -1,11 +1,11 @@
 import axios from "axios";
+const url = import.meta.env.VITE_REACT_APP_URL;
 import { Product } from "../interfaces";
-const url = import.meta.env.VITE_REACT_APP_URL2;
 
 const getProducts = async () => {
   try {
     const response = await axios({
-      url: "http://localhost:3002/products",
+      url: `${url}/products`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,6 @@ const getProducts = async () => {
 };
 
 const getProduct = async (id: string) => {
-  console.log("ID: ", id);
   try {
     const response = await axios({
       url: `${url}/products/${id}`,
@@ -34,7 +33,6 @@ const getProduct = async (id: string) => {
 };
 
 const createProduct = async (product: Product) => {
-  console.log("ProductINService: ", product);
   try {
     let formData = new FormData();
     formData.append("name", product.name);
@@ -57,23 +55,6 @@ const createProduct = async (product: Product) => {
   } catch (error) {
     console.log("ERROR_CREATE_PRODUCT");
     return error.response;
-  }
-};
-
-const deleteProduct = async (id: string) => {
-  try {
-    const response = await axios({
-      url: `http://localhost:3002/products/${id}`,
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    return response;
-  } catch (error) {
-    console.log("ERROR_DELETE_PRODUCT ", error);
-    return 400;
   }
 };
 
@@ -101,6 +82,23 @@ const updateProduct = async (id: string, product: any) => {
   } catch (error) {
     console.log("ERROR_UPDATE_PRODUCT");
     return error.response;
+  }
+};
+
+const deleteProduct = async (id: string) => {
+  try {
+    const response = await axios({
+      url: `${url}/products/${id}`,
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.log("ERROR_DELETE_PRODUCT ", error);
+    return 400;
   }
 };
 
