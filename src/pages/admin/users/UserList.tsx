@@ -6,7 +6,7 @@ import { Toast } from "primereact/toast";
 
 import { User } from "../../../interfaces";
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
-import userService from "../../../services/users.service";
+import userService from "../../../services/user.service";
 import tableColumns from "../../../utils/adminTableColumns";
 import "../../../styles/admin/table.scss";
 
