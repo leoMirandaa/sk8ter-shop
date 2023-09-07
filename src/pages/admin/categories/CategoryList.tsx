@@ -8,7 +8,7 @@ import { Category } from "../../../interfaces";
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
 import { dateFormat } from "../../../helpers/dateFormat";
 import tableColumns from "../../../utils/adminTableColumns";
-import categoryService from "../../../services/categories.service";
+import categoryService from "../../../services/category.service";
 import "../../../styles/admin/table.scss";
 
 export const CategoryList = () => {
@@ -90,6 +90,7 @@ export const CategoryList = () => {
     );
   };
 
+  // todo: is better than return?
   // if (isLoading) {
   //   return (
   //     <div className="table__container">

@@ -1,7 +1,15 @@
+// export interface Category {
+//   id: string;
+//   name: string;
+//   status: boolean;
+//   user: object;
+//   category: string;
+// }
+
 export interface Category {
-  id: string;
+  _id?: string;
   name: string;
-  status: boolean;
-  user: object;
-  category: string;
+  status?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }

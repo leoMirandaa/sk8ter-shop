@@ -3,9 +3,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { CreateUser, UserList, UpdateUser } from "../pages/admin/users";
 
 import {
-  CreateProductPage,
+  CreateProduct,
   ProductList,
-  UpdateProductPage,
+  UpdateProduct,
 } from "../pages/admin/products";
 
 import { CouponList, CreateCoupon, UpdateCoupon } from "../pages/admin/coupons";
@@ -14,7 +14,7 @@ import {
   CreateCategory,
   UpdateCategory,
 } from "../pages/admin/categories";
-import { AdminPage } from "../pages/admin/index";
+import { AdminHome } from "../pages/admin/AdminHome";
 import { AdminLayout } from "../components/layouts";
 
 export const AdminRoutes = () => {
@@ -27,7 +27,7 @@ export const AdminRoutes = () => {
         >
           <Route
             index
-            element={<AdminPage />}
+            element={<AdminHome />}
           />
 
           <Route path="categories">
@@ -82,11 +82,11 @@ export const AdminRoutes = () => {
             />
             <Route
               path="create"
-              element={<CreateProductPage />}
+              element={<CreateProduct />}
             />
             <Route
               path="update/:id"
-              element={<UpdateProductPage />}
+              element={<UpdateProduct />}
             />
           </Route>
         </Route>

@@ -49,12 +49,12 @@ const createCoupon = async (data: Coupon) => {
   }
 };
 
-const upateCoupon = async (id: string, data: Coupon) => {
+const upateCoupon = async ({ _id, name, discount }: Coupon) => {
   try {
     const response = await axios({
-      url: `${url}/coupons/${id}`,
+      url: `${url}/coupons/${_id}`,
       method: "PUT",
-      data,
+      data: { name, discount },
       headers: {
         "Content-Type": "application/json",
       },

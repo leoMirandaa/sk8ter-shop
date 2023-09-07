@@ -7,9 +7,8 @@ import { Toast } from "primereact/toast";
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
 import { Product } from "../../../interfaces";
 import tableColumns from "../../../utils/adminTableColumns";
-import ProductService from "../../../services/products.service";
+import productService from "../../../services/product.service";
 import "../../../styles/admin/table.scss";
-import categoriesService from "../../../services/categories.service";
 
 export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,7 +20,6 @@ export const ProductList = () => {
 
   useEffect(() => {
     getProducts();
-    getCategory();
   }, []);
 
   useEffect(() => {
@@ -34,15 +32,8 @@ export const ProductList = () => {
     setFilteredProducts(filteredProducts);
   }, [searchTerm]);
 
-  const getCategory = async () => {
-    const response = await categoriesService.getCategory(
-      "64c2d97e105160d0391b04e8"
-    );
-    console.log("GetCategory: ", response.data);
-  };
-
   const getProducts = async () => {
-    const response = await ProductService.getProducts();
+    const response = await productService.getProducts();
     const data = response.data.map(({ img, category, ...rest }: Product) => {
       return {
         img: img.url,
@@ -72,7 +63,7 @@ export const ProductList = () => {
       message: "Are you sure you want to delete this product?",
       icon: "pi pi-exclamation-triangle",
       accept: async () => {
-        await ProductService.deleteProduct(productId);
+        await productService.deleteProduct(productId);
 
         toast.current.show({
           severity: "success",

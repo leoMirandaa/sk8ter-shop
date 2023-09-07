@@ -1,12 +1,11 @@
 export interface Product {
+  _id?: string;
   name: string;
   description: string;
-  price: number;
-  img?: Img;
+  price: number | any;
+  img?: Img | any;
   status?: boolean;
-  category: object; //shirts,pants,hoodies,hats
-  size: SizeType;
-  gender: GenderType;
+  category?: boardType | any; //pennyboard,skateboard,longboard
   // inStock: number;
   // user: object;
 }
@@ -16,17 +15,13 @@ interface Img {
   url: string;
 }
 
-enum SizeType {
-  XS = "Xtra-small",
-  SM = "Small",
-  MD = "Medium",
-  LG = "Large",
-  XL = "Extra-large",
+export enum boardType {
+  PENNYBOARD = 1,
+  SKATEBOARD = 2,
+  LONGBOARD = 3,
 }
 
-enum GenderType {
-  MEN = "Men",
-  WOMEN = "Women",
-  KID = "Kid",
-  UNISEX = "Unisex",
+interface Category {
+  _id: string;
+  name: string;
 }

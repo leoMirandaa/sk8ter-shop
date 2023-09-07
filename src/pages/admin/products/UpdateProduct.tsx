@@ -10,8 +10,8 @@ import { Toast } from "primereact/toast";
 import { useForm, Controller } from "react-hook-form";
 
 import { Category, Product } from "../../../interfaces";
-import categoriesService from "../../../services/categories.service";
-import productsService from "../../../services/products.service";
+import categoryService from "../../../services/category.service";
+import productService from "../../../services/product.service";
 
 export const UpdateProduct = () => {
   const [imagePreview, setImagePreview] = useState<any>(null);
@@ -36,7 +36,7 @@ export const UpdateProduct = () => {
   }, []);
 
   const handleGetCategory = async () => {
-    const { data }: { data: Product } = await productsService.getProduct(
+    const { data }: { data: Product } = await productService.getProduct(
       params.id
     );
     const {
@@ -48,14 +48,10 @@ export const UpdateProduct = () => {
     } = data;
     console.log("Response; ", data);
     reset({ name, description, price, category });
-    // setImagePreview(url);
     setProductImage(url);
-    // setImagePreview(
-    //   "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1693377301/products/akgmqlmaz8zie0cw5lik.jpg"
-    // );
   };
   const getCategories = async () => {
-    const response = await categoriesService.getCategories();
+    const response = await categoryService.getCategories();
     console.log(response?.data);
 
     const data = response.data.map(({ _id, name, ...rest }: any) => {
@@ -68,15 +64,13 @@ export const UpdateProduct = () => {
   };
 
   const handleSubmitForm = async (product: any) => {
-    const response = await productsService.updateProduct(params.id, product);
+    const response = await productService.updateProduct(params.id, product);
 
     if (response?.status === 400) {
       toast.current.show({
         severity: "error",
-        summary: "Error",
-        detail: "Error updating product",
-        // summary: "Error in " + response?.data?.errors[0]?.path,
-        // detail: response?.data?.errors[0]?.msg,
+        summary: "Error in " + response?.data?.errors[0]?.path,
+        detail: response?.data?.errors[0]?.msg,
         life: 3000,
       });
       return;
@@ -85,7 +79,7 @@ export const UpdateProduct = () => {
     toast.current.show({
       severity: "success",
       summary: "Success",
-      detail: "Product created",
+      detail: "Product updated",
       life: 3000,
     });
   };
@@ -263,7 +257,6 @@ export const UpdateProduct = () => {
                 <Controller
                   control={control}
                   name={"img"}
-                  rules={{ required: "Image is required" }}
                   render={({ field: { value, onChange, ...field } }) => {
                     return (
                       <div className="card__form__row__container">
@@ -288,23 +281,10 @@ export const UpdateProduct = () => {
                     );
                   }}
                 />
-                {/* {errors.img && (
-                  <small
-                    id="img-help"
-                    className="p-error"
-                  >
-                    {errors?.img?.message?.toString()}
-                  </small>
-                )} */}
               </div>
             </div>
           </Card>
         </form>
-        {JSON.stringify(watch())}
-        {JSON.stringify(typeof productImage)}
-        {JSON.stringify(productImage)}
-        {"Image preview: "}
-        {JSON.stringify(imagePreview)}
       </div>
     </>
   );

@@ -1,3 +1,3 @@
 export * from "./ProductList";
-export * from "./CreateProductPage";
-export * from "./UpdateProductPage";
+export * from "./CreateProduct";
+export * from "./UpdateProduct";

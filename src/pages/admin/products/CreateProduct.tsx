@@ -4,24 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { Dropdown } from "primereact/dropdown";
+import { InputNumber } from "primereact/inputnumber";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { useForm, Controller } from "react-hook-form";
 
-import { createProduct, uploadImage } from "../../../services/products";
-import { FormUI } from "../../../components/products";
-import { InputNumber } from "primereact/inputnumber";
-import { categoryList } from "../../../utils/categoryList";
-import categoriesService from "../../../services/categories.service";
 import { Category } from "../../../interfaces";
-import productsService from "../../../services/products.service";
+import categoryService from "../../../services/category.service";
+import productService from "../../../services/product.service";
 
 export const CreateProduct = () => {
   const [imagePreview, setImagePreview] = useState<any>(null);
   const [categories, setCategories] = useState<Category[]>([]);
-  // const [image, setImage] = useState(null);
-  const defaultValues = { price: null };
-  const form = useForm({ defaultValues });
   const toast = useRef(null);
   const navigate = useNavigate();
 
@@ -36,11 +30,10 @@ export const CreateProduct = () => {
 
   useEffect(() => {
     getCategories();
-    console.log("userEfefecgt");
   }, []);
 
   const getCategories = async () => {
-    const response = await categoriesService.getCategories();
+    const response = await categoryService.getCategories();
     console.log(response?.data);
 
     const data = response.data.map(({ _id, name, ...rest }: any) => {
@@ -50,21 +43,16 @@ export const CreateProduct = () => {
       };
     });
     setCategories(data);
-    console.log("REsPOnse categoreis: ", data);
   };
 
   const handleSubmitForm = async (product: any) => {
-    console.log("product: ", product);
-
-    const response = await productsService.createProduct(product);
+    const response = await productService.createProduct(product);
 
     if (response?.status === 400) {
       toast.current.show({
         severity: "error",
-        summary: "Error in ",
-        detail: "Error detail",
-        // summary: "Error in " + response?.data?.errors[0]?.path,
-        // detail: response?.data?.errors[0]?.msg,
+        summary: "Error in " + response?.data?.errors[0]?.path,
+        detail: response?.data?.errors[0]?.msg,
         life: 3000,
       });
       return;
@@ -76,30 +64,8 @@ export const CreateProduct = () => {
       detail: "Product created",
       life: 3000,
     });
-  };
 
-  const handleCreateProduct = async (product) => {
-    const response = await createProduct(product);
-    console.log("handleCreateProduct reponse ", response);
-
-    let formdata = new FormData();
-    // formdata.append("file", imageObject);
-    // console.log("file 2... ", imageObject);
-
-    console.log("formdata** ", formdata);
-    await uploadImage(formdata);
-  };
-
-  const handleFile = (e) => {
-    console.log("handleFiles[0]... ", e.target.files[0]);
-    console.log("handleFile.name... ", e.target.files[0].name);
-    // setProduct({
-    //   ...product,
-    //   image: e.target.files[0].name,
-    // });
-    // setSelectedImage(URL.createObjectURL(e.target.files[0]));
-
-    // setImageObject(e.target.files[0]);
+    resetForm();
   };
 
   const resetForm = () => {
@@ -194,11 +160,11 @@ export const CreateProduct = () => {
                 <Controller
                   name="price"
                   control={control}
-                  rules={{
-                    required: "Enter a valid price",
-                    validate: (value) =>
-                      (value >= 1 && value <= 700) || "Enter a valid price.",
-                  }}
+                  // rules={{
+                  //   required: "Enter a valid price",
+                  //   validate: (value) =>
+                  //     (value >= 1 && value <= 700) || "Enter a valid price.",
+                  // }}
                   render={({ field, fieldState }) => (
                     <>
                       <label htmlFor="price">Price</label>
@@ -234,7 +200,7 @@ export const CreateProduct = () => {
               <Controller
                 name="category"
                 control={control}
-                rules={{ required: "Filed required" }}
+                rules={{ required: "Field required" }}
                 render={({ field, fieldState }) => (
                   <div className="card__form__row__container">
                     <label htmlFor="category">Category</label>
@@ -243,7 +209,7 @@ export const CreateProduct = () => {
                       value={field.value}
                       optionLabel="name"
                       focusInputRef={field.ref}
-                      placeholder="Selece a category"
+                      placeholder="Select a category"
                       options={categories}
                       onChange={(e) => field.onChange(e.value)}
                       className={`${errors.category && "p-invalid"}`}
@@ -307,8 +273,6 @@ export const CreateProduct = () => {
             </div>
           </Card>
         </form>
-        {JSON.stringify(watch())}
-        {/* {JSON.stringify(image)} */}
       </div>
     </>
   );

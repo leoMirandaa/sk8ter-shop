@@ -69,6 +69,8 @@ export const CreateUser = () => {
       detail: "User created",
       life: 3000,
     });
+
+    resetForm();
     // navigate(-1)
   };
 

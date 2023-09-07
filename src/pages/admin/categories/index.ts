@@ -1,3 +1,3 @@
 export * from "./CategoryList";
-export * from "./Createcategory";
+export * from "./CreateCategory";
 export * from "./UpdateCategory";

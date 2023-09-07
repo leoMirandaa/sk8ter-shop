@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "primereact/button";
@@ -6,54 +6,50 @@ import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { Toast } from "primereact/toast";
+import { Controller, useForm } from "react-hook-form";
 
-import { createCoupon } from "../../../services/coupons";
-
-const initialState = {
-  code: "",
-  discount: 0,
-};
+import couponService from "../../../services/coupon.service";
+import "../../../styles/admin/cardForm.scss";
+import { Coupon } from "../../../interfaces/coupon";
 
 export const CreateCoupon = () => {
-  const [coupon, setCoupon] = useState(initialState);
-  const [isEmptyField, setIsEmptyField] = useState(false);
-  const toast = useRef(null);
   const navigate = useNavigate();
+  const toast = useRef(null);
 
-  const { code, discount } = coupon;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm();
 
-  const handleCreate = async (coupon) => {
-    setIsEmptyField(false);
-    if (coupon.code === "" || coupon.discount === "") {
-      setIsEmptyField(true);
+  const handleSubmitForm = async (data: Coupon) => {
+    const { name, discount } = data;
+    const response = await couponService.createCoupon({ name, discount });
 
+    if (response?.status === 400) {
       toast.current.show({
         severity: "error",
-        summary: "Error",
-        detail: "Fields required",
+        summary: "Error in " + response?.data?.errors[0]?.path,
+        detail: response?.data?.errors[0]?.msg,
         life: 3000,
       });
-    } else {
-      const response = await createCoupon(coupon);
-      console.log("handleCreateCoupon response ", response);
-
-      setCoupon({
-        code: "",
-        discount: 0,
-      });
-
-      toast.current.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Coupon created",
-        life: 3000,
-      });
-      // navigate(-1);
+      return;
     }
+
+    toast.current.show({
+      severity: "success",
+      summary: "Success",
+      detail: "Coupon created",
+      life: 3000,
+    });
+
+    resetForm();
   };
 
   const resetForm = () => {
-    setCoupon(initialState);
+    reset();
   };
 
   const title = () => {
@@ -63,7 +59,8 @@ export const CreateCoupon = () => {
           text
           rounded
           icon="pi pi-arrow-left"
-          onClick={() => navigate(-1)}
+          type="button"
+          onClick={() => navigate("/admin/Coupons")}
         />
         Create Coupon
       </div>
@@ -78,11 +75,12 @@ export const CreateCoupon = () => {
           className="mr-2"
           label="Reset"
           severity="secondary"
+          type="button"
           onClick={resetForm}
         />
         <Button
           label="Confirm"
-          onClick={() => handleCreate(coupon)}
+          type="submit"
         />
       </div>
     );
@@ -92,65 +90,76 @@ export const CreateCoupon = () => {
     <>
       <Toast ref={toast} />
 
-      <div className="table__container">
+      <form
+        className="table__container"
+        onSubmit={handleSubmit(handleSubmitForm)}
+      >
         <Card
           className="card__form animate__animated animate__fadeIn"
           title={title}
           footer={footer}
         >
-          <form action="#">
-            <div className="card__form__row">
-              <div className="card__form__row__container">
-                <label htmlFor="username">Coupon</label>
-                <InputText
-                  id="username"
-                  value={code}
-                  onChange={(e) =>
-                    setCoupon({
-                      ...coupon,
-                      code: e.target.value,
-                    })
-                  }
-                  className={`${isEmptyField && "p-invalid"}`}
-                />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid Value
-              </small> */}
-              </div>
-
-              <div className="card__form__row__container">
-                <label htmlFor="password">Discount</label>
-                <InputNumber
-                  id="stock"
-                  value={discount}
-                  onChange={(e) =>
-                    setCoupon({
-                      ...coupon,
-                      discount: e.value,
-                    })
-                  }
-                  className="w-full lg:w-auto"
-                  min={1}
-                  max={100}
-                  showButtons
-                  suffix="%"
-                  decrementButtonClassName="p-button-secondary"
-                  incrementButtonClassName="p-button-secondary"
-                />
-                {/* <small
-                id="username-help"
-                className="p-error"
-              >
-                Invalid Value
-              </small> */}
-              </div>
+          <div className="card__form__row">
+            <div className="card__form__row__container">
+              <label htmlFor="name">Name</label>
+              <InputText
+                id="name"
+                className={`${errors.name && "p-invalid"}`}
+                {...register("name", {
+                  required: "Field required",
+                  minLength: { value: 3, message: "Min length 3" },
+                })}
+              />
+              {errors.name && (
+                <small
+                  id="name-help"
+                  className="p-error"
+                >
+                  {errors?.name?.message?.toString()}
+                </small>
+              )}
             </div>
-          </form>
+
+            <div className="card__form__row__container">
+              <Controller
+                name="discount"
+                control={control}
+                // rules={{
+                //   required: "Enter a valid discount",
+                //   validate: (value) =>
+                //     (value >= 1 && value <= 700) || "Enter a valid discount.",
+                // }}
+                render={({ field, fieldState }) => (
+                  <>
+                    <label htmlFor="discount">discount</label>
+                    <InputNumber
+                      id={field.name}
+                      inputRef={field.ref}
+                      value={field.value}
+                      onBlur={field.onBlur}
+                      onValueChange={(e) => field.onChange(e)}
+                      useGrouping={false}
+                      min={1}
+                      max={700}
+                      showButtons
+                      decrementButtonClassName="p-button-secondary"
+                      incrementButtonClassName="p-button-secondary"
+                    />
+                    {errors.discount && (
+                      <small
+                        id="discount-help"
+                        className="p-error"
+                      >
+                        {errors?.discount?.message?.toString()}
+                      </small>
+                    )}
+                  </>
+                )}
+              />
+            </div>
+          </div>
         </Card>
-      </div>
+      </form>
     </>
   );
 };

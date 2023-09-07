@@ -3,9 +3,9 @@ import axios from "axios";
 import { Button } from "primereact/button";
 
 import { HomeCategoryCard } from "../components/HomeCategoryCard";
+import { ProductCard } from "../components/products/ProductCard";
 import { categories } from "../utils/categoriesArr";
 import "../styles/homePage.scss";
-import { ProductCard } from "../components/products/ProductCard";
 
 interface categoryProps {
   title: string;
