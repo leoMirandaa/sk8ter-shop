@@ -5,41 +5,39 @@ import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 
 import { Table, TableHeader, TableSkeleton } from "../../../components/admin";
-import { couponTableColumns } from "../../../utils/AdminTableColumns";
-import {
-  deleteCoupon,
-  getCoupon,
-  getCouponByFilter,
-  getAllCoupons,
-} from "../../../services/coupons";
+import { Coupon } from "../../../interfaces/coupon";
+import couponService from "../../../services/coupon.service";
+import tableColumns from "../../../utils/adminTableColumns";
 import "../../../styles/admin/table.scss";
 
 export const CouponList = () => {
   const [coupons, setCoupons] = useState([]);
+  const [filteredCoupons, setFilteredCoupons] = useState<Coupon[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [isLoading, setIsloading] = useState(true);
-  const [inputSearchFilter, setInputSearchFilter] = useState("");
-  const [couponsFiltered, setCouponsFiltered] = useState("");
-  const [visible, setVisible] = useState(true);
-
-  const toast = useRef(null);
-
   const navigate = useNavigate();
+  const toast = useRef(null);
 
   useEffect(() => {
     getCoupons();
   }, []);
 
-  const getCoupons = async () => {
-    const fetchCoupons = await getAllCoupons();
-    setCoupons(fetchCoupons.data);
-    setCouponsFiltered(fetchCoupons.data);
-    setIsloading(false);
-  };
+  useEffect(() => {
+    let filteredCoupons = coupons;
+    if (filteredCoupons.length > 0) {
+      filteredCoupons = filteredCoupons.filter((coupon) =>
+        coupon?.code?.toLowerCase()?.includes(searchTerm?.toLowerCase())
+      );
+    }
+    setFilteredCoupons(filteredCoupons);
+  }, [searchTerm]);
 
-  const handleInputSearch = async (event) => {
-    let name = event.target.value;
-    setInputSearchFilter(name);
-    setCouponsFiltered(getCouponByFilter(coupons, name));
+  const getCoupons = async () => {
+    const response = await couponService.getCoupons();
+    setCoupons(response.data);
+    setFilteredCoupons(response.data);
+    response.data;
+    setIsloading(false);
   };
 
   const handleCreate = () => {
@@ -59,7 +57,7 @@ export const CouponList = () => {
       message: "Are you sure you want to delete this coupon?",
       icon: "pi pi-exclamation-triangle",
       accept: async () => {
-        await deleteCoupon(couponId);
+        await couponService.deleteCoupon(couponId);
 
         toast.current.show({
           severity: "success",
@@ -77,9 +75,9 @@ export const CouponList = () => {
     return (
       <TableHeader
         title="Coupons"
-        inputSearchFilter={inputSearchFilter}
-        handleInputSearch={handleInputSearch}
-        handleCreate={handleCreate}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onCreate={handleCreate}
       />
     );
   };
@@ -87,15 +85,15 @@ export const CouponList = () => {
   return (
     <main className="table__container">
       {isLoading ? (
-        <TableSkeleton fields={couponTableColumns} />
+        <TableSkeleton fields={tableColumns.couponColumns} />
       ) : (
         <>
           <Toast ref={toast} />
           <ConfirmPopup />
 
           <Table
-            data={coupons}
-            columns={couponTableColumns}
+            data={filteredCoupons}
+            columns={tableColumns.couponColumns}
             title={title}
             onUpdate={handleUpdate}
             onDelete={handleDelete}

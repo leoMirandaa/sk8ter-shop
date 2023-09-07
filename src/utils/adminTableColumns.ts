@@ -23,7 +23,7 @@ const productColumns = [
   "category",
 ];
 
-const couponColumns = ["code", "discount"];
+const couponColumns = ["name", "discount"];
 
 export default {
   categoryColumns,

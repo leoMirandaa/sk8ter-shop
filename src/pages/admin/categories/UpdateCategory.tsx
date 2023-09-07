@@ -8,7 +8,7 @@ import { Toast } from "primereact/toast";
 import { useForm } from "react-hook-form";
 
 import { Category } from "../../../interfaces";
-import CategoriesService from "../../../services/categories.service";
+import categoryService from "../../../services/category.service";
 import "../../../styles/admin/cardForm.scss";
 
 export const UpdateCategory = () => {
@@ -27,14 +27,14 @@ export const UpdateCategory = () => {
   }, []);
 
   const handleGetCategory = async () => {
-    const { data } = await CategoriesService.getCategory(params.id);
+    const { data } = await categoryService.getCategory(params.id);
     const { _id, name } = data;
     reset({ _id, name });
   };
 
   const handleSubmitForm = async (data: Category) => {
     const { _id, name } = data;
-    const response = await CategoriesService.updateCategory(_id, name);
+    const response = await categoryService.updateCategory({ _id, name });
 
     if (response?.status === 400) {
       toast.current.show({

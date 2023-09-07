@@ -35,13 +35,11 @@ const getCategories = async () => {
 };
 
 const createCategory = async (name: Category) => {
-  const data = { name };
-
   try {
     const response = await axios({
       url: `${url}/categories`,
       method: "POST",
-      data,
+      data: name,
       headers: {
         "Content-Type": "application/json",
       },
@@ -53,11 +51,11 @@ const createCategory = async (name: Category) => {
   }
 };
 
-const updateCategory = async (id: string, name: Category) => {
-  const data = { name };
+const updateCategory = async ({ _id, name }: Category) => {
+  const data = { _id, name };
   try {
     const response = await axios({
-      url: `${url}/categories/${id}`,
+      url: `${url}/categories/${_id}`,
       method: "PUT",
       data,
       headers: {
