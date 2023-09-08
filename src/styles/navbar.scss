@@ -8,7 +8,7 @@
   color: #ffffff;
   font-weight: bolder;
   margin-right: 2rem;
-  padding: 0.9rem;
+  padding: 0.85rem;
   text-transform: uppercase;
   transition: all 0.1s ease-in-out;
   cursor: pointer;
@@ -19,7 +19,7 @@
     color: var(--primary-color);
     // background-color: var(--surface-0);
     background-color: var(--surface-card);
-    border: solid 1px var(--primary-color);
+    // border: solid 1px var(--primary-color);
   }
 }
 
@@ -30,7 +30,7 @@
   border-bottom: solid 1px var(--surface-border) !important;
   font-weight: bold;
 
-  max-width: var(--max-w);
+  // max-width: var(--max-w);
   margin: auto;
 }
 

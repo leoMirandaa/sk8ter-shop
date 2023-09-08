@@ -4,7 +4,7 @@ import { Card } from "primereact/card";
 import { UserContext } from "./auth/context/UserContext";
 import { Divider } from "primereact/divider";
 
-import { getProducts } from "../services/clothingCategory/getProducts";
+// import { getProducts } from "../services/clothingCategory/getProducts";
 
 const URL = import.meta.env.VITE_REACT_APP_URL;
 
@@ -18,19 +18,18 @@ export const Cart = () => {
   }, []);
 
   const handleProductsInCart = async () => {
-    if (globalUser) {
-      let result = await getProducts(globalUser);
-
-      let parsedJSON = [];
-      let subTotal = 0;
-      for (let i = 0; i < result.data.length; i++) {
-        parsedJSON.push(JSON.parse(result.data[i]));
-        console.log("price: ", JSON.parse(result.data[i]).price);
-        subTotal = subTotal += JSON.parse(result.data[i]).price;
-      }
-      setProductsInCart(parsedJSON);
-      setSubTotal(subTotal);
-    }
+    // if (globalUser) {
+    //   let result = await getProducts(globalUser);
+    //   let parsedJSON = [];
+    //   let subTotal = 0;
+    //   for (let i = 0; i < result.data.length; i++) {
+    //     parsedJSON.push(JSON.parse(result.data[i]));
+    //     console.log("price: ", JSON.parse(result.data[i]).price);
+    //     subTotal = subTotal += JSON.parse(result.data[i]).price;
+    //   }
+    //   setProductsInCart(parsedJSON);
+    //   setSubTotal(subTotal);
+    // }
   };
 
   const footer = (

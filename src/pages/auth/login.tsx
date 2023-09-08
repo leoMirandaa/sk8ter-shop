@@ -6,12 +6,12 @@ import { InputText } from "primereact/inputtext";
 
 import { Toast } from "primereact/toast";
 
-import { authenticateUser } from "../../services/auth/authenticateUser";
+// import { authenticateUser } from "../../services/auth/authenticateUser";
 import { UserContext } from "./context/UserContext";
 import "../../styles/auth/authForm.scss";
 
 export const Login = () => {
-  const { handleSetGlobalUser } = useContext(UserContext);
+  // const { handleSetGlobalUser } = useContext(UserContext);
 
   const toast = useRef(null);
   const userNameInput = useRef(null);
@@ -29,21 +29,21 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const authenticated = await authenticateUser(user);
+    // const authenticated = await authenticateUser(user);
 
-    if (authenticated.data === "User not found") {
-      toast.current.show({
-        severity: "error",
-        summary: "Login failed",
-        detail: "User or password incorrect",
-        life: 3000,
-        position: "top-right",
-      });
-    } else {
-      localStorage.setItem("user", JSON.stringify(authenticated.data));
-      await handleSetGlobalUser(authenticated.data);
-      navigate("/home");
-    }
+    // if (authenticated.data === "User not found") {
+    //   toast.current.show({
+    //     severity: "error",
+    //     summary: "Login failed",
+    //     detail: "User or password incorrect",
+    //     life: 3000,
+    //     position: "top-right",
+    //   });
+    // } else {
+    //   localStorage.setItem("user", JSON.stringify(authenticated.data));
+    //   await handleSetGlobalUser(authenticated.data);
+    //   navigate("/home");
+    // }
   };
 
   return (

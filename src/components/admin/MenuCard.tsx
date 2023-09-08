@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "../../styles/admin.scss";
+import "../../styles/admin/menuCard.scss";
 
 interface CardProps {
   title: string;

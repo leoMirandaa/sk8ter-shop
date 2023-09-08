@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
-import { useState } from "react";
 
 interface ProductProps {
-  id: number;
+  id: string;
   name: string;
   price: number;
   img: ImageProps;
