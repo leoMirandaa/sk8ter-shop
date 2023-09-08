@@ -1,7 +1,9 @@
 .footer {
   display: flex;
   flex-direction: column;
-  background-color: var(--surface-ground);
+  // background-color: var(--surface-ground);
+  // background-color: var(--surface-section);
+  background-color: var(--surface-50);
   border-top: 1px solid var(--surface-border);
 
   @media (min-width: 1024px) {

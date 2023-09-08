@@ -119,7 +119,7 @@ export const Navbar = () => {
     <div className="">
       {/* <div className="container sticky top-0 z-2"> */}
       <Menubar
-        className="navbar px-0"
+        className="navbar pl-0"
         model={items}
         start={start}
         end={end}

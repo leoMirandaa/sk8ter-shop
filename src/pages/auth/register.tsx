@@ -7,7 +7,7 @@ import { Toast } from "primereact/toast";
 
 import { useFormik } from "formik";
 
-import { createUser } from "../../services/auth/createUser";
+// import { createUser } from "../../services/auth/createUser";
 import { basicSchema } from "./schemas";
 import "../../styles/auth/authForm.scss";
 
@@ -16,7 +16,7 @@ export const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
-    const users = await createUser(values);
+    // const users = await createUser(values);
     toast.current.show({
       severity: "success",
       summary: "Success",
@@ -48,7 +48,7 @@ export const Register = () => {
   // console.log('errors ', formik.errors);
 
   const handleSignup = async () => {
-    const users = await createUser(formik.values);
+    // const users = await createUser(formik.values);
     toast.current.show({
       severity: "success",
       summary: "Success",

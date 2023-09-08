@@ -2,7 +2,8 @@
   --blue: 0, 0, 255;
   --alpha: 0.44;
   --max-w: 1440px;
-  --max-table-width: 65rem;
+  --max-table-width: 70rem;
+  /* --max-table-width: 1440px; */
 }
 
 html,
@@ -145,3 +146,39 @@ a:hover {
   box-shadow: none;
   border: solid 1px var(--surface-border);
 }
+
+/* display: none; */
+input[type="file"] {
+  /* background-color: white; */
+  outline: none;
+  /* width: auto; */
+  height: 44px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+::-webkit-file-upload-button {
+  color: white;
+  /* background-color: var(--primary-color); */
+  background-color: #64748b;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 6px;
+  height: 44px;
+  cursor: pointer;
+}
+
+/* .input-file-label {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: var(--surface-500);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  letter-spacing: 1.5px;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 6px;
+} */

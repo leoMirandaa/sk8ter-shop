@@ -4,7 +4,7 @@
   display: grid;
   gap: 2rem;
 
-  max-width: 1024px;
+  max-width: var(--max-table-width);
   margin: auto;
 
   @media (min-width: 640px) {
