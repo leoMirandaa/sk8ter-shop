@@ -3,15 +3,18 @@ import axios from "axios";
 import { ProductCard } from "../../components/products/ProductCard";
 import "../../styles/productPage.scss";
 import { Product } from "../../interfaces";
+import { Loader } from "../../components/ui/Loader";
 
 export const PennyBoardPage = () => {
   const [boards, setBoards] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getBoards = async () => {
     const response = await axios(
       "http://localhost:3002/search/findProductsByCategoryId/64c2d97e105160d0391b04e8"
     );
     setBoards(response.data?.results);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -26,20 +29,24 @@ export const PennyBoardPage = () => {
       <div className="container">
         <h2 className="categories__title">Baby Colors</h2>
 
-        <div
-          className="categories__container"
-          style={{ maxWidth: "1440px", margin: "0 auto" }}
-        >
-          {boards.map((board: Product) => (
-            <ProductCard
-              key={board._id}
-              id={board._id}
-              name={board.name}
-              img={board.img}
-              price={board.price}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div
+            className="categories__container"
+            style={{ maxWidth: "1440px", margin: "0 auto" }}
+          >
+            {boards.map((board: Product) => (
+              <ProductCard
+                key={board._id}
+                id={board._id}
+                name={board.name}
+                img={board.img}
+                price={board.price}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
