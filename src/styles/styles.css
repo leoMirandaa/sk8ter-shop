@@ -23,7 +23,6 @@ body {
 .signup-page-bg {
   min-height: 100vh !important;
   height: 100 !important;
-  /* background-color: var(--primary-color); */
 }
 
 .input-invalid {
@@ -64,12 +63,6 @@ body {
   /* font-size: 0.8rem; */
 }
 
-/* .p-card-title,
-.p-card-content,
-.p-card-footer {
-  text-align: center;
-} */
-
 .file-invalid {
   border: solid 1px red !important;
   color: green;
@@ -99,21 +92,8 @@ body {
   margin: auto;
 }
 
-/* @media (max-width: 640px) {
-  .container {
-    background: red !important;
-  }
-} */
-
 .padding-container {
   padding: 4rem;
-}
-
-.p-menuitem-text {
-  /* color: #ffffff !important; */
-  /* text-decoration: underline;
-  text-decoration-color: var(--primary-color) !important;
-  text-decoration-style: wavy; */
 }
 
 /* @font-face {
@@ -128,7 +108,6 @@ body {
 /* E8DCD2 */
 
 a {
-  /* text-decoration: none; */
   color: var(--text-color-secondary);
 }
 
@@ -138,8 +117,6 @@ a:hover {
 
 .fullWidthHeight {
   min-height: calc(100vh - 223.5px);
-  /* padding: 2rem; */
-  /* background-color: var(--primary-color); */
 }
 
 .p-card {
@@ -147,11 +124,8 @@ a:hover {
   border: solid 1px var(--surface-border);
 }
 
-/* display: none; */
 input[type="file"] {
-  /* background-color: white; */
   outline: none;
-  /* width: auto; */
   height: 44px;
   border: 1px solid #ced4da;
   border-radius: 6px;
@@ -182,3 +156,21 @@ input[type="file"] {
   cursor: pointer;
   border-radius: 6px;
 } */
+
+.error-container {
+  background-color: #ffe7e6;
+  border: solid #ff5757;
+  border-width: 0 0 0 6px;
+  color: #ff5757;
+  width: 100%;
+  padding: 1.25rem 1.75rem;
+  border-radius: 6px;
+}
+
+.product-skeleton-btn-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1.5rem;
+}
+
+/* 200 */
