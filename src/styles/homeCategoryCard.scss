@@ -11,15 +11,17 @@
 
   & img:hover {
     /* filter: grayscale(0.4); */
-    transform: scale(1.1);
-    filter: brightness(0.8);
+    // transform: scale(1.1);
+    // filter: brightness(0.8);
   }
 
   &__text {
     margin: 0;
     font-weight: bold;
-    color: var(--text-0);
-    background: var(--surface-0);
+    // color: var(--text-0);
+    // background: var(--surface-0);
+    background-color: #000;
+    color: #fff;
 
     padding: 5px;
     position: absolute;
@@ -30,5 +32,10 @@
     left: 27%;
     top: 2%;
     transform: translate(-50%, 0%);
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover &__text {
+    background: var(--primary-color);
   }
 }
