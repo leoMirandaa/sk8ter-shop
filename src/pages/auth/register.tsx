@@ -60,7 +60,7 @@ export const Register = () => {
   return (
     <>
       <Toast ref={toast} />
-      <section className="form animate__animated animate__fadeInLeft ">
+      <section className="form">
         <h1 className="form__title">Sign Up</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="form__inputContainer p-float-label">
