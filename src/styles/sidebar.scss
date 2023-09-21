@@ -1,0 +1,12 @@
+.sidebarContainer {
+  padding: 0.5rem;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+
+  &__rightOptions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
