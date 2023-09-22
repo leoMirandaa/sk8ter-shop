@@ -119,10 +119,31 @@ a:hover {
   min-height: calc(100vh - 223.5px);
 }
 
+/* Prime-react classes */
 .p-card {
   box-shadow: none;
   border: solid 1px var(--surface-border);
 }
+
+.p-sidebar .p-sidebar-header {
+  padding: 0.5rem;
+  padding: 0;
+}
+
+.p-sidebar .p-sidebar-content {
+  padding: 0;
+}
+
+.p-menu {
+  width: 100%;
+  border: none;
+  padding: 0;
+}
+
+.p-menu .p-menuitem-link .p-menuitem-text {
+  font-weight: bold;
+}
+/* Prime-react classes  */
 
 input[type="file"] {
   outline: none;
