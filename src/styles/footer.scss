@@ -1,8 +1,6 @@
 .footer {
   display: flex;
   flex-direction: column;
-  // background-color: var(--surface-ground);
-  // background-color: var(--surface-section);
   background-color: var(--surface-50);
   border-top: 1px solid var(--surface-border);
 
@@ -26,9 +24,7 @@
 
     background: var(--primary-color);
     padding: 1rem 0;
-
-    color: #ffffff;
-    // padding: 0.5rem 1rem !important;
+    color: var(--surface-0);
 
     &__search input {
       width: 65%;
@@ -51,7 +47,6 @@
       }
 
       &__icons Button {
-        background: #000;
         margin-right: 5px;
       }
     }
@@ -68,8 +63,6 @@
   }
 
   &__links__container {
-    // padding: 0.5rem 1rem;
-
     & h2 {
       margin: 0 0 0.5rem 0;
     }

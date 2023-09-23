@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { socialItems } from "../../utils/socialItemArr";
-
 import "../../styles/footer.scss";
+
 export const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <footer className="footer">
       <div className="footer__mailSection">
@@ -27,10 +30,12 @@ export const Footer = () => {
               {socialItems.map((item) => (
                 <Button
                   key={item.name}
-                  size="small"
                   icon={item.icon}
-                  // className="bg-white text-primary"
-                  severity="secondary"
+                  onClick={() =>
+                    window.location.replace(
+                      "https://github.com/leopoldo-1/Clothing-store.git"
+                    )
+                  }
                 />
               ))}
             </span>
