@@ -1,129 +1,80 @@
-import { useContext, useState } from "react";
-import PrimeReact from "primereact/api";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { Menubar } from "primereact/menubar";
-import { SplitButton } from "primereact/splitbutton";
-import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
+import { Badge } from "primereact/badge";
 
-import { UserContext } from "../../pages/auth/context/UserContext";
+import { ThemeManager } from "../ThemeManager";
+import { urls } from "../../utils/urls";
+import SideBar from "../../components/ui/Sidebar";
 import "../../styles/navbar.scss";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { globalUser } = useContext<any>(UserContext);
-  const [theme, setTheme] = useState("light");
-
-  const changeMyTheme = () => {
-    console.log("...");
-    const newTheme = theme === "dark" ? "light" : "dark";
-    PrimeReact?.changeTheme?.(
-      `lara-${theme}-teal`,
-      `lara-${newTheme}-teal`,
-      "app-theme",
-      () => setTheme(newTheme)
-    );
-  };
-
-  const userOptions = [
-    { label: "PennyBoards", command: () => navigate("/pennyboards") },
-    { label: "SkateBoards", command: () => navigate("/skateboards") },
-    { label: "LongBoards", command: () => navigate("/longboards") },
-    { label: "Sale", command: () => navigate("/sale") },
-  ];
-
-  const adminOptions = [
-    ...userOptions,
-    { label: "Admin", command: () => navigate("/admin") },
-  ];
-  const items =
-    globalUser.name === "admin" || "leo" ? adminOptions : userOptions;
-  const profileButton = [
-    {
-      label: "Settings",
-      icon: "pi pi-cog",
-      command: () => {
-        navigate("/settings");
-      },
-    },
-    {
-      label: "LogOut",
-      icon: "pi pi-power-off",
-      command: () => {
-        localStorage.clear();
-        location.reload();
-        navigate("/home");
-      },
-    },
-  ];
-
-  const end = globalUser.name ? (
-    <>
-      <Button
-        text
-        className="mr-2"
-        onClick={() => changeMyTheme()}
-      >
-        <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button>
-
-      <Button
-        badge={globalUser?.cart?.length}
-        className={`mr-2 ${globalUser.name === "admin" ? "hidden" : ""}`}
-        onClick={() => navigate("/cart")}
-      >
-        <i className="pi pi-shopping-cart"></i>
-      </Button>
-
-      <SplitButton
-        text
-        label={globalUser?.name}
-        icon="pi pi-user "
-        model={profileButton}
-      ></SplitButton>
-    </>
-  ) : (
-    <span>
-      <Button
-        text
-        className="p-button-primary mr-2"
-        onClick={() => changeMyTheme()}
-      >
-        <span className={`pi pi-${theme === "dark" ? "sun" : "moon"}`}></span>
-      </Button>
-
-      <Button
-        label="Sign in"
-        className="p-button-outlined mr-2"
-        onClick={() => navigate("/sign_in")}
-      />
-
-      <Button
-        label="Sign up"
-        className="p-button-secondary "
-        onClick={() => navigate("/sign_up")}
-      />
-    </span>
-  );
-
-  const start = (
-    <span
-      className="textLogo"
-      onClick={() => navigate("/home")}
-    >
-      Sk8er
-    </span>
-  );
+  const location = useLocation();
 
   return (
-    <div className="">
-      {/* <div className="container sticky top-0 z-2"> */}
-      <Menubar
-        className="navbar pl-0"
-        model={items}
-        start={start}
-        end={end}
-      />
-    </div>
+    <>
+      <ThemeManager />
+
+      <div className="navbarContainer">
+        <SideBar />
+
+        <div className="navbarContainer__fullNavbar">
+          <div
+            className="logo"
+            onClick={() => navigate("/")}
+          >
+            Sk8er
+          </div>
+
+          <nav>
+            <ul className="nav__links">
+              {urls.map(({ url, label }) => (
+                <li key={url}>
+                  <div
+                    className={
+                      location?.pathname.includes(url) ? "selectedPage" : null
+                    }
+                    onClick={() => navigate(url)}
+                  >
+                    {label}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <span>
+            <span>
+              <i
+                className="pi pi-shopping-cart p-overlay-badge"
+                style={{
+                  fontSize: "1.5rem",
+                  marginRight: "1.5rem",
+                  color: "var(--text-color)",
+                }}
+                onClick={() => navigate("/cart")}
+              >
+                <Badge value="2"></Badge>
+              </i>
+            </span>
+
+            <Button
+              label="Sign in"
+              outlined
+              style={{ marginRight: ".5rem" }}
+              onClick={() => navigate("/sign_in")}
+            />
+
+            <Button
+              label="Sign up"
+              severity="secondary"
+              className="mr-2"
+              onClick={() => navigate("/sign_up")}
+            />
+          </span>
+        </div>
+      </div>
+    </>
   );
 };
