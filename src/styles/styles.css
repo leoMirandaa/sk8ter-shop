@@ -122,7 +122,7 @@ a:hover {
 /* Prime-react classes */
 .p-card {
   box-shadow: none;
-  border: solid 1px var(--surface-border);
+  border: solid 1.5px var(--surface-border);
 }
 
 .p-sidebar .p-sidebar-header {
@@ -137,7 +137,7 @@ a:hover {
 .p-menu {
   width: 100%;
   border: none;
-  padding: 0;
+  /* padding: 0; */
 }
 
 .p-menu .p-menuitem-link .p-menuitem-text {
