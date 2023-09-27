@@ -47,12 +47,7 @@ export const Navbar = () => {
           <span>
             <span>
               <i
-                className="pi pi-shopping-cart p-overlay-badge"
-                style={{
-                  fontSize: "1.5rem",
-                  marginRight: "1.5rem",
-                  color: "var(--text-color)",
-                }}
+                className="pi pi-shopping-cart p-overlay-badge cart__icon"
                 onClick={() => navigate("/cart")}
               >
                 <Badge value="2"></Badge>

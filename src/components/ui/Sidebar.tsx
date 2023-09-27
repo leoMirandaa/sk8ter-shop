@@ -86,12 +86,7 @@ const SideBar = () => {
 
         <div>
           <i
-            className="pi pi-shopping-cart p-overlay-badge mr-4"
-            style={{
-              fontSize: "1.5rem",
-              color: "var(--text-color)",
-              cursor: "pointer",
-            }}
+            className="pi pi-shopping-cart p-overlay-badge cart__icon"
             onClick={() => navigate("/cart")}
           >
             <Badge value="2"></Badge>
