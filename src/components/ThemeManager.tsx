@@ -11,8 +11,8 @@ export const ThemeManager = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
 
     PrimeReact?.changeTheme?.(
-      `lara-${theme}-teal`,
-      `lara-${newTheme}-teal`,
+      `lara-${theme}-indigo`,
+      `lara-${newTheme}-indigo`,
       "app-theme",
       () => setTheme(newTheme)
     );
