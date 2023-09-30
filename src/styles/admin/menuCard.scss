@@ -10,7 +10,7 @@
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   border-radius: 6px;
-  border: solid 1px var(--surface-border);
+  border: solid 1.5px var(--surface-border);
 
   &__title {
     padding: 0;
@@ -33,8 +33,8 @@
 }
 
 .menu__card:hover i {
-  transform: scale(1.1);
-  filter: brightness(0.8);
+  // transform: scale(1.1);
+  // filter: brightness(0.8);
 }
 // .menu__card:hover h3 {
 //   transform: scale(1.1);

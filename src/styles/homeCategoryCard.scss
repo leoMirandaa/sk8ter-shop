@@ -18,10 +18,10 @@
   &__text {
     margin: 0;
     font-weight: bold;
-    // color: var(--text-0);
-    // background: var(--surface-0);
-    background-color: #000;
-    color: #fff;
+    color: var(--text-0);
+    background: var(--surface-0);
+    // background-color: #000;
+    // color: #fff;
 
     padding: 5px;
     position: absolute;
@@ -37,5 +37,6 @@
 
   &:hover &__text {
     background: var(--primary-color);
+    color: var(--surface-0);
   }
 }
