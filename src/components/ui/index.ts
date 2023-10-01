@@ -1,4 +1,5 @@
 export * from "./Footer";
-export * from "./Navbar";
 export * from "./Loader";
+export * from "./Navbar";
 export * from "./ProductSkeleton";
+export * from "./Sidebar";
