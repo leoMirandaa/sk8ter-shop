@@ -10,8 +10,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  /* font-size: 14px; */
-  /* background-color: var(--surface-ground); */
 }
 
 .validation {
@@ -193,5 +191,3 @@ input[type="file"] {
   justify-content: space-evenly;
   margin-top: 1.5rem;
 }
-
-/* 200 */
