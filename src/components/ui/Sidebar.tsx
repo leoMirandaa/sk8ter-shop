@@ -40,19 +40,6 @@ const SideBar = () => {
           </div>
 
           <div className="pb-3">
-            {/* <div>
-              <Button
-                text
-                label="Github"
-                severity="secondary"
-                icon="pi pi-github"
-                onClick={() =>
-                  window.location.replace(
-                    "https://github.com/leopoldo-1/Clothing-store.git"
-                  )
-                }
-              />
-            </div> */}
             <div className="px-3">
               <Button
                 className="w-full my-2"
