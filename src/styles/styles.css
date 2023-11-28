@@ -191,3 +191,7 @@ input[type="file"] {
   justify-content: space-evenly;
   margin-top: 1.5rem;
 }
+
+.p-dialog .p-dialog-header {
+  padding-bottom: 0;
+}
