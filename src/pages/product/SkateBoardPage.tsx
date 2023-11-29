@@ -25,7 +25,7 @@ export const SkateBoardPage = () => {
             data?.map((board: Product) => (
               <ProductCard
                 key={`skateboard-item-${board._id}`}
-                id={board._id}
+                _id={board._id}
                 name={board.name}
                 img={board.img}
                 price={board.price}
