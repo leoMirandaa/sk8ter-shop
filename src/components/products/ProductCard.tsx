@@ -1,57 +1,23 @@
-import { useState } from "react";
-import { Button } from "primereact/button";
-import { Dialog } from "primereact/dialog";
+import { useNavigate } from "react-router-dom";
+import { Product } from "../../interfaces";
 
-interface ProductProps {
-  id: string;
-  name: string;
-  price: number;
-  img: ImageProps;
-}
-
-interface ImageProps {
-  url: string;
-}
-
-export const ProductCard = ({ id, name, img, price }: ProductProps) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
+export const ProductCard = ({ _id, name, img, price }: Product) => {
+  const navigate = useNavigate();
   return (
     <span
       className="card__container"
       key={name}
-      onClick={() => console.log(id)}
+      onClick={() => navigate(`/product/${_id}`)}
     >
       <img
         width="80px"
         src={img.url}
         alt={name}
       />
-      <div className="text-center">
-        <h3 className="my-1">{name}</h3>
-        <h5 className="mt-0 text-600">$ {price} USD</h5>
+      <div className="mb-2">
+        <h3 className="my-1 text-xl">{name}</h3>
+        <h4 className="my-0  text-600">${price}.00 USD</h4>
       </div>
-
-      <div>
-        <Button
-          label="Preview"
-          severity="secondary"
-          className="mr-3"
-          outlined
-          onClick={() => setIsVisible(true)}
-        />
-        <Button icon="pi pi-shopping-cart" />
-      </div>
-      <Dialog
-        visible={isVisible}
-        style={{ width: "50vw", textAlign: "center" }}
-        onHide={() => setIsVisible(false)}
-      >
-        <img
-          src={img.url}
-          alt={name}
-        />
-      </Dialog>
     </span>
   );
 };

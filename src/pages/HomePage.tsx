@@ -6,6 +6,7 @@ import { HomeCategoryCard } from "../components/HomeCategoryCard";
 import { ProductCard } from "../components/products/ProductCard";
 import { categories } from "../utils/categoriesArr";
 import "../styles/homePage.scss";
+import { Product } from "../interfaces";
 
 interface categoryProps {
   title: string;
@@ -88,10 +89,10 @@ export const HomePage = () => {
             className="categories__container"
             style={{ maxWidth: "1440px", margin: "0 auto" }}
           >
-            {boards.map((board: any) => (
+            {boards.map((board: Product) => (
               <ProductCard
                 key={board._id}
-                id={board._id}
+                _id={board._id}
                 name={board.name}
                 img={board.img}
                 price={board.price}

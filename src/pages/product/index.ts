@@ -1,3 +1,4 @@
+export * from "./ProductPage";
 export * from "./PennyBoardPage";
 export * from "./SkateBoardPage";
 export * from "./LongBoardPage";

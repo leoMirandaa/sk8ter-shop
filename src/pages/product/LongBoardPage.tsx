@@ -1,7 +1,7 @@
 import { ProductCard } from "../../components/products/ProductCard";
 import { ProductSkeleton } from "../../components/ui";
-import useFetch from "../../hooks/useFetch";
 import { Product } from "../../interfaces";
+import useFetch from "../../hooks/useFetch";
 import "../../styles/productPage.scss";
 
 export const LongBoardPage = () => {
@@ -15,8 +15,6 @@ export const LongBoardPage = () => {
       <h1 className="text-center">Long Boards</h1>
 
       <div className="container">
-        {/* <h2 className="categories__title">Landscaping</h2> */}
-
         {isLoading && <ProductSkeleton />}
         {error && <div className="error-container">Error: {error}</div>}
 
@@ -25,7 +23,7 @@ export const LongBoardPage = () => {
             data?.map((board: Product) => (
               <ProductCard
                 key={`longboard-item-${board._id}`}
-                id={board._id}
+                _id={board._id}
                 name={board.name}
                 img={board.img}
                 price={board.price}
