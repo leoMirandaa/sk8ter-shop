@@ -8,6 +8,7 @@ import {
   SkateBoardPage,
   LongBoardPage,
   SalePage,
+  ProductPage,
 } from "../pages/product";
 
 export const ProductRoutes = () => {
@@ -18,6 +19,11 @@ export const ProductRoutes = () => {
           <Route
             path="home"
             element={<HomePage />}
+          />
+
+          <Route
+            path="/product/:id"
+            element={<ProductPage />}
           />
 
           <Route

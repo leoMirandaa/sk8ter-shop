@@ -195,3 +195,11 @@ input[type="file"] {
 .p-dialog .p-dialog-header {
   padding-bottom: 0;
 }
+
+.p-progressbar .p-progressbar-value {
+  /* background: var(--text-color-secondary); */
+}
+
+.p-breadcrumb {
+  border: none;
+}
