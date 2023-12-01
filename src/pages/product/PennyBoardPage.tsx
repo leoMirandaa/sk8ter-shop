@@ -3,11 +3,15 @@ import { ProductSkeleton } from "../../components/ui";
 import { Product } from "../../interfaces";
 import useFetch from "../../hooks/useFetch";
 import "../../styles/productPage.scss";
+import { useParams } from "react-router-dom";
 
 export const PennyBoardPage = () => {
   const { data, isLoading, error } = useFetch(
     "search/findProductsByCategoryId/64c2d97e105160d0391b04e8"
   );
+
+  const params = useParams();
+  console.log("P params: ", params);
 
   return (
     <div className="animate__animated animate__fadeIn">

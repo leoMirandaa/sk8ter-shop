@@ -1,43 +1,31 @@
 import { ReactElement, ReactNode, useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 
 import axios from "axios";
 import { Button } from "primereact/button";
-import { BreadCrumb } from "primereact/breadcrumb";
-import { ProgressBar } from "primereact/progressbar";
 import { Carousel } from "primereact/carousel";
-import { Tag } from "primereact/tag";
+import { Divider } from "primereact/divider";
+import { ProgressBar } from "primereact/progressbar";
 
 import { Product } from "../../interfaces";
 import productService from "../../services/product.service";
-import { ProductCard } from "../../components/products/ProductCard";
 
-interface ProductProps {
-  _id: string;
-  name: string;
-  price: number;
-  img: ImageProps;
-  description: string;
-  categoryName: string;
-  isVisible: boolean;
-  setIsVisible: any;
-}
-interface ImageProps {
-  url: string;
-}
 export const ProductPage = () => {
-  // const [visible, setIsVisible] = useState(false);
   const [product, setProduct] = useState<Product>();
   const [boards, setBoards] = useState<any>([]);
   const params = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const items = [{ label: "Penny boards" }, { label: "Baby Purple - Penny" }];
-  const home = { icon: "pi pi-home", url: "/" };
+  console.log("location: ", location.pathname.split("/")[2]);
 
   const getProductById = async (id: string) => {
     const response = await productService.getProduct(id);
-    console.log("Response: ", response?.data);
     setProduct(response.data);
   };
 
@@ -45,9 +33,6 @@ export const ProductPage = () => {
     const response = await axios(
       "http://localhost:3002/search/findProductsByCategoryId/64c2d97e105160d0391b04e8"
     );
-
-    console.log("Boards: ", response.data?.results);
-
     setBoards(response.data?.results);
   };
 
@@ -57,7 +42,7 @@ export const ProductPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Params");
+    console.log("Params: ", params);
     getProductById(params?.id);
 
     window.scroll({
@@ -67,10 +52,7 @@ export const ProductPage = () => {
     });
   }, [params]);
 
-  // const { name, price, img, description, categoryName }: ProductProps = product;
-
   const speedBoardProgress = (category: string) => {
-    console.log("*** ", category);
     switch (category) {
       case "pennyBoard":
         return "70";
@@ -109,11 +91,14 @@ export const ProductPage = () => {
     }
   };
 
-  const productTemplate = (product: ProductProps) => {
+  const productTemplate = (product: Product) => {
     return (
       <div
         className="card__container m-3"
-        onClick={() => navigate(`/product/${product?._id}`)}
+        onClick={() => {
+          getProductById(product?._id);
+          navigate(`../${product?._id}`);
+        }}
       >
         <div className="mb-3">
           <img
@@ -148,18 +133,13 @@ export const ProductPage = () => {
     },
   ];
   return (
-    <>
-      {/* <BreadCrumb
-        model={items}
-        home={{ icon: "pi pi-home", url: "/" }}
-      /> */}
-
+    <div className="container">
       <div
         style={{
           maxWidth: "1200px",
           margin: "2rem auto 4rem auto",
-          // border: "solid 1.5px var(--surface-border)",
           padding: "0 1.5rem",
+          // border: "solid 1px green",
         }}
       >
         <div className="flex justify-content-between">
@@ -177,7 +157,7 @@ export const ProductPage = () => {
             className="flex flex-column  my-4"
           >
             <div className="">
-              <h3 className="text-600">{product?.category?.name}</h3>
+              {/* <h3 className="text-600">{product?.category?.name}</h3> */}
               <h1>{product?.name}</h1>
               <h2
                 style={{
@@ -193,7 +173,7 @@ export const ProductPage = () => {
                 $ {product?.price}.00 US
               </h2>
 
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   // justifyContent: "space-evenly",
@@ -233,11 +213,11 @@ export const ProductPage = () => {
                     value={GripBoardProgress(product?.category?.name)}
                   ></ProgressBar>
                 </div>
-              </div>
-              <p className="">{product?.description}</p>
+              </div> */}
+              <p className="text-lg">{product?.description}</p>
             </div>
 
-            <div className="description-section">
+            <div className="description-section text-lg">
               <div className="flex mt-2">
                 <i
                   style={{
@@ -307,23 +287,17 @@ export const ProductPage = () => {
         </div>
       </div>
 
-      {/* <hr className="mx-6 mt-8" /> */}
+      <Divider className="my-8" />
 
-      <h1
-        style={{ marginTop: "8rem" }}
-        className="text-center"
-      >
-        You might also like:
-      </h1>
+      <h1 className="text-center">You might also like:</h1>
 
       <Carousel
-        className="container"
         value={boards}
         numVisible={4}
         numScroll={4}
         responsiveOptions={responsiveOptions}
         itemTemplate={productTemplate}
       />
-    </>
+    </div>
   );
 };
