@@ -1,13 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Product } from "../../interfaces";
 
 export const ProductCard = ({ _id, name, img, price }: Product) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <span
       className="card__container"
       key={name}
-      onClick={() => navigate(`/product/${_id}`)}
+      onClick={() => navigate(`${location?.pathname}/${_id}`)}
     >
       <img
         width="80px"
