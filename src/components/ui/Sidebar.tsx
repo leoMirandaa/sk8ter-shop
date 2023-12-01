@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Sidebar } from "primereact/sidebar";
+import { Badge } from "primereact/badge";
 import { Button } from "primereact/button";
 import { Menu } from "primereact/menu";
-import { Badge } from "primereact/badge";
-import { urls } from "../../utils/urls";
+import { Sidebar } from "primereact/sidebar";
+import { categories } from "../../utils/categoriesArr";
+
 import skateLogo from "../../../public/images/sk8er-logo3.svg";
 import "../../styles/sidebar.scss";
 
@@ -13,8 +14,8 @@ const SideBar = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const sidebarUrls = urls.map((url) => ({
-    label: url.label,
+  const sidebarUrls = categories.slice(0, -1).map((url) => ({
+    label: url.title,
     command: () => {
       navigate(url.url);
       setIsVisible(false);
