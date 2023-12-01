@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import { Badge } from "primereact/badge";
 
 import { ThemeManager } from "../ThemeManager";
-import { urls } from "../../utils/urls";
+import { categories } from "../../utils/categoriesArr";
 import SideBar from "../../components/ui/Sidebar";
 import "../../styles/navbar.scss";
 
@@ -29,7 +29,7 @@ export const Navbar = () => {
 
           <nav>
             <ul className="nav__links">
-              {urls.map(({ url, label }) => (
+              {categories.slice(0, -1).map(({ url, title }) => (
                 <li key={url}>
                   <div
                     className={
@@ -37,10 +37,20 @@ export const Navbar = () => {
                     }
                     onClick={() => navigate(url)}
                   >
-                    {label}
+                    {title}
                   </div>
                 </li>
               ))}
+              <li>
+                <div
+                  className={
+                    location?.pathname.includes("admin") ? "selectedPage" : null
+                  }
+                  onClick={() => navigate("admin")}
+                >
+                  Admin
+                </div>
+              </li>
             </ul>
           </nav>
 
