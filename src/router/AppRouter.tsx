@@ -1,11 +1,10 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 
 import { Login } from "../pages/auth";
-import { ProductRoutes } from "./ProductRoutes";
+import { PagesRoutes } from "./PagesRoutes";
 import { Register } from "../pages/auth";
 import { AuthLayout } from "../components/layouts";
 
-// import { Layout } from "../components/Layout";
 export const AppRouter = () => {
   return (
     <Routes>
@@ -31,7 +30,7 @@ export const AppRouter = () => {
 
       <Route
         path="/*"
-        element={<ProductRoutes />}
+        element={<PagesRoutes />}
       />
     </Routes>
   );
