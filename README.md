@@ -1,6 +1,6 @@
 <h1 style="text-align: center;">Clothing store</h1>
 
-![sk8ter](https://github.com/leoMirandaa/sk8ter-shop/assets/61714687/7e80173a-41ea-4904-9e96-169a60919c93)
+![sk8ter](https://github.com/leoMirandaa/sk8ter-shop/assets/61714687/676004ce-61cb-4424-a002-c27aff798fda)
 
 <br />
 
