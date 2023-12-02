@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Clothing store</h1>
+# Sk8ter-shop
 
 ![sk8ter](https://github.com/leoMirandaa/sk8ter-shop/assets/61714687/676004ce-61cb-4424-a002-c27aff798fda)
 
