@@ -16,13 +16,16 @@ export const PennyBoardPage = () => {
   return (
     <div className="animate__animated animate__fadeIn">
       <div className="header__heroImage-penny" />
-      <h1 className="text-center">Penny Boards</h1>
+      {/* <h1 className="text-center">Penny Boards</h1> */}
 
       <div className="container">
         {isLoading && <ProductSkeleton />}
         {error && <div className="error-container">Error: {error}</div>}
 
-        <div className="categories__container">
+        <div
+          className="categories__container"
+          style={{ margin: "4rem 0" }}
+        >
           {data &&
             data?.map((board: Product) => (
               <ProductCard

@@ -34,7 +34,7 @@ export const UserList = () => {
 
   const getUsers = async () => {
     const response = await userService.getUsers();
-    const data = response.data.map(({ address, ...rest }: User) => {
+    const data = response.data.map(({ address, status, ...rest }: User) => {
       return {
         street: address?.street,
         country: address?.country,
