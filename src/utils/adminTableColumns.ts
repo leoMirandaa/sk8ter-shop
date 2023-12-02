@@ -9,7 +9,7 @@ const userColumns = [
   "country",
   "state",
   "role",
-  "status",
+  // "status",
   // "Password",
   // "Actions",
 ];

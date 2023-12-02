@@ -289,7 +289,7 @@ export const ProductPage = () => {
 
       <Divider className="my-8" />
 
-      <h1 className="text-center">You might also like:</h1>
+      <h1 className="text-center text-gray-700">You might also like:</h1>
 
       <Carousel
         value={boards}

@@ -89,7 +89,7 @@ export const Footer = () => {
         </div>
 
         <div className="footer__author">
-          <p>Made by Leopoldo Miranda</p>
+          <p>Made by Leo Miranda</p>
           <p>All rights reserved</p>
         </div>
       </div>

@@ -1,10 +1,6 @@
 <h1 style="text-align: center;">Clothing store</h1>
 
-<img title="Home image" alt="Home image" src="./public/images/home-page.JPG">
-
-## Version 2.0.0
-
-<img title="Home image" alt="Home image" src="./public/images/clothing-store-home.jpg">
+![sk8ter](https://github.com/leoMirandaa/sk8ter-shop/assets/61714687/7e80173a-41ea-4904-9e96-169a60919c93)
 
 <br />
 
@@ -49,15 +45,15 @@
 
 <div align="center">
 
-|                                                                           | Technology  | URL                                                           |
-| ------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
-| <img alt="" src="./public/images/../../src/assets/react.svg" width="100"> | React       | <a href="URL"> https://es.reactjs.org/</a>                    |
-| <img alt="" src="./public/vite.svg" width="100">                          | Vite        | <a href="URL"> https://vitejs.dev/</a>                        |
-| <img alt="" src="./public/images/primereact-logo.png" width="100">        | Prime React | <a href="URL">https://www.primefaces.org/primereact/ </a>     |
-| <img alt="" src="./public/images/axios-logo.svg" width="100">             | Axios       | <a href="URL">https://axios-http.com/ </a>                    |
-| <img alt="" src="./public/images/express.png" width="100">                | Flask       | <a href="URL">https://flask.palletsprojects.com/en/2.2.x/</a> |
-| <img alt="" src="./public/images/modo-db-logo.jpg" width="100">           | MongoDB     | <a href="URL">https://www.mongodb.com/</a>                    |
-| <img alt="" src="./public/images/react-hook-form.webp" width="100">       | Insomnia    | <a href="URL">https://react-hook-form.com/</a>                |
+|                                                                           | Technology  | URL                                                       |
+| ------------------------------------------------------------------------- | ----------- | --------------------------------------------------------- |
+| <img alt="" src="./public/images/../../src/assets/react.svg" width="100"> | React       | <a href="URL"> https://es.reactjs.org/</a>                |
+| <img alt="" src="./public/vite.svg" width="100">                          | Vite        | <a href="URL"> https://vitejs.dev/</a>                    |
+| <img alt="" src="./public/images/primereact-logo.png" width="100">        | Prime React | <a href="URL">https://www.primefaces.org/primereact/ </a> |
+| <img alt="" src="./public/images/axios-logo.svg" width="100">             | Axios       | <a href="URL">https://axios-http.com/ </a>                |
+| <img alt="" src="./public/images/express.png" width="100">                | Express     | <a href="URL">https://expressjs.com/</a>                  |
+| <img alt="" src="./public/images/modo-db-logo.jpg" width="100">           | MongoDB     | <a href="URL">https://www.mongodb.com/</a>                |
+| <img alt="" src="./public/images/react-hook-form.webp" width="100">       | Insomnia    | <a href="URL">https://react-hook-form.com/</a>            |
 
 </div>
 
