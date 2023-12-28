@@ -53,7 +53,7 @@
 | <img alt="" src="./public/images/axios-logo.svg" width="100">             | Axios       | <a href="URL">https://axios-http.com/ </a>                |
 | <img alt="" src="./public/images/express.png" width="100">                | Express     | <a href="URL">https://expressjs.com/</a>                  |
 | <img alt="" src="./public/images/modo-db-logo.jpg" width="100">           | MongoDB     | <a href="URL">https://www.mongodb.com/</a>                |
-| <img alt="" src="./public/images/react-hook-form.webp" width="100">       | Insomnia    | <a href="URL">https://react-hook-form.com/</a>            |
+| <img alt="" src="./public/images/react-hook-form.webp" width="100">       | React Hook Form    | <a href="URL">https://react-hook-form.com/</a>            |
 
 </div>
 
